@@ -6,6 +6,7 @@ target 'PolenApp' do
   use_frameworks!
 
   # Pods for PolenApp
+  pod 'SwiftLint' 
 
   target 'PolenAppTests' do
     inherit! :search_paths
