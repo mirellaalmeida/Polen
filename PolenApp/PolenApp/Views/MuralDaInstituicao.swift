@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SwiftUI
+// swiftlint:disable all
 
 struct BannerView: View {
     
@@ -101,6 +101,8 @@ struct MuralDaInstituicaoView: View {
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "Banner"), for: .default)
         UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.9688708186, green: 0.8066166639, blue: 0.3180420101, alpha: 1)
         UINavigationBar.appearance().shadowImage = UIImage()
+        UIScrollView.appearance().bounces = false
+//        UIScrollView.appearance().backgroundColor = #colorLiteral(red: 0.9688708186, green: 0.8066166639, blue: 0.3180420101, alpha: 1)
         
     }
     let colaboreList: [Colabore] = [
@@ -123,6 +125,7 @@ struct MuralDaInstituicaoView: View {
     
     var body: some View{
         NavigationView{
+            ScrollView(.vertical){
             VStack(alignment: .leading){
                 BannerView()
                 Text("Colabore conosco")
@@ -154,7 +157,12 @@ struct MuralDaInstituicaoView: View {
                             }
                             .frame(width: 300, height: 200)
                             }
+                            .background(Color.white)
+                            .border(Color.gray, width: 0.5)
+                            .cornerRadius(10)
+                            .shadow(color: .gray, radius: 3, x: 0, y: 1)
                         }
+            
                     }
                 }
                 Text("Um pouco sobre nós")
@@ -162,7 +170,7 @@ struct MuralDaInstituicaoView: View {
                     .fontWeight(.bold)
                 //.offset(x: 20, y: -30)
                 ScrollView(.horizontal){
-                    LazyHStack{
+                    LazyHStack(spacing: 10){
                         ForEach (sobreNosList){ sobreNos in
                             VStack{
                                 Image(systemName: "star")
@@ -182,9 +190,15 @@ struct MuralDaInstituicaoView: View {
                                 
                             }
                             .frame(width: 300, height: 200)
-                            //padding(2)
                         }
-                    }
+                        .background(Color.white)
+                        .border(Color.gray, width: 0.5)
+                        .cornerRadius(10)
+                        .shadow(color: .gray, radius: 3, x: 0, y: 1)
+                    
+                    }   .padding([.top,.bottom],50)
+
+                        
                 }
             }
 
@@ -194,7 +208,8 @@ struct MuralDaInstituicaoView: View {
         }
         
     
-       
+        }
+//        .background(Color(#colorLiteral(red: 0.9688708186, green: 0.8066166639, blue: 0.3180420101, alpha: 1)).edgesIgnoringSafeArea(.all))
     }
     
 }
@@ -208,12 +223,3 @@ struct MuralView_Previews: PreviewProvider {
 }
 #endif
 
-//    var SobreNosView: some View {
-//        VStack{
-//            Image("\(SobreNos.image)")
-//                .resizable()
-//                .cornerRadius(8.0)
-//                .frame(width: 339, height: 166, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-////            Text(colabore.title)
-////                .font(subheadline)
-////                .fontWeight(.bold)
