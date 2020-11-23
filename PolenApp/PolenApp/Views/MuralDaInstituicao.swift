@@ -47,10 +47,17 @@ struct MuralDaInstituicaoView: View {
                     BannerView()
                     
                     VStack(alignment: .leading){
-                        Text("Colabore conosco")
-                            .font(.headline)
-                            .fontWeight(.bold)
+                        HStack {
+                            Text("Colabore conosco")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .padding()
+                            Spacer()
+                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                                Image(systemName: "plus")
+                            })
                             .padding()
+                        }
                         
                         ScrollView(.horizontal, showsIndicators: false){
                             LazyHStack(spacing: 10){
@@ -83,10 +90,17 @@ struct MuralDaInstituicaoView: View {
                         .frame(height: 30.0)
                    
                     VStack(alignment: .leading) {
-                        Text("Um pouco sobre nós")
-                            .font(.headline)
-                            .fontWeight(.bold)
+                        HStack {
+                            Text("Um pouco sobre nós")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .padding()
+                            Spacer()
+                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                                Image(systemName: "plus")
+                            })
                             .padding()
+                        }
                         
                         ScrollView(.horizontal, showsIndicators: false){
                             LazyHStack(spacing: 10){
