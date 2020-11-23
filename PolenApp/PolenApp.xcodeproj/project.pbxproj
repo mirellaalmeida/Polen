@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4D7027663055B850C09CDEA2 /* Pods_PolenApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07F438E3FDFEBD346B7B82F /* Pods_PolenApp.framework */; };
 		648B5423DA6CF957E8336241 /* Pods_PolenAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2417BF2CAAE596DB790A20BA /* Pods_PolenAppTests.framework */; };
+		B41293C5256BF08C00DBF26B /* AddHistoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41293C4256BF08C00DBF26B /* AddHistoria.swift */; };
 		B4799A1125682821003A047F /* VerMaisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A1025682821003A047F /* VerMaisView.swift */; };
 		B4799A1925682895003A047F /* Colabore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A1825682895003A047F /* Colabore.swift */; };
 		B4799A21256828F6003A047F /* SobreNos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A20256828F6003A047F /* SobreNos.swift */; };
@@ -63,6 +64,7 @@
 		416CB25BEBD4BC7C8254C560 /* Pods_PolenApp_PolenAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolenApp_PolenAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E9AE9BA5DC50432851DFFB /* Pods-PolenApp-PolenAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp-PolenAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-PolenApp-PolenAppUITests/Pods-PolenApp-PolenAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AAA837FD8ECFE066B14D2153 /* Pods-PolenAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenAppTests.release.xcconfig"; path = "Target Support Files/Pods-PolenAppTests/Pods-PolenAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		B41293C4256BF08C00DBF26B /* AddHistoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoria.swift; sourceTree = "<group>"; };
 		B4799A1025682821003A047F /* VerMaisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerMaisView.swift; sourceTree = "<group>"; };
 		B4799A1825682895003A047F /* Colabore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colabore.swift; sourceTree = "<group>"; };
 		B4799A20256828F6003A047F /* SobreNos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SobreNos.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				ED41618C2562CA6900AF5696 /* MeuMural.swift */,
 				B4799A1025682821003A047F /* VerMaisView.swift */,
 				B4799A252568293A003A047F /* BannerView.swift */,
+				B41293C4256BF08C00DBF26B /* AddHistoria.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				B4799A262568293A003A047F /* BannerView.swift in Sources */,
 				ED4161B82562CB3900AF5696 /* CardFavorito.swift in Sources */,
 				ED4161AE2562CB1400AF5696 /* CardAjuda.swift in Sources */,
+				B41293C5256BF08C00DBF26B /* AddHistoria.swift in Sources */,
 				B4799A1125682821003A047F /* VerMaisView.swift in Sources */,
 				ED4161BD2562CB4E00AF5696 /* CardRecurso.swift in Sources */,
 				ED4161922562CA8200AF5696 /* Recursos.swift in Sources */,

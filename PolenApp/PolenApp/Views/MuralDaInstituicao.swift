@@ -26,19 +26,13 @@ struct MuralDaInstituicaoView: View {
         Colabore(id:4, name: "Aulas de Russo", description: "Precisamos de professores de russo urgentes. Entre em contato conosco."),
     ]
     
-    let sobreNosList: [SobreNos] = [
-        SobreNos(id:0, image: "", title: "Doação de Móveis", subtitle: "A ação é destinada a coletar doação de roupas, mantimentos, fraudas e outras necessidades que estão sendo detectadas pelo...A ação é destinada a coletar doação de roupas, mantimentos, fraudas e outras necessidades que estão sendo detectadas pelo...A ação é destinada a coletar doação de roupas, mantimentos, fraudas e outras necessidades que estão sendo detectadas pelo...A ação é destinada a coletar doação de roupas, mantimentos, fraudas e outras necessidades que estão sendo detectadas pelo...A ação é destinada a coletar doação de roupas, mantimentos, fraudas e outras necessidades que estão sendo detectadas pelo...A ação é destinada a coletar doação de roupas, mantimentos, fraudas e outras necessidades que estão sendo detectadas pelo..."),
-        SobreNos(id:2,  image: "", title: "Doação de Roupas", subtitle: "A ação é destinada a coletar doação de roupas, mantimentos, fraudas e outras necessidades que estão sendo detectadas pelo..."),
-        SobreNos(id:3,
-                 image: "",
-                 title: "Auxílio Transporte",
-                 subtitle: "A ação é destinada a coletar doação de roupas, mantimentos, fraudas e outras necessidades que estão sendo detectadas pelo..."),
-        SobreNos(id:4, image: "", title: "Auxílio Moradia", subtitle: "A ação é destinada a coletar doação de roupas, mantimentos, fraudas e outras necessidades que estão sendo detectadas pelo..."),
-    ]
+    let sobreNosList: [HistoriasCard] = []
     
     @State var verMais = false
     
-    @State var verMaisHistoria = SobreNos(id:-1, image: "", title: "", subtitle: "")
+    @State var addingHistoria=false
+    
+    @State var historia: HistoriasCard?
     
     var body: some View{
         NavigationView{
@@ -74,7 +68,7 @@ struct MuralDaInstituicaoView: View {
                                         .padding()
                                 }
                                 .frame(width: 300, height: 200)
-                            
+                                
                                 }
                                 .background(Color.white)
                                 .border(Color.gray, width: 0.5)
@@ -88,7 +82,7 @@ struct MuralDaInstituicaoView: View {
                     
                     Spacer()
                         .frame(height: 30.0)
-                   
+                    
                     VStack(alignment: .leading) {
                         HStack {
                             Text("Um pouco sobre nós")
@@ -96,7 +90,15 @@ struct MuralDaInstituicaoView: View {
                                 .fontWeight(.bold)
                                 .padding()
                             Spacer()
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                            
+                            NavigationLink(destination: AddHistoria(isAdding: self.$addingHistoria),
+                                           isActive: $addingHistoria){
+                                EmptyView()
+                            }
+                            
+                            Button(action: {
+                                self.addingHistoria.toggle()
+                            }, label: {
                                 Image(systemName: "plus")
                             })
                             .padding()
@@ -110,18 +112,18 @@ struct MuralDaInstituicaoView: View {
                                             .resizable()
                                             .cornerRadius(8.0)
                                             .frame(width: 40, height: 40)
-                                        Text(sobreNos.title)
+                                        Text(sobreNos.titulo!)
                                             .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
                                             .fontWeight(.bold)
                                             .multilineTextAlignment(.leading)
-                                        Text(sobreNos.subtitle)
+                                        Text(sobreNos.descricao!)
                                             .font(/*@START_MENU_TOKEN@*/.subheadline/*@END_MENU_TOKEN@*/)
                                             .multilineTextAlignment(.center)
                                             .lineLimit(4)
                                     }
                                     .onTapGesture {
                                         //Por algum motivo, só funciona depois que mexe na scrollview horizontal e clica em alguma outra célula
-                                        verMaisHistoria = sobreNos
+                                        historia = sobreNos
                                         verMais.toggle()
                                     }
                                     .frame(width: 300, height: 200)
@@ -141,7 +143,7 @@ struct MuralDaInstituicaoView: View {
                 //.navigationBarTitle("", displayMode: .inline)
             }
         }.sheet(isPresented: $verMais) {
-            VerMaisView(historia: $verMaisHistoria, verMais: $verMais)
+            VerMaisView(historia: $historia, verMais: $verMais)
         }
         //        .background(Color(#colorLiteral(red: 0.9688708186, green: 0.8066166639, blue: 0.3180420101, alpha: 1)).edgesIgnoringSafeArea(.all))
     }
