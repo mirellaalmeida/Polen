@@ -14,15 +14,19 @@ struct VerMaisView: View {
     var body: some View {
         NavigationView{
             VStack{
+                Text(historia.title)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
                 Text(historia.subtitle)
                     .font(.body)
                     .multilineTextAlignment(.center)
-                    .lineLimit(4)
                     .padding()
+                Spacer()
             }
-            .navigationBarTitle(historia.title, displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
-                print(historia)
                 self.verMais = false
             }, label: {
                 Text("Done")
