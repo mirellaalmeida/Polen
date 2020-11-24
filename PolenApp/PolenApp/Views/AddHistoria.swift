@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//DynamicHeightTextField e Coordinator são usadas para construir a textview(textfield grande)
 struct DynamicHeightTextField: UIViewRepresentable {
     @Binding var text: String
     @Binding var height: CGFloat
@@ -21,6 +22,8 @@ struct DynamicHeightTextField: UIViewRepresentable {
         
         textView.text = text
         textView.backgroundColor = UIColor.clear
+        textView.layer.borderWidth = 5
+        textView.layer.borderColor = UIColor.systemBackground.cgColor
         
         context.coordinator.textView = textView
         textView.delegate = context.coordinator
@@ -78,18 +81,26 @@ class Coordinator: NSObject, UITextViewDelegate, NSLayoutManagerDelegate {
 }
 
 struct AddHistoria: View {
-    
     @Environment(\.managedObjectContext) var viewContext
     
     @Binding var isAdding: Bool
     
-    @State var title: String = ""
-    @State var description: String = ""
-    @State var descriptionHeight: CGFloat = 0
+    @State private var title: String = ""
+    @State private var description: String = ""
+    @State private var descriptionHeight: CGFloat = 0
+    
+    @Binding var instituicaoID: UUID
+    
+    @FetchRequest(
+        entity: Instituicao.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Instituicao.id, ascending: true)
+        ]
+    ) var instituicoes: FetchedResults<Instituicao>
     
     var textFieldHeight: CGFloat {
         let minHeight: CGFloat = 30
-        let maxHeight: CGFloat = 500
+        let maxHeight: CGFloat = 400
         
         if descriptionHeight < minHeight {
             return minHeight
@@ -103,65 +114,56 @@ struct AddHistoria: View {
     }
     
     var body: some View {
-        
         VStack{
-            //Colocar título da página
+            Text("Adicionar Publicação")
+                .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.leading)
             
             Text("Aqui vai ficar o adicionar imagem!")
                 .padding()
             
-            /*TextField("Título Aqui", text: $title)
+            TextField("Título", text: $title)
                 .foregroundColor(.black)
                 .background(Color(UIColor.secondarySystemBackground))
-                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                .frame(width: 500, height: 100)
+                .padding([.leading, .trailing])
+                .textFieldStyle(RoundedBorderTextFieldStyle())
             
             ZStack(alignment: .topLeading){
-                Color(UIColor.secondarySystemBackground)
+                Color.white
                 
                 if description.isEmpty{
-                    Text("Descrição Aqui")
+                    Text("Descrição")
                         .foregroundColor(Color(UIColor.placeholderText))
                         .padding(4)
                 }
                 
                 DynamicHeightTextField(text: $description, height: $descriptionHeight)
             }
-            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-            .frame(width: 500, height: descriptionHeight)*/
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .circular))
+            .padding([.leading, .trailing])
             
-            //testar tirar do form e colocar na vstack
-            Form{
-                Section(header: Text("Título")){
-                    TextField("Título Aqui", text: $title)
-                        .foregroundColor(.black)
-                        .background(Color(UIColor.secondarySystemBackground))
-                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                        .frame(width: 300, height: descriptionHeight)
+            Spacer()
+            
+            Button(action: {
+                let newStory = HistoriasCard(context: viewContext)
+                newStory.titulo = title
+                newStory.descricao = description
+                newStory.daInstituicao = instituicoes.first(where: {$0.id == instituicaoID})
+                
+                do {
+                    try self.viewContext.save()
+                } catch {
+                    print("não foi possível salvar")
                 }
                 
-                Section(header: Text("Descrição")){
-                    ZStack(alignment: .topLeading){
-                        Color(UIColor.secondarySystemBackground)
-                        
-                        if description.isEmpty{
-                            Text("Descrição Aqui")
-                                .foregroundColor(Color(UIColor.placeholderText))
-                                .padding(4)
-                        }
-                        
-                        DynamicHeightTextField(text: $description, height: $descriptionHeight)
-                    }
-                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                    .frame(width: 300, height: descriptionHeight)
-                }
-            }
-            .padding()
-            .onAppear{
-                UITableView.appearance().backgroundColor = .clear
-            }
-            .foregroundColor(.white)
-            .background(Color.white)
+                self.isAdding.toggle()
+                
+            }, label: {
+                Text("Publicar")
+                    .padding()
+            })
+            
         }
     }
 }

@@ -8,8 +8,108 @@
 import SwiftUI
 
 struct Login: View {
+    //ACHO QUE DADOS DE LOGIN DEVEM SER ADICIONADOS À INSTITUIÇÃO OU COMO UM RELACIONAMENTO
+    //A partir dos dados do login, pegaremos a id da instituição e mandaremos pra Meu Mural (a id vai ser
+    //meio que uma variável global entre todas as telas
+    
+    
+    @Environment(\.managedObjectContext) var viewContext
+    
+    @FetchRequest(
+        entity: Instituicao.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Instituicao.id, ascending: true)
+        ]
+    ) var instituicoes: FetchedResults<Instituicao>
+    
+    @State private var id = UUID()
+    @State private var nome:String = ""
+    @State private var descricao:String = ""
+    @State private var cidade: String = ""
+    @State var addedInst = false
+    @State var testView = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                TextField("Nome", text: $nome)
+                    .foregroundColor(.black)
+                    .background(Color(UIColor.secondarySystemBackground))
+                    .padding()
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                TextField("Descrição", text: $descricao)
+                    .foregroundColor(.black)
+                    .background(Color(UIColor.secondarySystemBackground))
+                    .padding()
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                TextField("Cidade", text: $cidade)
+                    .foregroundColor(.black)
+                    .background(Color(UIColor.secondarySystemBackground))
+                    .padding()
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                NavigationLink(destination: MeuMural(isActive: $addedInst, instituicaoID: $id), isActive: $addedInst){
+                    EmptyView()
+                }
+                
+                Button(action: {
+                    let newInstituicao = Instituicao(context: viewContext)
+                    newInstituicao.id = id
+                    newInstituicao.nome = nome
+                    newInstituicao.descricao = descricao
+                    newInstituicao.cidade = cidade
+                    
+                    do {
+                        try self.viewContext.save()
+                        print("Salvo")
+                    } catch {
+                        print("não foi possível salvar")
+                    }
+                    
+                    self.addedInst.toggle()
+                }, label: {
+                    Text("Adicionar Instituição")
+                })
+                .padding()
+                .border(Color.purple, width: 2)
+                .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                
+                Button(action: {
+                    testView.toggle()
+                }, label: {
+                    Text("Testar Persistência")
+                })
+                
+                Spacer()
+            }
+        }.sheet(isPresented: $testView){
+            List{
+                ForEach(instituicoes, id: \.self){instituicao in
+                    Text(instituicao.wrappedNome)
+                        .font(.title)
+                        .fontWeight(.bold)
+                    ForEach(instituicao.historiasArray, id:\.self){historia in
+                        Text(historia.wrappedTitulo)
+                            .font(.title2)
+                        Text(historia.wrappedDescricao)
+                            .font(.subheadline)
+                    }
+                }.onDelete(perform: { indexSet in
+                    for index in indexSet {
+                        let instituicao = instituicoes[index]
+                        viewContext.delete(instituicao)
+                    }
+                    do {
+                        try self.viewContext.save()
+                    } catch {
+                        print("não foi possível salvar")
+                    }
+                })
+            }
+        }
+        
     }
 }
 

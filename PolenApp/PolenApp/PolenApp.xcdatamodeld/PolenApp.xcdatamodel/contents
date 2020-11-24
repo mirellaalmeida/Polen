@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
-    <entity name="ColaboreCard" representedClassName="ColaboreCard" syncable="YES" codeGenerationType="class">
+    <entity name="ColaboreCard" representedClassName="ColaboreCard" syncable="YES">
         <attribute name="descricao" optional="YES" attributeType="String"/>
         <attribute name="titulo" optional="YES" attributeType="String"/>
         <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Instituicao" inverseName="colaboreList" inverseEntity="Instituicao"/>
     </entity>
-    <entity name="HistoriasCard" representedClassName="HistoriasCard" syncable="YES" codeGenerationType="class">
+    <entity name="HistoriasCard" representedClassName="HistoriasCard" syncable="YES">
         <attribute name="descricao" optional="YES" attributeType="String"/>
         <attribute name="imagem" optional="YES" attributeType="String"/>
         <attribute name="titulo" optional="YES" attributeType="String"/>
         <relationship name="daInstituicao" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Instituicao" inverseName="historiasList" inverseEntity="Instituicao"/>
     </entity>
-    <entity name="Instituicao" representedClassName="Instituicao" syncable="YES" codeGenerationType="class">
+    <entity name="Instituicao" representedClassName="Instituicao" syncable="YES">
         <attribute name="cidade" optional="YES" attributeType="String"/>
         <attribute name="descricao" optional="YES" attributeType="String"/>
         <attribute name="facebook" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="imagem" optional="YES" attributeType="String"/>
         <attribute name="instagram" optional="YES" attributeType="String"/>
         <attribute name="nome" optional="YES" attributeType="String"/>
@@ -25,8 +26,8 @@
         <relationship name="historiasList" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HistoriasCard" inverseName="daInstituicao" inverseEntity="HistoriasCard"/>
     </entity>
     <elements>
-        <element name="Instituicao" positionX="-54" positionY="-9" width="128" height="208"/>
         <element name="ColaboreCard" positionX="-54" positionY="45" width="128" height="88"/>
         <element name="HistoriasCard" positionX="-45" positionY="54" width="128" height="103"/>
+        <element name="Instituicao" positionX="-54" positionY="-9" width="128" height="223"/>
     </elements>
 </model>

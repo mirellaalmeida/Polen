@@ -11,11 +11,12 @@ struct BannerMeuMural: View {
     @Environment(\.managedObjectContext) var viewContext
     @Binding var instituicaoID: UUID
     
-    @FetchRequest(entity: Instituicao.entity(),
-                  sortDescriptors: [NSSortDescriptor(key: "id", ascending: true)])
-    var instituicoes:FetchedResults<Instituicao>
-    
-    @State private var nomeDaInst: Instituicao?
+    @FetchRequest(
+        entity: Instituicao.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Instituicao.id, ascending: true)
+        ]
+    ) var instituicoes: FetchedResults<Instituicao>
     
     var body: some View {
         ZStack(alignment: .top, content: {
@@ -56,7 +57,7 @@ struct BannerMeuMural: View {
                             .frame(width: 20, height: 20, alignment: .center)
                         
                         
-                        Text(instituicoes.first(where: {$0.id == instituicaoID})?.nome ?? "None")
+                        Text(instituicoes.first(where: {$0.id == instituicaoID})?.cidade ?? "None")
                             .font(.system(size: 14, weight: .medium, design: .default))
                             .frame(width: 100, height: 2, alignment: .leading)
                     }
