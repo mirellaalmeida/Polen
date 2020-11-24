@@ -14,8 +14,8 @@ struct BannerView: View {
             Image("Banner")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(minWidth: 300,
-                       idealWidth: 500,
+                .frame(minWidth: 200,
+                       idealWidth: 300,
                        maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/,
                        minHeight: 400,
                        idealHeight: 400,
@@ -32,6 +32,8 @@ struct BannerView: View {
                             .font(.title)
                             .fontWeight(.bold)
                             .multilineTextAlignment(.leading)
+                            .frame(width: 100, height: 30, alignment: .leading)
+                        
                         
                         Text("Organização sem fins lucrativos que atua na integração social de refugiados e estrangeiros vítimas de migrações forçadas.")
                             .font(.system(size: 12, weight: .regular, design: .default))
