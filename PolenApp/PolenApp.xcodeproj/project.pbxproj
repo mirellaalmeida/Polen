@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		4D7027663055B850C09CDEA2 /* Pods_PolenApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07F438E3FDFEBD346B7B82F /* Pods_PolenApp.framework */; };
 		648B5423DA6CF957E8336241 /* Pods_PolenAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2417BF2CAAE596DB790A20BA /* Pods_PolenAppTests.framework */; };
+		AC499416256D5149000350C8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499415256D5149000350C8 /* MapView.swift */; };
+		AC49941E256D5175000350C8 /* SearchBarMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49941D256D5175000350C8 /* SearchBarMap.swift */; };
+		AC499427256D51DA000350C8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499426256D51DA000350C8 /* LocationManager.swift */; };
+		AC49942C256D5207000350C8 /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49942B256D5207000350C8 /* Checkpoint.swift */; };
+		AC499431256D525B000350C8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499430256D525B000350C8 /* Coordinator.swift */; };
+		AC499437256D556B000350C8 /* BancoInstituicoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499436256D556B000350C8 /* BancoInstituicoes.swift */; };
 		BFBE53360B2757C986EB190A /* Pods_PolenApp_PolenAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 416CB25BEBD4BC7C8254C560 /* Pods_PolenApp_PolenAppUITests.framework */; };
 		ED4161762562CA1B00AF5696 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161752562CA1B00AF5696 /* Onboarding.swift */; };
 		ED41617E2562CA2F00AF5696 /* Mapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED41617D2562CA2F00AF5696 /* Mapa.swift */; };
@@ -59,6 +65,12 @@
 		416CB25BEBD4BC7C8254C560 /* Pods_PolenApp_PolenAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolenApp_PolenAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E9AE9BA5DC50432851DFFB /* Pods-PolenApp-PolenAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp-PolenAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-PolenApp-PolenAppUITests/Pods-PolenApp-PolenAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AAA837FD8ECFE066B14D2153 /* Pods-PolenAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenAppTests.release.xcconfig"; path = "Target Support Files/Pods-PolenAppTests/Pods-PolenAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		AC499415256D5149000350C8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		AC49941D256D5175000350C8 /* SearchBarMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarMap.swift; sourceTree = "<group>"; };
+		AC499426256D51DA000350C8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		AC49942B256D5207000350C8 /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
+		AC499430256D525B000350C8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		AC499436256D556B000350C8 /* BancoInstituicoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BancoInstituicoes.swift; sourceTree = "<group>"; };
 		B90B89087C52636376FD8379 /* Pods-PolenApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp.debug.xcconfig"; path = "Target Support Files/Pods-PolenApp/Pods-PolenApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C07F438E3FDFEBD346B7B82F /* Pods_PolenApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolenApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC82473EF0D392B3DA4E6519 /* Pods-PolenApp-PolenAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp-PolenAppUITests.release.xcconfig"; path = "Target Support Files/Pods-PolenApp-PolenAppUITests/Pods-PolenApp-PolenAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +133,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC499414256D5129000350C8 /* MapaViews */ = {
+			isa = PBXGroup;
+			children = (
+				ED41617D2562CA2F00AF5696 /* Mapa.swift */,
+				AC499415256D5149000350C8 /* MapView.swift */,
+				AC49941D256D5175000350C8 /* SearchBarMap.swift */,
+			);
+			path = MapaViews;
+			sourceTree = "<group>";
+		};
+		AC499422256D518D000350C8 /* MapaModels */ = {
+			isa = PBXGroup;
+			children = (
+				AC499426256D51DA000350C8 /* LocationManager.swift */,
+				AC49942B256D5207000350C8 /* Checkpoint.swift */,
+				AC499430256D525B000350C8 /* Coordinator.swift */,
+			);
+			path = MapaModels;
+			sourceTree = "<group>";
+		};
+		AC499435256D54DE000350C8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AC499436256D556B000350C8 /* BancoInstituicoes.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		AD24E7F4DBCA96DC2048C02C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,7 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				ED4161752562CA1B00AF5696 /* Onboarding.swift */,
-				ED41617D2562CA2F00AF5696 /* Mapa.swift */,
+				AC499414256D5129000350C8 /* MapaViews */,
 				ED4161872562CA5900AF5696 /* Favoritos.swift */,
 				ED4161912562CA8200AF5696 /* Recursos.swift */,
 				ED4161822562CA4700AF5696 /* MuralDaInstituicao.swift */,
@@ -163,6 +203,7 @@
 		ED4161742562C9F500AF5696 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AC499422256D518D000350C8 /* MapaModels */,
 				ED4161A52562CB0000AF5696 /* Instituicao.swift */,
 				ED4161AD2562CB1400AF5696 /* CardAjuda.swift */,
 				ED4161B22562CB2500AF5696 /* CardStory.swift */,
@@ -199,6 +240,7 @@
 			children = (
 				ED4161702562C9EB00AF5696 /* Views */,
 				ED4161742562C9F500AF5696 /* Models */,
+				AC499435256D54DE000350C8 /* ViewModels */,
 				ED43D3402562C8B1009D1BA7 /* AppDelegate.swift */,
 				ED43D3422562C8B1009D1BA7 /* SceneDelegate.swift */,
 				ED43D3442562C8B1009D1BA7 /* ContentView.swift */,
@@ -457,8 +499,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC499437256D556B000350C8 /* BancoInstituicoes.swift in Sources */,
 				ED4161832562CA4700AF5696 /* MuralDaInstituicao.swift in Sources */,
 				ED43D3482562C8B1009D1BA7 /* PolenApp.xcdatamodeld in Sources */,
+				AC49941E256D5175000350C8 /* SearchBarMap.swift in Sources */,
 				ED4161A62562CB0000AF5696 /* Instituicao.swift in Sources */,
 				ED43D3412562C8B1009D1BA7 /* AppDelegate.swift in Sources */,
 				ED41619C2562CAAB00AF5696 /* Login.swift in Sources */,
@@ -472,6 +516,10 @@
 				ED4161762562CA1B00AF5696 /* Onboarding.swift in Sources */,
 				ED43D3432562C8B1009D1BA7 /* SceneDelegate.swift in Sources */,
 				ED43D3452562C8B1009D1BA7 /* ContentView.swift in Sources */,
+				AC499416256D5149000350C8 /* MapView.swift in Sources */,
+				AC499431256D525B000350C8 /* Coordinator.swift in Sources */,
+				AC49942C256D5207000350C8 /* Checkpoint.swift in Sources */,
+				AC499427256D51DA000350C8 /* LocationManager.swift in Sources */,
 				ED41618D2562CA6900AF5696 /* MeuMural.swift in Sources */,
 				ED4161882562CA5900AF5696 /* Favoritos.swift in Sources */,
 				ED4161A12562CAB900AF5696 /* Cadastro.swift in Sources */,
@@ -645,7 +693,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PolenApp/Preview Content\"";
-				DEVELOPMENT_TEAM = ZX4TR6RXVC;
+				DEVELOPMENT_TEAM = 389X9SAV47;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PolenApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -667,7 +715,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PolenApp/Preview Content\"";
-				DEVELOPMENT_TEAM = ZX4TR6RXVC;
+				DEVELOPMENT_TEAM = 389X9SAV47;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PolenApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
