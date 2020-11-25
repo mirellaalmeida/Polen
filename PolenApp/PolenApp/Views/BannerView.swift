@@ -7,15 +7,7 @@
 
 import SwiftUI
 
-struct BannerMeuMural: View {
-    @Environment(\.managedObjectContext) var viewContext
-    @Binding var instituicaoID: UUID
-    
-    @FetchRequest(entity: Instituicao.entity(),
-                  sortDescriptors: [NSSortDescriptor(key: "id", ascending: true)])
-    var instituicoes:FetchedResults<Instituicao>
-    
-    @State private var nomeDaInst: Instituicao?
+struct BannerView: View {
     
     var body: some View {
         ZStack(alignment: .top, content: {
@@ -36,12 +28,12 @@ struct BannerMeuMural: View {
                         .resizable().aspectRatio(contentMode: .fit).frame(width: 120, height: 170)
                     
                     VStack{
-                        Text(instituicoes.first(where: {$0.id == instituicaoID})?.nome ?? "None")
+                        Text("Adus")
                             .font(.title)
                             .fontWeight(.bold)
                             .multilineTextAlignment(.leading)
                         
-                        Text(instituicoes.first(where: {$0.id == instituicaoID})?.descricao ?? "None")
+                        Text("Organização sem fins lucrativos que atua na integração social de refugiados e estrangeiros vítimas de migrações forçadas.")
                             .font(.system(size: 12, weight: .regular, design: .default))
                             .fontWeight(.regular)
                             .frame(width: 273, height: 100)
@@ -56,7 +48,7 @@ struct BannerMeuMural: View {
                             .frame(width: 20, height: 20, alignment: .center)
                         
                         
-                        Text(instituicoes.first(where: {$0.id == instituicaoID})?.nome ?? "None")
+                        Text("São Paulo - SP")
                             .font(.system(size: 14, weight: .medium, design: .default))
                             .frame(width: 100, height: 2, alignment: .leading)
                     }
@@ -88,9 +80,8 @@ struct BannerMeuMural: View {
         )
     }
 }
-/*
 struct BannerView_Previews: PreviewProvider {
     static var previews: some View {
         BannerView()
     }
-}*/
+}

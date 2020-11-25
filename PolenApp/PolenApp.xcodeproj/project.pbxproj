@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		4D7027663055B850C09CDEA2 /* Pods_PolenApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07F438E3FDFEBD346B7B82F /* Pods_PolenApp.framework */; };
 		648B5423DA6CF957E8336241 /* Pods_PolenAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2417BF2CAAE596DB790A20BA /* Pods_PolenAppTests.framework */; };
+		86F4C359256E8F2600302AB5 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F4C358256E8F2600302AB5 /* BannerView.swift */; };
+		86F4C361256E8F4D00302AB5 /* BannerMeuMural.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F4C360256E8F4D00302AB5 /* BannerMeuMural.swift */; };
 		B41293C5256BF08C00DBF26B /* AddHistoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41293C4256BF08C00DBF26B /* AddHistoria.swift */; };
 		B4799A1125682821003A047F /* VerMaisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A1025682821003A047F /* VerMaisView.swift */; };
 		B4799A1925682895003A047F /* Colabore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A1825682895003A047F /* Colabore.swift */; };
 		B4799A21256828F6003A047F /* SobreNos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A20256828F6003A047F /* SobreNos.swift */; };
-		B4799A262568293A003A047F /* BannerMeuMural.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A252568293A003A047F /* BannerMeuMural.swift */; };
 		B48EA955256DCB0E00B62F21 /* Instituicao+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48EA94F256DCB0E00B62F21 /* Instituicao+CoreDataClass.swift */; };
 		B48EA956256DCB0E00B62F21 /* Instituicao+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48EA951256DCB0E00B62F21 /* Instituicao+CoreDataProperties.swift */; };
 		B48EA957256DCB0E00B62F21 /* ColaboreCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48EA952256DCB0E00B62F21 /* ColaboreCard+CoreDataClass.swift */; };
@@ -69,12 +70,13 @@
 		3DC2305AA4AA12A0D9B6F401 /* Pods-PolenAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenAppTests.debug.xcconfig"; path = "Target Support Files/Pods-PolenAppTests/Pods-PolenAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		416CB25BEBD4BC7C8254C560 /* Pods_PolenApp_PolenAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolenApp_PolenAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E9AE9BA5DC50432851DFFB /* Pods-PolenApp-PolenAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp-PolenAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-PolenApp-PolenAppUITests/Pods-PolenApp-PolenAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		86F4C358256E8F2600302AB5 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		86F4C360256E8F4D00302AB5 /* BannerMeuMural.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerMeuMural.swift; sourceTree = "<group>"; };
 		AAA837FD8ECFE066B14D2153 /* Pods-PolenAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenAppTests.release.xcconfig"; path = "Target Support Files/Pods-PolenAppTests/Pods-PolenAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		B41293C4256BF08C00DBF26B /* AddHistoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoria.swift; sourceTree = "<group>"; };
 		B4799A1025682821003A047F /* VerMaisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerMaisView.swift; sourceTree = "<group>"; };
 		B4799A1825682895003A047F /* Colabore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colabore.swift; sourceTree = "<group>"; };
 		B4799A20256828F6003A047F /* SobreNos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SobreNos.swift; sourceTree = "<group>"; };
-		B4799A252568293A003A047F /* BannerMeuMural.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerMeuMural.swift; sourceTree = "<group>"; };
 		B48EA94F256DCB0E00B62F21 /* Instituicao+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Instituicao+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B48EA950256DCB0E00B62F21 /* HistoriasCard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HistoriasCard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B48EA951256DCB0E00B62F21 /* Instituicao+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Instituicao+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -179,8 +181,9 @@
 				ED4161A02562CAB900AF5696 /* Cadastro.swift */,
 				ED41618C2562CA6900AF5696 /* MeuMural.swift */,
 				B4799A1025682821003A047F /* VerMaisView.swift */,
-				B4799A252568293A003A047F /* BannerMeuMural.swift */,
 				B41293C4256BF08C00DBF26B /* AddHistoria.swift */,
+				86F4C358256E8F2600302AB5 /* BannerView.swift */,
+				86F4C360256E8F4D00302AB5 /* BannerMeuMural.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -501,7 +504,6 @@
 				ED4161B32562CB2500AF5696 /* CardStory.swift in Sources */,
 				B48EA95A256DCB0E00B62F21 /* HistoriasCard+CoreDataProperties.swift in Sources */,
 				ED4161972562CA8F00AF5696 /* Ajuda.swift in Sources */,
-				B4799A262568293A003A047F /* BannerMeuMural.swift in Sources */,
 				ED4161B82562CB3900AF5696 /* CardFavorito.swift in Sources */,
 				ED4161AE2562CB1400AF5696 /* CardAjuda.swift in Sources */,
 				B41293C5256BF08C00DBF26B /* AddHistoria.swift in Sources */,
@@ -511,12 +513,14 @@
 				ED41617E2562CA2F00AF5696 /* Mapa.swift in Sources */,
 				ED4161762562CA1B00AF5696 /* Onboarding.swift in Sources */,
 				ED43D3432562C8B1009D1BA7 /* SceneDelegate.swift in Sources */,
+				86F4C359256E8F2600302AB5 /* BannerView.swift in Sources */,
 				B48EA955256DCB0E00B62F21 /* Instituicao+CoreDataClass.swift in Sources */,
 				B4799A21256828F6003A047F /* SobreNos.swift in Sources */,
 				ED43D3452562C8B1009D1BA7 /* ContentView.swift in Sources */,
 				ED41618D2562CA6900AF5696 /* MeuMural.swift in Sources */,
 				B48EA959256DCB0E00B62F21 /* HistoriasCard+CoreDataClass.swift in Sources */,
 				ED4161882562CA5900AF5696 /* Favoritos.swift in Sources */,
+				86F4C361256E8F4D00302AB5 /* BannerMeuMural.swift in Sources */,
 				B48EA957256DCB0E00B62F21 /* ColaboreCard+CoreDataClass.swift in Sources */,
 				ED4161A12562CAB900AF5696 /* Cadastro.swift in Sources */,
 			);

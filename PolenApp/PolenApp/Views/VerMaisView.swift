@@ -1,26 +1,19 @@
-//
-//  SwiftUIView.swift
-//  PolenApp
-//
-//  Created by Jéssica Amaral on 20/11/20.
-//
-
 import SwiftUI
 
 struct VerMaisView: View {
-    @Binding var historia: HistoriasCard?
+    @Binding var historia: SobreNos
     @Binding var verMais: Bool
-    
+
     var body: some View {
         NavigationView{
             VStack{
-                Text(historia!.titulo!)
+                Text(historia.title)
                     .font(.title2)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                     .padding()
-                
-                Text(historia!.descricao!)
+
+                Text(historia.subtitle)
                     .font(.body)
                     .multilineTextAlignment(.center)
                     .padding()
@@ -36,8 +29,8 @@ struct VerMaisView: View {
     }
 }
 
-/*struct VerMaisHistoria_Previews: PreviewProvider {
-    static var previews: some View {
-        VerMaisView()
-    }
-}*/
+//struct VerMaisHistoria_Previews: PreviewProvider {
+//    static var previews: some View {
+//        VerMaisView()
+//    }
+//}

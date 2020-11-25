@@ -161,7 +161,7 @@ struct MeuMural: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .sheet(isPresented: $verMais) {
-            VerMaisView(historia: $verHistoria, verMais: $verMais)
+            //VerMaisView(historia: $verHistoria, verMais: $verMais)
         }
     }
 }
