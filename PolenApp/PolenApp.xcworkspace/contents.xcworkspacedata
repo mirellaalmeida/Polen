@@ -5,22 +5,22 @@
       location = "container:"
       name = "Entities">
       <FileRef
-         location = "group:/Users/jessicaamaral/Desktop/Polen/PolenApp/PolenApp/Models/Instituicao+CoreDataClass.swift">
+         location = "group:PolenApp/Instituicao+CoreDataClass.swift">
       </FileRef>
       <FileRef
-         location = "group:/Users/jessicaamaral/Desktop/Polen/PolenApp/PolenApp/Models/Instituicao+CoreDataProperties.swift">
+         location = "group:PolenApp/Instituicao+CoreDataProperties.swift">
       </FileRef>
       <FileRef
-         location = "group:/Users/jessicaamaral/Desktop/Polen/PolenApp/PolenApp/Models/ColaboreCard+CoreDataClass.swift">
+         location = "group:PolenApp/ColaboreCard+CoreDataClass.swift">
       </FileRef>
       <FileRef
-         location = "group:/Users/jessicaamaral/Desktop/Polen/PolenApp/PolenApp/Models/ColaboreCard+CoreDataProperties.swift">
+         location = "group:PolenApp/ColaboreCard+CoreDataProperties.swift">
       </FileRef>
       <FileRef
-         location = "group:/Users/jessicaamaral/Desktop/Polen/PolenApp/PolenApp/Models/HistoriasCard+CoreDataClass.swift">
+         location = "group:PolenApp/HistoriasCard+CoreDataClass.swift">
       </FileRef>
       <FileRef
-         location = "group:/Users/jessicaamaral/Desktop/Polen/PolenApp/PolenApp/Models/HistoriasCard+CoreDataProperties.swift">
+         location = "group:PolenApp/HistoriasCard+CoreDataProperties.swift">
       </FileRef>
    </Group>
    <FileRef
