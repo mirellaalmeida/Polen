@@ -42,31 +42,34 @@ struct MuralDaInstituicaoView: View {
     
     @State private var didTap: Bool = false
     
-    var possoAjudarView: some View{
-        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-            Text("Posso ajudar!")
-                .frame(width: 136, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .border(didTap ? Color.clear : (Color("Roxo")), width: 2)
-                .background(Color("Roxo"))
-//                .background(didTap ? Color("Roxo"): Color.purple)
-                .foregroundColor(Color(.white))
-                .font(.system(size:14, weight: .bold))
-                .cornerRadius(5)
-        })
-
-    }
+    //    @State var selectableButtonStyle = SelectableButtonStyle()
     
-    var vaiDarCertoViw: some View{
-        Text("Vai dar certo!")
-            .foregroundColor(/*@START_MENU_TOKEN@*/.orange/*@END_MENU_TOKEN@*/)
-            .frame(width: 136, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            .border(Color.orange, width: 2)
-            .cornerRadius(5)
-            //            .background(Color(#colorLiteral(red: 1, green: 0.4745098039, blue: 0.3098039216, alpha: 1)))
-            .font(.system(size:14, weight: .bold))
-        
-        
-    }
+    
+    //    var possoAjudarView: some View{
+    //        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+    //            Text("Posso ajudar!")
+    //                .frame(width: 136, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+    //                .border(didTap ? Color.clear : (Color("Roxo")), width: 2)
+    //                .background(Color("Roxo"))
+    //                .background(didTap ? Color("Roxo"): Color.purple)
+    //                .foregroundColor(Color(.white))
+    //                .font(.system(size:14, weight: .bold))
+    //                .cornerRadius(5)
+    //        })
+    //
+    //    }
+    
+    //    var vaiDarCertoView: some View{
+    //        Text("Vai dar certo!")
+    //            .foregroundColor(/*@START_MENU_TOKEN@*/.orange/*@END_MENU_TOKEN@*/)
+    //            .frame(width: 136, height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+    //            .border(Color.orange, width: 2)
+    //            .cornerRadius(5)
+    //            //            .background(Color(#colorLiteral(red: 1, green: 0.4745098039, blue: 0.3098039216, alpha: 1)))
+    //            .font(.system(size:14, weight: .bold))
+    //
+    //
+    //    }
     
     var body: some View{
         NavigationView{
@@ -89,22 +92,19 @@ struct MuralDaInstituicaoView: View {
                                         .fontWeight(.bold)
                                         .multilineTextAlignment(.leading)
                                     
+                                    
+                                    
                                     Text(colabore.description)
                                         .font(/*@START_MENU_TOKEN@*/.subheadline/*@END_MENU_TOKEN@*/)
                                         .multilineTextAlignment(.leading)
                                         .lineLimit(2)
                                         .padding()
                                     HStack{
-                                        Button(action: {didTap.toggle()}, label: {
-                                            possoAjudarView
-                                        })
-                                        Button(action: {didTap.toggle()}, label: {
-                                            vaiDarCertoViw
-                                        })
+                                        DuplaBotoes()
                                     }
                                     
                                 }
-                                .frame(width: 320, height: 180)
+                                .frame(width: 340, height: 190)
                                 
                                 }
                                 .background(Color.white)
@@ -177,18 +177,126 @@ struct MuralDaInstituicaoView: View {
                     }
                     
                 }
+//                .navigationBarHidden(true)
                 .navigationBarTitleDisplayMode(.inline)
                 //.navigationBarTitle("", displayMode: .inline)
             }
-        }.sheet(isPresented: $verMais) {
-            VerMaisView(historia: $verMaisHistoria, verMais: $verMais)
+//            .navigationBarHidden(true)
         }
+        .navigationBarTitle("Voltar")
+        .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $verMais) {
+        VerMaisView(historia: $verMaisHistoria, verMais: $verMais)
+                                }
+        
+        .navigationBarItems(trailing:
+                    Button("Coração") {
+                    print("Help tapped!")
+                                }
+        )
         //        .background(Color(#colorLiteral(red: 0.9688708186, green: 0.8066166639, blue: 0.3180420101, alpha: 1)).edgesIgnoringSafeArea(.all))
     }
+}
+struct SelectableButtonStyle: ButtonStyle {
+    var isSelected: Bool
+    var tint: Color
+    var foreGroundColor: Color {
+        if isSelected { return .white }
+        else { return tint }
+    }
     
+    var bgColor: Color {
+        if isSelected { return tint }
+        else { return .clear }
+    }
+    
+    var borderColor: Color {
+        if isSelected { return .clear }
+        else { return tint}
+    }
+    
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .frame(width: 120, height: 13, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .font(.system(size:14, weight: .bold))
+            .padding()
+            .foregroundColor(foreGroundColor)
+            .background(bgColor)
+            .border(borderColor, width: 2)
+            .cornerRadius(5)
+    }
 }
 
+struct DuplaBotoes: View {
+    
+    enum EstadosBotoes {
+        case deselect
+        case posso
+        case vai
+    }
+    
+    @State var estado: EstadosBotoes = .deselect
+    
+    var possoCount: Int = 0 // pegou por API, CoreData, sei lá
+    
+    var exibirPossoCount: Int {
+        if estado == .posso {
+            return 1 + possoCount
+        }
+        else {
+            return possoCount
+        }
+    }
+    
+    var vaiCount: Int = 0
+    
+    var exibirVaiCount: Int {
+        if estado == .vai {
+            return 1 + vaiCount
+        }
+        else {
+            return vaiCount
+        }
+    }
+    
+    func tentarMudar(para: EstadosBotoes){
+        if estado == .deselect {
+            estado = para
+        } else if estado == para {
+            estado = .deselect
+        }
+    }
+    
+    var possoAjudarButton: some View {
+        Button(action: {
+            tentarMudar(para: .posso)
+        }) {
+            Text("Posso ajudar! (\(exibirPossoCount))")
+        }
+        .buttonStyle(SelectableButtonStyle(isSelected: estado == .posso, tint: Color("Roxo")))
+    }
+    
+    var vaiDarCertoButton: some View {
+        Button(action: {
+            tentarMudar(para: .vai)
+        }) {
+            Text("Vai dar certo! (\(exibirVaiCount))")
+        }
+        .buttonStyle(SelectableButtonStyle(isSelected: estado == .vai, tint: Color("Laranja")))
+    }
+    
+    var body: some View {
+        HStack {
+            possoAjudarButton
+            
+            vaiDarCertoButton
+        }
+    }
+}
+
+
 #if DEBUG
+
 struct MuralView_Previews: PreviewProvider {
     static var previews: some View {
         MuralDaInstituicaoView()
