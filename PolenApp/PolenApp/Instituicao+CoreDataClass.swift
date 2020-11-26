@@ -41,4 +41,11 @@ public class Instituicao: NSManagedObject {
             $0.wrappedTitulo < $1.wrappedTitulo
         }
     }
+    
+    public var colaboreArray: [ColaboreCard] {
+        let set = colaboreList as? Set<ColaboreCard> ?? []
+        return set.sorted {
+            $0.wrappedTitulo < $1.wrappedTitulo
+        }
+    }
 }

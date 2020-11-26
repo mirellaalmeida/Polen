@@ -20,4 +20,5 @@ extension ColaboreCard {
     @NSManaged public var titulo: String?
     @NSManaged public var relationship: Instituicao?
 
+    
 }
