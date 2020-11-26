@@ -13,8 +13,9 @@ struct MeuMural: View {
     
     @Binding var isActive:Bool
     @Binding var instituicaoID:UUID
-    @Binding var verMais: Bool
-    @Binding var verHistoria: HistoriasCard?
+    
+    @State var verMais = false
+    @State var verHistoria: HistoriasCard?
     @State var addingHistoria = false
     @State var addingColabore = false
     
@@ -22,15 +23,13 @@ struct MeuMural: View {
     @FetchRequest(
         entity: Instituicao.entity(),
         sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.id, ascending: true)
+            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
         ]
     ) var instituicoes: FetchedResults<Instituicao>
     
-    init(isActive: Binding<Bool>, instituicaoID: Binding<UUID>, verMais:Binding<Bool>, verHistoria: Binding<HistoriasCard?>) {
+    init(isActive: Binding<Bool>, instituicaoID: Binding<UUID>) {
         _isActive = isActive
         _instituicaoID = instituicaoID
-        _verMais = verMais
-        _verHistoria = verHistoria
         
         //Configurações para NavigationBar
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "Banner"), for: .default)
@@ -53,61 +52,67 @@ struct MeuMural: View {
                                 .font(.headline)
                                 .fontWeight(.bold)
                                 .padding()
+                            
                             Spacer()
+                            
                             Button(action: {}, label: {
                                 Image(systemName: "plus")
                             })
+                            
                             .padding()
                         }
+                        
                         ColaboreView(instituicaoID: $instituicaoID)
                         
                     }
                     
-                
-                Spacer()
-                    .frame(height: 30.0)
-                
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text("Um pouco sobre nós")
-                            .font(.headline)
-                            .fontWeight(.bold)
+                    
+                    Spacer()
+                        .frame(height: 30.0)
+                    
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("Um pouco sobre nós")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .padding()
+                            
+                            Spacer()
+                            
+                            NavigationLink(destination: AddHistoria(instituicaoID: $instituicaoID, isAdding: self.$addingHistoria),
+                                           isActive: $addingHistoria){
+                                EmptyView()
+                            }
+                            
+                            Button(action: {
+                                self.addingHistoria.toggle()
+                            }, label: {
+                                Image(systemName: "plus")
+                            })
                             .padding()
-                        
-                        Spacer()
-                        
-                        NavigationLink(destination: AddHistoria(isAdding: self.$addingHistoria, instituicaoID: $instituicaoID),
-                                       isActive: $addingHistoria){
-                            EmptyView()
+                            
                         }
                         
-                        Button(action: {
-                            self.addingHistoria.toggle()
-                        }, label: {
-                            Image(systemName: "plus")
-                        })
+                        HistoriasView(instituicaoID: $instituicaoID, verMais: $verMais, verHistoria: $verHistoria)
                         
                     }
                     
-                    HistoriasView(instituicaoID: $instituicaoID)
+                    
                     
                 }
-                
-                
-                
+                //.navigationBarTitleDisplayMode(.inline)
+                .navigationBarHidden(true)
+                //.navigationBarTitle("", displayMode: .inline)
             }
-            //.navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(true)
-            //.navigationBarTitle("", displayMode: .inline)
         }
-        .navigationBarHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .sheet(isPresented: $verMais) {
+            VerMaisView(historia: $verHistoria, verMais: $verMais)
+        }
+        
     }
-    .navigationBarTitleDisplayMode(.inline)
-    .navigationBarBackButtonHidden(true)
-    .sheet(isPresented: $verMais) {
-    //VerMaisView(historia: $verHistoria, verMais: $verMais)
-    }
-}
 }
 
 /*

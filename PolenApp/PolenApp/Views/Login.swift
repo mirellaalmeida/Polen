@@ -18,7 +18,7 @@ struct Login: View {
     @FetchRequest(
         entity: Instituicao.entity(),
         sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.id, ascending: true)
+            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
         ]
     ) var instituicoes: FetchedResults<Instituicao>
     
@@ -68,7 +68,7 @@ struct Login: View {
                         print("não foi possível salvar")
                     }
                     
-                    self.addedInst.toggle()
+                    self.addedInst = true
                 }, label: {
                     Text("Adicionar Instituição")
                 })

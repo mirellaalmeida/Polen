@@ -36,15 +36,15 @@ public class Instituicao: NSManagedObject {
         telefone ?? " "
     }
     public var historiasArray: [HistoriasCard] {
-        let set = historiasList as? Set<HistoriasCard> ?? []
-        return set.sorted {
+        let historiaSet = historiasList as? Set<HistoriasCard> ?? []
+        return historiaSet.sorted {
             $0.wrappedTitulo < $1.wrappedTitulo
         }
     }
     
     public var colaboreArray: [ColaboreCard] {
-        let set = colaboreList as? Set<ColaboreCard> ?? []
-        return set.sorted {
+        let colaboreSet = colaboreList as? Set<ColaboreCard> ?? []
+        return colaboreSet.sorted {
             $0.wrappedTitulo < $1.wrappedTitulo
         }
     }

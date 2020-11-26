@@ -16,7 +16,7 @@ struct BannerMeuMural: View {
     @FetchRequest(
         entity: Instituicao.entity(),
         sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.id, ascending: true)
+            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
         ]
     ) var instituicoes: FetchedResults<Instituicao>
     

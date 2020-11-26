@@ -82,19 +82,17 @@ class Coordinator: NSObject, UITextViewDelegate, NSLayoutManagerDelegate {
 
 struct AddHistoria: View {
     @Environment(\.managedObjectContext) var viewContext
-    
+    @Binding var instituicaoID: UUID
     @Binding var isAdding: Bool
     
     @State private var title: String = ""
     @State private var description: String = ""
     @State private var descriptionHeight: CGFloat = 0
     
-    @Binding var instituicaoID: UUID
-    
     @FetchRequest(
         entity: Instituicao.entity(),
         sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.id, ascending: true)
+            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
         ]
     ) var instituicoes: FetchedResults<Instituicao>
     

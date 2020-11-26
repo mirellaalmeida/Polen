@@ -11,6 +11,11 @@ import CoreData
 
 @objc(ColaboreCard)
 public class ColaboreCard: NSManagedObject {
-    public var wrappedDescricao: String{descricao ?? " "}
-    public var wrappedTitulo: String{titulo ?? " "}
+    public var wrappedTitulo: String {
+        titulo ?? " "
+    }
+    public var wrappedDescricao: String {
+        descricao ?? "  "
+    }
+
 }

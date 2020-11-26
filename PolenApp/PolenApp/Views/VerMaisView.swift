@@ -1,19 +1,19 @@
 import SwiftUI
 
 struct VerMaisView: View {
-    @Binding var historia: SobreNos
+    @Binding var historia: HistoriasCard?
     @Binding var verMais: Bool
 
     var body: some View {
         NavigationView{
             VStack{
-                Text(historia.title)
+                Text(historia!.wrappedTitulo)
                     .font(.title2)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                     .padding()
 
-                Text(historia.subtitle)
+                Text(historia!.wrappedDescricao)
                     .font(.body)
                     .multilineTextAlignment(.center)
                     .padding()

@@ -14,7 +14,7 @@ struct ColaboreView: View {
     @FetchRequest(
         entity: Instituicao.entity(),
         sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.id, ascending: true)
+            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
         ]
     ) var instituicoes: FetchedResults<Instituicao>
     
@@ -25,7 +25,7 @@ struct ColaboreView: View {
         
         ScrollView(.horizontal, showsIndicators: false){
             LazyHStack(spacing: 15){
-                ForEach (instituicoes.first(where: {$0.id == instituicaoID})?.historiasArray ?? [], id: \.self){ colabore in
+                ForEach (instituicoes.first(where: {$0.id == instituicaoID})?.colaboreArray ?? [], id: \.self){ colabore in
                     VStack{
                         Text(colabore.wrappedTitulo)
                             .font(.system(size:16))
@@ -33,13 +33,12 @@ struct ColaboreView: View {
                             .fontWeight(.bold)
                             .multilineTextAlignment(.leading)
                         
-                        
-                        
                         Text(colabore.wrappedDescricao)
                             .font(/*@START_MENU_TOKEN@*/.subheadline/*@END_MENU_TOKEN@*/)
                             .multilineTextAlignment(.leading)
                             .lineLimit(2)
                             .padding()
+                        
                         HStack{
                             DuplaBotoes()
                         }

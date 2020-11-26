@@ -9,17 +9,15 @@ import SwiftUI
 
 struct HistoriasView: View {
     @Binding var instituicaoID:UUID
+    @Binding var verMais: Bool
+    @Binding var verHistoria: HistoriasCard?
     
     @FetchRequest(
         entity: Instituicao.entity(),
         sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.id, ascending: true)
+            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
         ]
     ) var instituicoes: FetchedResults<Instituicao>
-    
-    
-    @State var verMais = false
-    @State var verHistoria: HistoriasCard?
     
     var body: some View {
         
@@ -45,9 +43,10 @@ struct HistoriasView: View {
                             .lineLimit(3)
                             .padding()
                         Button(action: {
-                                verHistoria = historia
-                                verMais.toggle()
-                            }, label: {
+                            self.verHistoria = historia
+                            self.verMais.toggle()
+                        },
+                        label: {
                             Text("Ler mais")
                                 .frame(width: 100, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                 .background(Color(#colorLiteral(red: 0.3294117647, green: 0.262745098, blue: 0.6470588235, alpha: 1)))
@@ -56,7 +55,7 @@ struct HistoriasView: View {
                                 .cornerRadius(5)
                         })
                     }
-                
+                    
                     .frame(width: 320, height: 400)
                     
                 }
@@ -64,7 +63,7 @@ struct HistoriasView: View {
             .padding([.leading, .trailing])
         }
         
-
+        
         
         
     }
