@@ -58,6 +58,8 @@ struct SearchBarMap: View {
                     UIApplication.shared.endEditing(true) // this must be placed before the other commands here
                     self.bank.searchText = ""
                     self.bank.isSearching = false
+                    zoomInstituicao = false
+
                 }
                 .foregroundColor(Color(.systemBlue))
             }

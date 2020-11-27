@@ -12,13 +12,14 @@ import SwiftUI
 var texto: String = ""
 
 final class Coordinator: NSObject, MKMapViewDelegate{
-    
-    
+    @Binding var muralIsActive: Bool
     var control: MapView
     
-    init(_ control: MapView) {
+    init(_ control: MapView, muralIsActive: Binding <Bool>) {
         self.control = control
+        _muralIsActive = muralIsActive
     }
+    
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
         if let annotationView = views.first{
@@ -26,6 +27,12 @@ final class Coordinator: NSObject, MKMapViewDelegate{
                 if annotation is MKUserLocation{
                     let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
                     mapView.setRegion(region, animated: true)
+                }
+                if zoomInstituicao{
+                    let region = MKCoordinateRegion(center: selecionada, latitudinalMeters: 500, longitudinalMeters: 500)
+                    mapView.setRegion(region, animated: true)
+//                    annotationView.isSelected = true
+                    
                 }
             }
             
@@ -46,7 +53,7 @@ final class Coordinator: NSObject, MKMapViewDelegate{
         
         let buttonPin = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
         
-        buttonPin.setImage(UIImage(named: "userLocationIcon"), for: UIControl.State())
+        buttonPin.setImage(UIImage(named: "goToMuralButton"), for: UIControl.State())
         
         
         if annotationView == nil {
@@ -57,6 +64,7 @@ final class Coordinator: NSObject, MKMapViewDelegate{
             annotationView?.canShowCallout = true
             
             annotationView?.rightCalloutAccessoryView = buttonPin
+            annotationView?.image = UIImage(named: "pinIcon")
             
         }
         
@@ -84,5 +92,17 @@ final class Coordinator: NSObject, MKMapViewDelegate{
     
     @objc func buttonPinSelected(){
         print(texto)
+        muralIsActive.toggle()
+    }
+}
+
+struct MuralView: View {
+    
+    @Binding var muralIsActive: Bool
+    
+    var body: some View{
+        NavigationView{
+            Text("Jéssica é top e vou defendê-la")
+        }
     }
 }

@@ -15,6 +15,8 @@ struct MapView: UIViewRepresentable {
     //@Binding var selectedPlace: MKPointAnnotation?
     //@Binding var showingPlaceDetails: Bool
     @Binding var checkpoints: [Checkpoint]
+    @Binding var muralsActive: Bool
+
     
     
     func makeUIView(context: Context) -> MKMapView {
@@ -28,7 +30,7 @@ struct MapView: UIViewRepresentable {
     
     func makeCoordinator() -> Coordinator {
         
-        Coordinator(self)
+        Coordinator(self, muralIsActive: $muralsActive)
     }
     
     func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
