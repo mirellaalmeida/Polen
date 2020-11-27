@@ -14,20 +14,22 @@ public var zoomInstituicao: Bool = false
 
 
 struct Mapa: View {
-    
+    @Environment(\.managedObjectContext) var viewContexts
 
     var locationManager = LocationManager()
     @ObservedObject var bank: BancoInstituicoes
-    
+   
     @State var checkpoints: [Checkpoint] = [
         Checkpoint(title: "Recomeço Refugiados", subtitle: "Aulas de português para haitianos", coordinate: .init(latitude: -7.9015, longitude: -34.8268)),
         Checkpoint(title: "Adus", subtitle: "Integração social de refugiados e vítimas de migrações forçadas", coordinate: .init(latitude: -7.9021, longitude: -34.8296))]
     
     @State var muralIsActive = false
+    @State var loginIsActive = false
 
     @State var instituicaoID: UUID = UUID()
     
     public var body: some View {
+
         NavigationView{
             ZStack{
                 VStack{
@@ -35,6 +37,12 @@ struct Mapa: View {
                     NavigationLink(
                         destination: MuralDaInstituicaoView(muralDaInstituicaoIsActive: $muralIsActive, instituicaoID: $instituicaoID),
                         isActive: $muralIsActive){
+                        EmptyView()
+                    }
+                    
+                    NavigationLink(
+                        destination: Login(instituicaoID: $instituicaoID, loginIsActive: $loginIsActive),
+                        isActive: $loginIsActive){
                         EmptyView()
                     }
                     
@@ -66,7 +74,14 @@ struct Mapa: View {
                     }
                 }
             }
-            .navigationBarHidden(true)
+            .navigationBarHidden(false)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: Button(action: {
+                print("Mapa")
+                self.loginIsActive.toggle()
+            }, label: {
+                Text("Login")
+            }))
         }
     }
 }

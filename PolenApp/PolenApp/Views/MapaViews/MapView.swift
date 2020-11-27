@@ -11,9 +11,15 @@ import MapKit
 //import Combine
 
 struct MapView: UIViewRepresentable {
+    @Environment(\.managedObjectContext) var viewContext
     
-    //@Binding var selectedPlace: MKPointAnnotation?
-    //@Binding var showingPlaceDetails: Bool
+    @FetchRequest(
+        entity: Instituicao.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
+        ]
+    ) var instituicoes: FetchedResults<Instituicao>
+    
     @Binding var checkpoints: [Checkpoint]
     @Binding var muralsActive: Bool
     @Binding var instituicaoID: UUID
@@ -24,17 +30,14 @@ struct MapView: UIViewRepresentable {
         map.showsUserLocation = true
         map.delegate = context.coordinator
         map.userTrackingMode = .follow
-        
         return map
     }
     
     func makeCoordinator() -> Coordinator {
-        
-        Coordinator(self, muralIsActive: $muralsActive,instituicaoID: $instituicaoID)
+        return Coordinator(self, instituicoes: instituicoes, muralIsActive: $muralsActive, instituicaoID: $instituicaoID)
     }
     
     func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
-        
         uiView.addAnnotations(checkpoints)
         
     }

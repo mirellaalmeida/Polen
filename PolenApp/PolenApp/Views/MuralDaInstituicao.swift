@@ -37,7 +37,6 @@ struct MuralDaInstituicaoView: View {
         UINavigationBar.appearance().shadowImage = UIImage()
         UIScrollView.appearance().bounces = false
         //        UIScrollView.appearance().backgroundColor = #colorLiteral(red: 0.9688708186, green: 0.8066166639, blue: 0.3180420101, alpha: 1)
-        
     }
     
     
@@ -81,9 +80,11 @@ struct MuralDaInstituicaoView: View {
         }
         
         .navigationBarItems(trailing:
-                                Button("Coração") {
-                                    print("Help tapped!")
-                                }
+                                Button(action: {
+                                    print("Favorite tapped!")
+                                }, label: {
+                                    Image(systemName: "heart")
+                                })
         )
     }
 }

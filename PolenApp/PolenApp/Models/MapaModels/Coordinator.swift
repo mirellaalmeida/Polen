@@ -6,28 +6,26 @@
 //
 
 import Foundation
+import Combine
 import MapKit
 import SwiftUI
+import CoreData
 
 var texto: String = ""
 
 final class Coordinator: NSObject, MKMapViewDelegate{
+    var instituicoes: FetchedResults<Instituicao>
     @Binding var muralIsActive: Bool
     @Binding var instituicaoID: UUID
+
     var control: MapView
     
-    init(_ control: MapView, muralIsActive: Binding <Bool>, instituicaoID: Binding <UUID>) {
+    init(_ control: MapView, instituicoes: FetchedResults<Instituicao>, muralIsActive: Binding<Bool>, instituicaoID: Binding<UUID>) {
         self.control = control
+        self.instituicoes = instituicoes
         _muralIsActive = muralIsActive
         _instituicaoID = instituicaoID
     }
-    
-    @FetchRequest(
-        entity: Instituicao.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
-        ]
-    ) var instituicoes: FetchedResults<Instituicao>
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
         if let annotationView = views.first{
@@ -80,7 +78,6 @@ final class Coordinator: NSObject, MKMapViewDelegate{
             return nil
             
         }
-        
         return annotationView
     }
     
@@ -88,9 +85,7 @@ final class Coordinator: NSObject, MKMapViewDelegate{
     //As funções abaixo não estão sendo utilizadas
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-        texto = "\(String(describing: view.annotation?.title))"
-        print("A insituição selecionada foi: \(texto)")
+        texto = ((view.annotation?.title ?? "None")!)
     }
     //
     //        func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
@@ -99,22 +94,11 @@ final class Coordinator: NSObject, MKMapViewDelegate{
     
     
     @objc func buttonPinSelected(){
+        print(instituicoes.first?.nome == texto)
         
-        instituicaoID = instituicoes.first(where: {$0.nome == texto})?.id ?? UUID()
-            
-        print(texto)
-        
+        print(instituicaoID)
+        instituicaoID = instituicoes.first(where: {$0.nome == texto})?.id ?? instituicaoID
+        print(instituicaoID)
         muralIsActive.toggle()
-    }
-}
-
-struct MuralView: View {
-    
-   // @Binding var muralIsActive: Bool
-    
-    var body: some View{
-        NavigationView{
-            Text("Jéssica é top e vou defendê-la")
-        }
     }
 }

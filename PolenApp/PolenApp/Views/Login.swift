@@ -11,8 +11,6 @@ struct Login: View {
     //ACHO QUE DADOS DE LOGIN DEVEM SER ADICIONADOS À INSTITUIÇÃO OU COMO UM RELACIONAMENTO
     //A partir dos dados do login, pegaremos a id da instituição e mandaremos pra Meu Mural (a id vai ser
     //meio que uma variável global entre todas as telas
-    
-    
     @Environment(\.managedObjectContext) var viewContext
     
     @FetchRequest(
@@ -28,6 +26,9 @@ struct Login: View {
     @State private var cidade: String = ""
     @State var addedInst = false
     @State var testView = false
+    
+    @Binding var instituicaoID: UUID
+    @Binding var loginIsActive: Bool
     
     var body: some View {
         NavigationView {
@@ -60,6 +61,8 @@ struct Login: View {
                     newInstituicao.nome = nome
                     newInstituicao.descricao = descricao
                     newInstituicao.cidade = cidade
+                    
+                    instituicaoID = id
                     
                     do {
                         try self.viewContext.save()
@@ -113,8 +116,8 @@ struct Login: View {
     }
 }
 
-struct Login_Previews: PreviewProvider {
-    static var previews: some View {
-        Login()
-    }
-}
+//struct Login_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Login()
+//    }
+//}
