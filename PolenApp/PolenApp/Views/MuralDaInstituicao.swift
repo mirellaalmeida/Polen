@@ -20,6 +20,7 @@ struct MuralDaInstituicaoView: View {
     
     @State private var didTap: Bool = false
     
+    
     @FetchRequest(
         entity: Instituicao.entity(),
         sortDescriptors: [
@@ -44,7 +45,7 @@ struct MuralDaInstituicaoView: View {
         NavigationView{
             ScrollView(.vertical){
                 VStack(alignment: .leading){
-                    BannerView()
+                    BannerMeuMural(instituicaoID: $instituicaoID)
                     
                     VStack(alignment: .leading){
                         Text("Colabore conosco")

@@ -37,12 +37,12 @@ struct DynamicHeightTextField: UIViewRepresentable {
     }
     
     
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(dynamicSizeTextField: self)
+    func makeCoordinator() -> TextCoordinator {
+        return TextCoordinator(dynamicSizeTextField: self)
     }
 }
 
-class Coordinator: NSObject, UITextViewDelegate, NSLayoutManagerDelegate {
+class TextCoordinator: NSObject, UITextViewDelegate, NSLayoutManagerDelegate {
     
     var dynamicHeightTextField: DynamicHeightTextField
     
