@@ -90,14 +90,10 @@ struct Login: View {
         }.sheet(isPresented: $testView){
             List{
                 ForEach(instituicoes, id: \.self){instituicao in
-                    Text(instituicao.wrappedNome)
-                        .font(.title)
-                        .fontWeight(.bold)
-                    ForEach(instituicao.historiasArray, id:\.self){historia in
-                        Text(historia.wrappedTitulo)
-                            .font(.title2)
-                        Text(historia.wrappedDescricao)
-                            .font(.subheadline)
+                    NavigationLink(destination: MeuMural(isActive: $addedInst, instituicaoID: $id), isActive: $addedInst) {
+                        Text(instituicao.wrappedNome)
+                            .font(.title)
+                            .fontWeight(.bold)
                     }
                 }.onDelete(perform: { indexSet in
                     for index in indexSet {
@@ -109,6 +105,9 @@ struct Login: View {
                     } catch {
                         print("não foi possível salvar")
                     }
+                })
+                .onTapGesture(perform: {
+                    self.addedInst.toggle()
                 })
             }
         }

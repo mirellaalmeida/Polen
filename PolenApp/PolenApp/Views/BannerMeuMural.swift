@@ -11,6 +11,7 @@ import SwiftUI
 
 struct BannerMeuMural: View {
     @Environment(\.managedObjectContext) var viewContext
+    
     @Binding var instituicaoID: UUID
     
     @FetchRequest(

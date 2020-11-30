@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HistoriasView: View {
+    @Environment(\.managedObjectContext) var viewContext
+    
     @Binding var instituicaoID:UUID
     @Binding var verMais: Bool
     @Binding var verHistoria: HistoriasCard?
@@ -23,7 +25,7 @@ struct HistoriasView: View {
         
         ScrollView(.horizontal, showsIndicators: false){
             LazyHStack(spacing: 18){
-                ForEach (instituicoes.first(where: {$0.id == instituicaoID})?.historiasArray ?? [], id: \.self){ historia in
+                ForEach(instituicoes.first(where: {$0.id == instituicaoID})?.historiasArray ?? [], id: \.self){ historia in
                     VStack{
                         Image("Doação")
                             .resizable()

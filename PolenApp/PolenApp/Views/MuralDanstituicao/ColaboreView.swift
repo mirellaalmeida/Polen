@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ColaboreView: View {
+    @Environment(\.managedObjectContext) var viewContext
+    
     @Binding var instituicaoID:UUID
-
     
     @FetchRequest(
         entity: Instituicao.entity(),
@@ -18,14 +19,10 @@ struct ColaboreView: View {
         ]
     ) var instituicoes: FetchedResults<Instituicao>
     
-
-    
     var body: some View {
-        
-        
         ScrollView(.horizontal, showsIndicators: false){
             LazyHStack(spacing: 15){
-                ForEach (instituicoes.first(where: {$0.id == instituicaoID})?.colaboreArray ?? [], id: \.self){ colabore in
+                ForEach(instituicoes.first(where: {$0.id == instituicaoID})?.colaboreArray ?? [], id: \.self){ colabore in
                     VStack{
                         Text(colabore.wrappedTitulo)
                             .font(.system(size:16))
