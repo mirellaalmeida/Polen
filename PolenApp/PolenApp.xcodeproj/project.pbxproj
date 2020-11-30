@@ -14,6 +14,12 @@
 		869D49C6256FD6CB004B1AC1 /* HistoriasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D49C5256FD6CB004B1AC1 /* HistoriasView.swift */; };
 		86F4C359256E8F2600302AB5 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F4C358256E8F2600302AB5 /* BannerView.swift */; };
 		86F4C361256E8F4D00302AB5 /* BannerMeuMural.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F4C360256E8F4D00302AB5 /* BannerMeuMural.swift */; };
+		AC499416256D5149000350C8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499415256D5149000350C8 /* MapView.swift */; };
+		AC49941E256D5175000350C8 /* SearchBarMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49941D256D5175000350C8 /* SearchBarMap.swift */; };
+		AC499427256D51DA000350C8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499426256D51DA000350C8 /* LocationManager.swift */; };
+		AC49942C256D5207000350C8 /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49942B256D5207000350C8 /* Checkpoint.swift */; };
+		AC499431256D525B000350C8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499430256D525B000350C8 /* Coordinator.swift */; };
+		AC499437256D556B000350C8 /* BancoInstituicoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499436256D556B000350C8 /* BancoInstituicoes.swift */; };
 		B41293C5256BF08C00DBF26B /* AddHistoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41293C4256BF08C00DBF26B /* AddHistoria.swift */; };
 		B4799A1125682821003A047F /* VerMaisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A1025682821003A047F /* VerMaisView.swift */; };
 		B4799A1925682895003A047F /* Colabore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A1825682895003A047F /* Colabore.swift */; };
@@ -24,12 +30,6 @@
 		B48EA958256DCB0E00B62F21 /* ColaboreCard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48EA953256DCB0E00B62F21 /* ColaboreCard+CoreDataProperties.swift */; };
 		B48EA959256DCB0E00B62F21 /* HistoriasCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48EA954256DCB0E00B62F21 /* HistoriasCard+CoreDataClass.swift */; };
 		B48EA95A256DCB0E00B62F21 /* HistoriasCard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48EA950256DCB0E00B62F21 /* HistoriasCard+CoreDataProperties.swift */; };
-		AC499416256D5149000350C8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499415256D5149000350C8 /* MapView.swift */; };
-		AC49941E256D5175000350C8 /* SearchBarMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49941D256D5175000350C8 /* SearchBarMap.swift */; };
-		AC499427256D51DA000350C8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499426256D51DA000350C8 /* LocationManager.swift */; };
-		AC49942C256D5207000350C8 /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49942B256D5207000350C8 /* Checkpoint.swift */; };
-		AC499431256D525B000350C8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499430256D525B000350C8 /* Coordinator.swift */; };
-		AC499437256D556B000350C8 /* BancoInstituicoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499436256D556B000350C8 /* BancoInstituicoes.swift */; };
 		BFBE53360B2757C986EB190A /* Pods_PolenApp_PolenAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 416CB25BEBD4BC7C8254C560 /* Pods_PolenApp_PolenAppUITests.framework */; };
 		ED4161762562CA1B00AF5696 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161752562CA1B00AF5696 /* Onboarding.swift */; };
 		ED41617E2562CA2F00AF5696 /* Mapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED41617D2562CA2F00AF5696 /* Mapa.swift */; };
@@ -85,6 +85,12 @@
 		86F4C358256E8F2600302AB5 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		86F4C360256E8F4D00302AB5 /* BannerMeuMural.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerMeuMural.swift; sourceTree = "<group>"; };
 		AAA837FD8ECFE066B14D2153 /* Pods-PolenAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenAppTests.release.xcconfig"; path = "Target Support Files/Pods-PolenAppTests/Pods-PolenAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		AC499415256D5149000350C8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		AC49941D256D5175000350C8 /* SearchBarMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarMap.swift; sourceTree = "<group>"; };
+		AC499426256D51DA000350C8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		AC49942B256D5207000350C8 /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
+		AC499430256D525B000350C8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		AC499436256D556B000350C8 /* BancoInstituicoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BancoInstituicoes.swift; sourceTree = "<group>"; };
 		B41293C4256BF08C00DBF26B /* AddHistoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoria.swift; sourceTree = "<group>"; };
 		B4799A1025682821003A047F /* VerMaisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerMaisView.swift; sourceTree = "<group>"; };
 		B4799A1825682895003A047F /* Colabore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colabore.swift; sourceTree = "<group>"; };
@@ -95,12 +101,6 @@
 		B48EA952256DCB0E00B62F21 /* ColaboreCard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColaboreCard+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B48EA953256DCB0E00B62F21 /* ColaboreCard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColaboreCard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B48EA954256DCB0E00B62F21 /* HistoriasCard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HistoriasCard+CoreDataClass.swift"; sourceTree = "<group>"; };
-		AC499415256D5149000350C8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		AC49941D256D5175000350C8 /* SearchBarMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarMap.swift; sourceTree = "<group>"; };
-		AC499426256D51DA000350C8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		AC49942B256D5207000350C8 /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
-		AC499430256D525B000350C8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		AC499436256D556B000350C8 /* BancoInstituicoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BancoInstituicoes.swift; sourceTree = "<group>"; };
 		B90B89087C52636376FD8379 /* Pods-PolenApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp.debug.xcconfig"; path = "Target Support Files/Pods-PolenApp/Pods-PolenApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C07F438E3FDFEBD346B7B82F /* Pods_PolenApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolenApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC82473EF0D392B3DA4E6519 /* Pods-PolenApp-PolenAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp-PolenAppUITests.release.xcconfig"; path = "Target Support Files/Pods-PolenApp-PolenAppUITests/Pods-PolenApp-PolenAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -753,7 +753,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PolenApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 389X9SAV47;
+				DEVELOPMENT_TEAM = MWUZ9DKMH6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PolenApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -775,7 +775,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PolenApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 389X9SAV47;
+				DEVELOPMENT_TEAM = MWUZ9DKMH6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PolenApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
