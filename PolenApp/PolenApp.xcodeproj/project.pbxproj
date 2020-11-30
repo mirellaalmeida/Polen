@@ -40,7 +40,6 @@
 		ED4161972562CA8F00AF5696 /* Ajuda.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161962562CA8F00AF5696 /* Ajuda.swift */; };
 		ED41619C2562CAAB00AF5696 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED41619B2562CAAB00AF5696 /* Login.swift */; };
 		ED4161A12562CAB900AF5696 /* Cadastro.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161A02562CAB900AF5696 /* Cadastro.swift */; };
-		ED4161A62562CB0000AF5696 /* Instituicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161A52562CB0000AF5696 /* Instituicao.swift */; };
 		ED4161AE2562CB1400AF5696 /* CardAjuda.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161AD2562CB1400AF5696 /* CardAjuda.swift */; };
 		ED4161B32562CB2500AF5696 /* CardStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161B22562CB2500AF5696 /* CardStory.swift */; };
 		ED4161B82562CB3900AF5696 /* CardFavorito.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161B72562CB3900AF5696 /* CardFavorito.swift */; };
@@ -113,7 +112,6 @@
 		ED4161962562CA8F00AF5696 /* Ajuda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ajuda.swift; sourceTree = "<group>"; };
 		ED41619B2562CAAB00AF5696 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		ED4161A02562CAB900AF5696 /* Cadastro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cadastro.swift; sourceTree = "<group>"; };
-		ED4161A52562CB0000AF5696 /* Instituicao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instituicao.swift; sourceTree = "<group>"; };
 		ED4161AD2562CB1400AF5696 /* CardAjuda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAjuda.swift; sourceTree = "<group>"; };
 		ED4161B22562CB2500AF5696 /* CardStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStory.swift; sourceTree = "<group>"; };
 		ED4161B72562CB3900AF5696 /* CardFavorito.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFavorito.swift; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				AC499422256D518D000350C8 /* MapaModels */,
-				ED4161A52562CB0000AF5696 /* Instituicao.swift */,
 				ED4161AD2562CB1400AF5696 /* CardAjuda.swift */,
 				ED4161B22562CB2500AF5696 /* CardStory.swift */,
 				ED4161B72562CB3900AF5696 /* CardFavorito.swift */,
@@ -549,7 +546,6 @@
 				ED43D3482562C8B1009D1BA7 /* PolenApp.xcdatamodeld in Sources */,
 				B48EA956256DCB0E00B62F21 /* Instituicao+CoreDataProperties.swift in Sources */,
 				AC49941E256D5175000350C8 /* SearchBarMap.swift in Sources */,
-				ED4161A62562CB0000AF5696 /* Instituicao.swift in Sources */,
 				ED43D3412562C8B1009D1BA7 /* AppDelegate.swift in Sources */,
 				ED41619C2562CAAB00AF5696 /* Login.swift in Sources */,
 				B48EA958256DCB0E00B62F21 /* ColaboreCard+CoreDataProperties.swift in Sources */,

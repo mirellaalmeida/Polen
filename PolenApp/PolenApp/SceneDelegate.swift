@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
 
         //let contentView = ContentView().environment(\.managedObjectContext, context)
-        //let contentView = Login().environment(\.managedObjectContext, context)
+        //let contextView = Login().environment(\.managedObjectContext, context)
         let contentView = Mapa(bank: BancoInstituicoes()).environment(\.managedObjectContext, context)
 
 
