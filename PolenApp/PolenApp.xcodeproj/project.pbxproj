@@ -20,6 +20,13 @@
 		AC49942C256D5207000350C8 /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49942B256D5207000350C8 /* Checkpoint.swift */; };
 		AC499431256D525B000350C8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499430256D525B000350C8 /* Coordinator.swift */; };
 		AC499437256D556B000350C8 /* BancoInstituicoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499436256D556B000350C8 /* BancoInstituicoes.swift */; };
+		ACC56A6A2575C2F600BE35C3 /* OnboardingView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A692575C2F600BE35C3 /* OnboardingView1.swift */; };
+		ACC56A722575C37E00BE35C3 /* OnboardingView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A712575C37E00BE35C3 /* OnboardingView2.swift */; };
+		ACC56A772575C38800BE35C3 /* OnboardingView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A762575C38800BE35C3 /* OnboardingView3.swift */; };
+		ACC56A7C2575D96700BE35C3 /* OnboardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A7B2575D96700BE35C3 /* OnboardsView.swift */; };
+		ACC56A812575D9BB00BE35C3 /* ContainersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A802575D9BB00BE35C3 /* ContainersView.swift */; };
+		ACC56A862575DE8B00BE35C3 /* OnboardingPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A852575DE8B00BE35C3 /* OnboardingPageControl.swift */; };
+		ACC56A8B2575DEFF00BE35C3 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A8A2575DEFF00BE35C3 /* OnboardingPageViewController.swift */; };
 		B41293C5256BF08C00DBF26B /* AddHistoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41293C4256BF08C00DBF26B /* AddHistoria.swift */; };
 		B4799A1125682821003A047F /* VerMaisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A1025682821003A047F /* VerMaisView.swift */; };
 		B4799A1925682895003A047F /* Colabore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A1825682895003A047F /* Colabore.swift */; };
@@ -90,6 +97,13 @@
 		AC49942B256D5207000350C8 /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
 		AC499430256D525B000350C8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AC499436256D556B000350C8 /* BancoInstituicoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BancoInstituicoes.swift; sourceTree = "<group>"; };
+		ACC56A692575C2F600BE35C3 /* OnboardingView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView1.swift; sourceTree = "<group>"; };
+		ACC56A712575C37E00BE35C3 /* OnboardingView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView2.swift; sourceTree = "<group>"; };
+		ACC56A762575C38800BE35C3 /* OnboardingView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView3.swift; sourceTree = "<group>"; };
+		ACC56A7B2575D96700BE35C3 /* OnboardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardsView.swift; sourceTree = "<group>"; };
+		ACC56A802575D9BB00BE35C3 /* ContainersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersView.swift; sourceTree = "<group>"; };
+		ACC56A852575DE8B00BE35C3 /* OnboardingPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageControl.swift; sourceTree = "<group>"; };
+		ACC56A8A2575DEFF00BE35C3 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		B41293C4256BF08C00DBF26B /* AddHistoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoria.swift; sourceTree = "<group>"; };
 		B4799A1025682821003A047F /* VerMaisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerMaisView.swift; sourceTree = "<group>"; };
 		B4799A1825682895003A047F /* Colabore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colabore.swift; sourceTree = "<group>"; };
@@ -161,6 +175,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC0D48842575287B00FD50DF /* OnboardingModels */ = {
+			isa = PBXGroup;
+			children = (
+				ACC56A852575DE8B00BE35C3 /* OnboardingPageControl.swift */,
+				ACC56A8A2575DEFF00BE35C3 /* OnboardingPageViewController.swift */,
+			);
+			path = OnboardingModels;
+			sourceTree = "<group>";
+		};
+		AC0D488D257529B500FD50DF /* OnboardingViews */ = {
+			isa = PBXGroup;
+			children = (
+				ED4161752562CA1B00AF5696 /* Onboarding.swift */,
+				ACC56A692575C2F600BE35C3 /* OnboardingView1.swift */,
+				ACC56A802575D9BB00BE35C3 /* ContainersView.swift */,
+				ACC56A762575C38800BE35C3 /* OnboardingView3.swift */,
+				ACC56A7B2575D96700BE35C3 /* OnboardsView.swift */,
+				ACC56A712575C37E00BE35C3 /* OnboardingView2.swift */,
+			);
+			path = OnboardingViews;
+			sourceTree = "<group>";
+		};
 		AC499414256D5129000350C8 /* MapaViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,7 +251,7 @@
 		ED4161702562C9EB00AF5696 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				ED4161752562CA1B00AF5696 /* Onboarding.swift */,
+				AC0D488D257529B500FD50DF /* OnboardingViews */,
 				AC499414256D5129000350C8 /* MapaViews */,
 				ED4161872562CA5900AF5696 /* Favoritos.swift */,
 				ED4161912562CA8200AF5696 /* Recursos.swift */,
@@ -238,6 +274,7 @@
 		ED4161742562C9F500AF5696 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AC0D48842575287B00FD50DF /* OnboardingModels */,
 				AC499422256D518D000350C8 /* MapaModels */,
 				ED4161AD2562CB1400AF5696 /* CardAjuda.swift */,
 				ED4161B22562CB2500AF5696 /* CardStory.swift */,
@@ -548,6 +585,7 @@
 				AC49941E256D5175000350C8 /* SearchBarMap.swift in Sources */,
 				ED43D3412562C8B1009D1BA7 /* AppDelegate.swift in Sources */,
 				ED41619C2562CAAB00AF5696 /* Login.swift in Sources */,
+				ACC56A8B2575DEFF00BE35C3 /* OnboardingPageViewController.swift in Sources */,
 				B48EA958256DCB0E00B62F21 /* ColaboreCard+CoreDataProperties.swift in Sources */,
 				B4799A1925682895003A047F /* Colabore.swift in Sources */,
 				ED4161B32562CB2500AF5696 /* CardStory.swift in Sources */,
@@ -556,6 +594,8 @@
 				ED4161B82562CB3900AF5696 /* CardFavorito.swift in Sources */,
 				ED4161AE2562CB1400AF5696 /* CardAjuda.swift in Sources */,
 				B41293C5256BF08C00DBF26B /* AddHistoria.swift in Sources */,
+				ACC56A7C2575D96700BE35C3 /* OnboardsView.swift in Sources */,
+				ACC56A772575C38800BE35C3 /* OnboardingView3.swift in Sources */,
 				B4799A1125682821003A047F /* VerMaisView.swift in Sources */,
 				869D49C1256FD67F004B1AC1 /* ColaboreView.swift in Sources */,
 				ED4161BD2562CB4E00AF5696 /* CardRecurso.swift in Sources */,
@@ -566,16 +606,20 @@
 				ED43D3432562C8B1009D1BA7 /* SceneDelegate.swift in Sources */,
 				86F4C359256E8F2600302AB5 /* BannerView.swift in Sources */,
 				B48EA955256DCB0E00B62F21 /* Instituicao+CoreDataClass.swift in Sources */,
+				ACC56A862575DE8B00BE35C3 /* OnboardingPageControl.swift in Sources */,
 				B4799A21256828F6003A047F /* SobreNos.swift in Sources */,
+				ACC56A812575D9BB00BE35C3 /* ContainersView.swift in Sources */,
 				ED43D3452562C8B1009D1BA7 /* ContentView.swift in Sources */,
 				AC499416256D5149000350C8 /* MapView.swift in Sources */,
 				AC499431256D525B000350C8 /* Coordinator.swift in Sources */,
 				AC49942C256D5207000350C8 /* Checkpoint.swift in Sources */,
 				AC499427256D51DA000350C8 /* LocationManager.swift in Sources */,
+				ACC56A6A2575C2F600BE35C3 /* OnboardingView1.swift in Sources */,
 				ED41618D2562CA6900AF5696 /* MeuMural.swift in Sources */,
 				B48EA959256DCB0E00B62F21 /* HistoriasCard+CoreDataClass.swift in Sources */,
 				ED4161882562CA5900AF5696 /* Favoritos.swift in Sources */,
 				86F4C361256E8F4D00302AB5 /* BannerMeuMural.swift in Sources */,
+				ACC56A722575C37E00BE35C3 /* OnboardingView2.swift in Sources */,
 				B48EA957256DCB0E00B62F21 /* ColaboreCard+CoreDataClass.swift in Sources */,
 				869D49BC256FD604004B1AC1 /* DuplaBotoes.swift in Sources */,
 				ED4161A12562CAB900AF5696 /* Cadastro.swift in Sources */,
