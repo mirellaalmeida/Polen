@@ -39,6 +39,28 @@ struct MuralDaInstituicaoView: View {
         //        UIScrollView.appearance().backgroundColor = #colorLiteral(red: 0.9688708186, green: 0.8066166639, blue: 0.3180420101, alpha: 1)
     }
     
+    var colaboreSubview: some View {
+        VStack(alignment: .leading){
+            Text("Colabore conosco")
+                .font(.headline)
+                .fontWeight(.bold)
+                .padding()
+            
+            ColaboreView(instituicaoID: $instituicaoID)
+        }
+    }
+    
+    var historiasSubview: some View {
+        VStack(alignment: .leading) {
+            Text("Um pouco sobre nós")
+                .font(.headline)
+                .fontWeight(.bold)
+                .padding()
+            
+            HistoriasView(instituicaoID: $instituicaoID, verMais: $verMais, verHistoria: $verHistoria)
+            
+        }
+    }
     
     var body: some View{
         NavigationView{
@@ -46,34 +68,17 @@ struct MuralDaInstituicaoView: View {
                 VStack(alignment: .leading){
                     BannerMeuMural(instituicaoID: $instituicaoID)
                     
-                    VStack(alignment: .leading){
-                        Text("Colabore conosco")
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .padding()
-                        
-                        ColaboreView(instituicaoID: $instituicaoID)
-                    }
+                    colaboreSubview
                     
                     Spacer()
                         .frame(height: 30.0)
                     
-                    VStack(alignment: .leading) {
-                        Text("Um pouco sobre nós")
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .padding()
-                        
-                        HistoriasView(instituicaoID: $instituicaoID, verMais: $verMais, verHistoria: $verHistoria)
-                        
-                    }
-                    
-                    
+                    historiasSubview
                 }
                 .navigationBarTitleDisplayMode(.inline)
             }
         }
-        .navigationBarTitle("Voltar")
+        //.navigationBarTitle("Voltar")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $verMais) {
             VerMaisView(historia: $verHistoria, verMais: $verMais)

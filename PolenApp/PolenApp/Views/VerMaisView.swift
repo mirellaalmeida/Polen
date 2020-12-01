@@ -17,15 +17,16 @@ struct VerMaisView: View {
                     .font(.body)
                     .multilineTextAlignment(.center)
                     .padding()
+                
                 Spacer()
             }
-            .navigationBarItems(trailing: Button(action: {
-                self.verMais = false
-            }, label: {
-                Text("Done")
-                    .bold()
-            }))
         }
+        .navigationBarItems(trailing: Button(action: {
+            self.verMais.toggle()
+        }, label: {
+            Text("Done")
+                .bold()
+        }))
     }
 }
 

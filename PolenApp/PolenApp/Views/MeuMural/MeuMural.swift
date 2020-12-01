@@ -19,7 +19,6 @@ struct MeuMural: View {
     @State var addingHistoria = false
     @State var addingColabore = false
     
-    
     @FetchRequest(
         entity: Instituicao.entity(),
         sortDescriptors: [
@@ -73,7 +72,7 @@ struct MeuMural: View {
         VStack(alignment: .leading){
             headerColaboreView
             
-            ColaboreView(instituicaoID: $instituicaoID)
+            ColaboreMeuMuralView(instituicaoID: $instituicaoID)
         }
     }
     
@@ -81,7 +80,7 @@ struct MeuMural: View {
         VStack(alignment: .leading) {
             headerHistoriaView
             
-            HistoriasView(instituicaoID: $instituicaoID, verMais: $verMais, verHistoria: $verHistoria)
+            HistoriasMeuMuralView(instituicaoID: $instituicaoID, verMais: $verMais, verHistoria: $verHistoria)
         }
     }
     
@@ -103,7 +102,7 @@ struct MeuMural: View {
             .navigationBarHidden(true)
         }
         //.navigationBarTitleDisplayMode(.inline)
-        //.navigationBarBackButtonHidden(true)
+        //.navigationBarBackButtonHidden(false)
         .navigationBarHidden(true)
         .sheet(isPresented: $verMais) {
             VerMaisView(historia: $verHistoria, verMais: $verMais)

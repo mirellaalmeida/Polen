@@ -23,17 +23,6 @@ struct HistoriasMeuMuralView: View {
     @Binding var verMais: Bool
     @Binding var verHistoria: HistoriasCard?
     
-    var editButton: some View {
-        
-            /*NavigationLink(
-                destination: AddHistoriaCard(instituicaoID: $instituicaoID, isAdding: $editHistoriaCard),
-                isActive: $editHistoriaCard) {
-                EmptyView()
-            }*/
-            
-            EditButtonView(isEditing: $editHistoriaCard)
-    }
-    
     var cardsInfos: some View {
         ForEach(instituicoes.first(where: {$0.id == instituicaoID})?.historiasArray ?? [], id: \.self){ historia in
             VStack{
@@ -50,9 +39,20 @@ struct HistoriasMeuMuralView: View {
                     .padding()
                 
                 HStack{
-                    editButton
+                    /*NavigationLink(
+                        destination: AddHistoriaCard(instituicaoID: $instituicaoID, isAdding: $editHistoriaCard),
+                        isActive: $editHistoriaCard) {
+                        EmptyView()
+                    }*/
+                    
+                    EditButtonView(isEditing: $editHistoriaCard)
+                        //.padding(.leading, 50)
+                    
+                    Spacer()
+                        .frame(width: 30)
                     
                     VerMaisButton(verMais: $verMais, verHistoria: $verHistoria, historia: historia)
+                        //.padding(.trailing, 50)
                 }
                 
             }

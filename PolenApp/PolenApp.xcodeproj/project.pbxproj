@@ -40,6 +40,8 @@
 		B4E2359625755DC200C412D5 /* EditButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E2359525755DC200C412D5 /* EditButtonView.swift */; };
 		B4E2359B2575631E00C412D5 /* VerMaisButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E2359A2575631E00C412D5 /* VerMaisButton.swift */; };
 		B4E235A32575687B00C412D5 /* AddCardInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E235A22575687B00C412D5 /* AddCardInfos.swift */; };
+		B4E235B42575E5B200C412D5 /* LinkToMuralDaInstituicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E235B32575E5B200C412D5 /* LinkToMuralDaInstituicao.swift */; };
+		B4E235B92575E64E00C412D5 /* LinkToLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E235B82575E64E00C412D5 /* LinkToLogin.swift */; };
 		BFBE53360B2757C986EB190A /* Pods_PolenApp_PolenAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 416CB25BEBD4BC7C8254C560 /* Pods_PolenApp_PolenAppUITests.framework */; };
 		ED4161762562CA1B00AF5696 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161752562CA1B00AF5696 /* Onboarding.swift */; };
 		ED41617E2562CA2F00AF5696 /* Mapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED41617D2562CA2F00AF5696 /* Mapa.swift */; };
@@ -120,6 +122,8 @@
 		B4E2359525755DC200C412D5 /* EditButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonView.swift; sourceTree = "<group>"; };
 		B4E2359A2575631E00C412D5 /* VerMaisButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerMaisButton.swift; sourceTree = "<group>"; };
 		B4E235A22575687B00C412D5 /* AddCardInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardInfos.swift; sourceTree = "<group>"; };
+		B4E235B32575E5B200C412D5 /* LinkToMuralDaInstituicao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkToMuralDaInstituicao.swift; sourceTree = "<group>"; };
+		B4E235B82575E64E00C412D5 /* LinkToLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkToLogin.swift; sourceTree = "<group>"; };
 		B90B89087C52636376FD8379 /* Pods-PolenApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp.debug.xcconfig"; path = "Target Support Files/Pods-PolenApp/Pods-PolenApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C07F438E3FDFEBD346B7B82F /* Pods_PolenApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolenApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC82473EF0D392B3DA4E6519 /* Pods-PolenApp-PolenAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp-PolenAppUITests.release.xcconfig"; path = "Target Support Files/Pods-PolenApp-PolenAppUITests/Pods-PolenApp-PolenAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -264,6 +268,8 @@
 			children = (
 				B4E2357925755BDD00C412D5 /* LinkToAddColaboreCard.swift */,
 				B4B55F8B2575583200075164 /* LinkToAddHistoriaCard.swift */,
+				B4E235B32575E5B200C412D5 /* LinkToMuralDaInstituicao.swift */,
+				B4E235B82575E64E00C412D5 /* LinkToLogin.swift */,
 			);
 			path = NavigationLinks;
 			sourceTree = "<group>";
@@ -607,6 +613,7 @@
 				B4799A1925682895003A047F /* Colabore.swift in Sources */,
 				ED4161B32562CB2500AF5696 /* CardStory.swift in Sources */,
 				B4E2359125755D0200C412D5 /* CustomTextView.swift in Sources */,
+				B4E235B42575E5B200C412D5 /* LinkToMuralDaInstituicao.swift in Sources */,
 				B48EA95A256DCB0E00B62F21 /* HistoriasCard+CoreDataProperties.swift in Sources */,
 				ED4161972562CA8F00AF5696 /* Ajuda.swift in Sources */,
 				ED4161B82562CB3900AF5696 /* CardFavorito.swift in Sources */,
@@ -638,6 +645,7 @@
 				B4B55FA325755A9500075164 /* AddButtonView.swift in Sources */,
 				ED4161882562CA5900AF5696 /* Favoritos.swift in Sources */,
 				B4E2359625755DC200C412D5 /* EditButtonView.swift in Sources */,
+				B4E235B92575E64E00C412D5 /* LinkToLogin.swift in Sources */,
 				86F4C361256E8F4D00302AB5 /* BannerMeuMural.swift in Sources */,
 				B4E2357A25755BDD00C412D5 /* LinkToAddColaboreCard.swift in Sources */,
 				B48EA957256DCB0E00B62F21 /* ColaboreCard+CoreDataClass.swift in Sources */,

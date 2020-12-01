@@ -71,7 +71,7 @@ struct Login: View {
                         print("não foi possível salvar")
                     }
                     
-                    self.addedInst = true
+                    self.addedInst.toggle()
                 }, label: {
                     Text("Adicionar Instituição")
                 })
@@ -87,7 +87,11 @@ struct Login: View {
                 
                 Spacer()
             }
-        }.sheet(isPresented: $testView){
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(false)
+        }
+        //.navigationBarHidden(true)
+        .sheet(isPresented: $testView){
             List{
                 ForEach(instituicoes, id: \.self){instituicao in
                     NavigationLink(destination: MeuMural(isActive: $addedInst, instituicaoID: $id), isActive: $addedInst) {

@@ -28,47 +28,40 @@ struct Mapa: View {
 
     @State var instituicaoID: UUID = UUID()
     
+    var searchInstituicao: some View {
+        List {
+            // Filtered list of names
+            ForEach((0..<bank.items!.count).filter{ (bank.items![$0].title?.hasPrefix(bank.searchText))! || bank.searchText == ""}, id:\.self) { index in
+                Button(action:{
+                    UIApplication.shared.endEditing(true)
+                    
+                    self.bank.searchText = ""
+                    self.bank.isSearching = false
+                    selecionada = bank.items![index].coordinate
+                    zoomInstituicao = true
+                    
+                }){
+                    Text(bank.items![index].title!)
+                }
+            }
+        }.listStyle(PlainListStyle())
+        .resignKeyboardOnDragGesture()
+    }
+    
     public var body: some View {
-
         NavigationView{
             ZStack{
                 VStack{
+                    LinkToMuralDaInstituicao(muralIsActive: $muralIsActive, instituicaoID: $instituicaoID)
                     
-                    NavigationLink(
-                        destination: MuralDaInstituicaoView(muralDaInstituicaoIsActive: $muralIsActive, instituicaoID: $instituicaoID),
-                        isActive: $muralIsActive){
-                        EmptyView()
-                    }
-                    
-                    NavigationLink(
-                        destination: Login(instituicaoID: $instituicaoID, loginIsActive: $loginIsActive),
-                        isActive: $loginIsActive){
-                        EmptyView()
-                    }
+                    LinkToLogin(loginIsActive: $loginIsActive, instituicaoID: $instituicaoID)
                     
                     SearchBarMap(bank: bank)
+                    
                     if bank.isSearching {
-                        List {
-                            // Filtered list of names
-                            ForEach((0..<bank.items!.count).filter{ (bank.items![$0].title?.hasPrefix(bank.searchText))! || bank.searchText == ""}, id:\.self) { index in
-                                Button(action:{
-                                    UIApplication.shared.endEditing(true)
-                                    
-                                    // if  == "Adus"{
-                                    //  print("Dale Adus")
-                                    // }
-                                    
-                                    self.bank.searchText = ""
-                                    self.bank.isSearching = false
-                                    selecionada = bank.items![index].coordinate
-                                    zoomInstituicao = true
-                                    
-                                }){
-                                    Text(bank.items![index].title!)
-                                }
-                            }
-                        }.listStyle(PlainListStyle())
-                        .resignKeyboardOnDragGesture()
+                        
+                        searchInstituicao
+                        
                     }else{
                         MapView(checkpoints: $checkpoints, muralsActive: $muralIsActive, instituicaoID: $instituicaoID)
                     }
@@ -77,7 +70,6 @@ struct Mapa: View {
             .navigationBarHidden(false)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing: Button(action: {
-                print("Mapa")
                 self.loginIsActive.toggle()
             }, label: {
                 Text("Login")

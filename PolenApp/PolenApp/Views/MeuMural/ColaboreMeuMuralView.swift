@@ -40,14 +40,19 @@ struct ColaboreMeuMuralView: View {
 //            }
             
             buttonStickers
+                //.padding(.leading, 50)
             
-            NavigationLink(
+            Spacer()
+                .frame(width: 30)
+            
+            /*NavigationLink(
                 destination: AddColaboreCard(instituicaoID: $instituicaoID, isAdding: $editColaboreCard),
                 isActive: $editColaboreCard) {
                 EmptyView()
-            }
+            }*/
             
             EditButtonView(isEditing: $editColaboreCard)
+                //.padding(.trailing, 50)
         }
     }
     

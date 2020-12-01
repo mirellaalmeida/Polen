@@ -23,6 +23,31 @@ struct AddColaboreCard: View {
         ]
     ) var instituicoes: FetchedResults<Instituicao>
     
+    func addCard() {
+        let newCard = ColaboreCard(context: viewContext)
+        newCard.titulo = title
+        newCard.descricao = description
+        newCard.relationship = instituicoes.first(where: {$0.id == instituicaoID})
+        
+        do {
+            try self.viewContext.save()
+        } catch {
+            print("não foi possível salvar")
+        }
+    }
+    
+    var publishCard: some View {
+        Button(action: {
+            addCard()
+            
+            self.isAdding.toggle()
+            
+        }, label: {
+            Text("Publicar")
+                .padding()
+        })
+    }
+    
     var body: some View {
         VStack{
             Text("Adicionar Publicação")
@@ -30,41 +55,11 @@ struct AddColaboreCard: View {
                 .fontWeight(.bold)
                 .multilineTextAlignment(.leading)
             
-            TextField("Título", text: $title)
-                .foregroundColor(.black)
-                .background(Color(UIColor.secondarySystemBackground))
-                .padding([.leading, .trailing])
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            
-            TextField("Descrição", text: $description)
-                .lineLimit(3)
-                .multilineTextAlignment(.leading)
-                .foregroundColor(.black)
-                .background(Color(UIColor.secondarySystemBackground))
-                .padding([.leading, .trailing])
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            AddCardInfos(title: $title, description: $description)
             
             Spacer()
             
-            Button(action: {
-                let newCard = ColaboreCard(context: viewContext)
-                newCard.titulo = title
-                newCard.descricao = description
-                newCard.relationship = instituicoes.first(where: {$0.id == instituicaoID})
-                
-                do {
-                    try self.viewContext.save()
-                } catch {
-                    print("não foi possível salvar")
-                }
-                
-                self.isAdding.toggle()
-                
-            }, label: {
-                Text("Publicar")
-                    .padding()
-            })
-            
+            publishCard
         }
     }
 }

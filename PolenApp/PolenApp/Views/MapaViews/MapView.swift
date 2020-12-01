@@ -24,7 +24,6 @@ struct MapView: UIViewRepresentable {
     @Binding var muralsActive: Bool
     @Binding var instituicaoID: UUID
     
-    
     func makeUIView(context: Context) -> MKMapView {
         let map = MKMapView()
         map.showsUserLocation = true
@@ -34,7 +33,10 @@ struct MapView: UIViewRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(self, instituicoes: instituicoes, muralIsActive: $muralsActive, instituicaoID: $instituicaoID)
+        return Coordinator(self,
+                           instituicoes: instituicoes,
+                           muralIsActive: $muralsActive,
+                           instituicaoID: $instituicaoID)
     }
     
     func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {

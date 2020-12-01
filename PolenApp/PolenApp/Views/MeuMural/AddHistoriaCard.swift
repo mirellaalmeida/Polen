@@ -67,9 +67,9 @@ struct AddHistoriaCard: View {
                 
                 publishStory
             }
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarHidden(true)
         }
-        .navigationBarHidden(true)
+        //.navigationBarHidden(true)
     }
 }
 
