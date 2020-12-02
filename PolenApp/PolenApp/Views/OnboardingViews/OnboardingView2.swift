@@ -16,11 +16,11 @@ struct OnboardingView2: View {
         ZStack(alignment: .topTrailing){
             NavigationLink(
                 destination: Mapa(bank: BancoInstituicoes(), mapaIsActive: $mapaIsActive),
-                isActive: $mapaIsActive){
+                isActive: $mapaIsActive) {
                 EmptyView()
             }
             
-            VStack{
+            VStack {
                 Image("titleOnboarding2")
                     .padding(.top, 25)
                 
@@ -55,7 +55,8 @@ struct OnboardingView2: View {
                 }).padding(10)
                 .foregroundColor(.white)
             
-        }.background(Image("BgRoxo")
+        }
+        .background(Image("BgRoxo")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)

@@ -3,23 +3,20 @@ import SwiftUI
 struct VerMaisView: View {
     @Binding var historia: HistoriasCard?
     @Binding var verMais: Bool
-
+    
     var body: some View {
-        NavigationView{
-            VStack{
-                Text(historia!.wrappedTitulo)
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
-                    .padding()
-
-                Text(historia!.wrappedDescricao)
-                    .font(.body)
-                    .multilineTextAlignment(.center)
-                    .padding()
-                
-                Spacer()
-            }
+        VStack{
+            Text(historia!.wrappedTitulo)
+                .font(.title2)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.center)
+                .padding()
+            
+            Text(historia!.wrappedDescricao)
+                .font(.body)
+                .multilineTextAlignment(.center)
+                .padding()
+            Spacer()
         }
         .navigationBarItems(trailing: Button(action: {
             self.verMais.toggle()

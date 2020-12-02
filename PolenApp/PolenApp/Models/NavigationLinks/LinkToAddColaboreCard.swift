@@ -16,6 +16,7 @@ struct LinkToAddColaboreCard: View {
             destination: AddColaboreCard(instituicaoID: $instituicaoID, isAdding: $addingHistoria),
             isActive: $addingHistoria) {
             EmptyView()
+                .navigationBarHidden(true)
         }
     }
 }

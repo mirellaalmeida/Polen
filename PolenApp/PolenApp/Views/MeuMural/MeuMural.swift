@@ -85,29 +85,21 @@ struct MeuMural: View {
     }
     
     var body: some View {
-        NavigationView{
-            ScrollView(.vertical){
-                VStack(alignment: .leading){
-                    BannerMeuMural(instituicaoID: $instituicaoID)
-                    
-                    colaboreSubview
-
-                    Spacer()
-                        .frame(height: 30.0)
-                    
-                    historiasSubview
-                }
-                .navigationBarHidden(true)
+        ScrollView(.vertical){
+            VStack(alignment: .leading){
+                BannerMeuMural(instituicaoID: $instituicaoID)
+                
+                colaboreSubview
+                
+                Spacer()
+                    .frame(height: 30.0)
+                
+                historiasSubview
             }
-            .navigationBarHidden(true)
+            .sheet(isPresented: $verMais) {
+               VerMaisView(historia: $verHistoria, verMais: $verMais)
+            }
         }
-        //.navigationBarTitleDisplayMode(.inline)
-        //.navigationBarBackButtonHidden(false)
-        .navigationBarHidden(true)
-        .sheet(isPresented: $verMais) {
-            VerMaisView(historia: $verHistoria, verMais: $verMais)
-        }
-        
     }
 }
 

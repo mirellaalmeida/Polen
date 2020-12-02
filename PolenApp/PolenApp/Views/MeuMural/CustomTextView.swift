@@ -22,9 +22,13 @@ struct DynamicHeightTextField: UIViewRepresentable {
         textView.isUserInteractionEnabled = true
         
         textView.text = text
+        textView.font = .systemFont(ofSize: 18)
+        
         textView.backgroundColor = UIColor.clear
-        textView.layer.borderWidth = 5
-        textView.layer.borderColor = UIColor.systemBackground.cgColor
+        textView.layer.cornerRadius = 8
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.systemGray5.cgColor
+        textView.layer.isHidden = false
         
         context.coordinator.textView = textView
         textView.delegate = context.coordinator

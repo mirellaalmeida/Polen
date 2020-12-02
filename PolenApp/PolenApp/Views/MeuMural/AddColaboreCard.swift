@@ -49,11 +49,12 @@ struct AddColaboreCard: View {
     }
     
     var body: some View {
-        VStack{
+        VStack {
             Text("Adicionar Publicação")
                 .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.leading)
+                .padding()
             
             AddCardInfos(title: $title, description: $description)
             

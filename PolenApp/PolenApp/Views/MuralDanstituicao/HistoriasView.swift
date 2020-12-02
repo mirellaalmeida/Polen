@@ -50,7 +50,6 @@ struct HistoriasView: View {
     }
     
     var body: some View {
-        
         ScrollView(.horizontal, showsIndicators: false){
             LazyHStack(spacing: 18){
                 cardInfos

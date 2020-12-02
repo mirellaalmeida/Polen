@@ -50,33 +50,30 @@ struct Mapa: View {
     }
     
     public var body: some View {
-        NavigationView{
-            ZStack{
-                VStack{
-                    LinkToMuralDaInstituicao(muralIsActive: $muralIsActive, instituicaoID: $instituicaoID)
+        ZStack{
+            VStack{
+                LinkToMuralDaInstituicao(muralIsActive: $muralIsActive, instituicaoID: $instituicaoID)
+                
+                LinkToLogin(loginIsActive: $loginIsActive, instituicaoID: $instituicaoID)
+                
+                Button(action: {
+                    self.loginIsActive.toggle()
+                }, label: {
+                    Text("Login")
+                })
+                
+                SearchBarMap(bank: bank)
+                
+                if bank.isSearching {
                     
-                    LinkToLogin(loginIsActive: $loginIsActive, instituicaoID: $instituicaoID)
+                    searchInstituicao
                     
-                    SearchBarMap(bank: bank)
-                    
-                    if bank.isSearching {
-                        
-                        searchInstituicao
-                        
-                    }else{
-                        MapView(checkpoints: $checkpoints, muralsActive: $muralIsActive, instituicaoID: $instituicaoID)
-                    }
-                }.navigationBarHidden(true)
-            }.navigationBarHidden(true)
-        }.navigationBarHidden(false)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing: Button(action: {
-            print("Mapa")
-            self.loginIsActive.toggle()
-        }, label: {
-            Text("Login")
-        }))
+                }else {
+                    MapView(checkpoints: $checkpoints, muralsActive: $muralIsActive, instituicaoID: $instituicaoID)
+                }
+            }
+        }
+        .navigationBarHidden(true)
     }
 }
 

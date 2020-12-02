@@ -31,66 +31,63 @@ struct Login: View {
     @Binding var loginIsActive: Bool
     
     var body: some View {
-        NavigationView {
-            VStack {
-                TextField("Nome", text: $nome)
-                    .foregroundColor(.black)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+        VStack {
+            TextField("Nome", text: $nome)
+                .foregroundColor(.black)
+                .background(Color(UIColor.secondarySystemBackground))
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            TextField("Descrição", text: $descricao)
+                .foregroundColor(.black)
+                .background(Color(UIColor.secondarySystemBackground))
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            TextField("Cidade", text: $cidade)
+                .foregroundColor(.black)
+                .background(Color(UIColor.secondarySystemBackground))
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            NavigationLink(destination: MeuMural(isActive: $addedInst, instituicaoID: $id), isActive: $addedInst){
+                EmptyView()
+            }
+            
+            Button(action: {
+                let newInstituicao = Instituicao(context: viewContext)
+                newInstituicao.id = id
+                newInstituicao.nome = nome
+                newInstituicao.descricao = descricao
+                newInstituicao.cidade = cidade
                 
-                TextField("Descrição", text: $descricao)
-                    .foregroundColor(.black)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                instituicaoID = id
                 
-                TextField("Cidade", text: $cidade)
-                    .foregroundColor(.black)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                NavigationLink(destination: MeuMural(isActive: $addedInst, instituicaoID: $id), isActive: $addedInst){
-                    EmptyView()
+                do {
+                    try self.viewContext.save()
+                    print("Salvo")
+                } catch {
+                    print("não foi possível salvar")
                 }
                 
-                Button(action: {
-                    let newInstituicao = Instituicao(context: viewContext)
-                    newInstituicao.id = id
-                    newInstituicao.nome = nome
-                    newInstituicao.descricao = descricao
-                    newInstituicao.cidade = cidade
-                    
-                    instituicaoID = id
-                    
-                    do {
-                        try self.viewContext.save()
-                        print("Salvo")
-                    } catch {
-                        print("não foi possível salvar")
-                    }
-                    
-                    self.addedInst.toggle()
-                }, label: {
-                    Text("Adicionar Instituição")
-                })
-                .padding()
-                .border(Color.purple, width: 2)
-                .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-                
-                Button(action: {
-                    testView.toggle()
-                }, label: {
-                    Text("Testar Persistência")
-                })
-                
-                Spacer()
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(false)
+                self.addedInst.toggle()
+            }, label: {
+                Text("Adicionar Instituição")
+            })
+            .padding()
+            .border(Color.purple, width: 2)
+            .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+            
+            Button(action: {
+                testView.toggle()
+            }, label: {
+                Text("Testar Persistência")
+            })
+            
+            Spacer()
         }
-        //.navigationBarHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(false)
         .sheet(isPresented: $testView){
             List{
                 ForEach(instituicoes, id: \.self){instituicao in
@@ -115,7 +112,7 @@ struct Login: View {
                 })
             }
         }
-        
+        .navigationBarHidden(false)
     }
 }
 

@@ -48,28 +48,24 @@ struct AddHistoriaCard: View {
                 .padding()
         })
     }
-
+    
     var body: some View {
-        NavigationView {
-            VStack{
-                Text("Adicionar Publicação")
-                    .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.leading)
-                    .padding()
-                
-                Text("Aqui vai ficar o adicionar imagem!")
-                    .padding()
-                
-                AddCardInfos(title: $title, description: $description)
-                
-                Spacer()
-                
-                publishStory
-            }
-            .navigationBarHidden(true)
+        VStack{
+            Text("Adicionar Publicação")
+                .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.leading)
+                .padding()
+            
+            Text("Aqui vai ficar o adicionar imagem!")
+                .padding()
+            
+            AddCardInfos(title: $title, description: $description)
+            
+            Spacer()
+            
+            publishStory
         }
-        //.navigationBarHidden(true)
     }
 }
 

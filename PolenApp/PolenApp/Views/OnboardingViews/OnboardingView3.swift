@@ -38,8 +38,10 @@ struct OnboardingView3: View {
                 
                 Spacer()
                 
-                Button(action:{self.mapaIsActive.toggle()}, label: {
-                    ZStack{
+                Button(action: {
+                    self.mapaIsActive.toggle()
+                }, label: {
+                    ZStack {
                         Image("BotaoOnboarding")
                         Text("Conheça novas instituições")
                     }
@@ -50,8 +52,8 @@ struct OnboardingView3: View {
                 
                 OnboardingPageControl(current: 2)
             }
-            
-        }.background(Image("BgVerde")
+        }
+        .background(Image("BgVerde")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)

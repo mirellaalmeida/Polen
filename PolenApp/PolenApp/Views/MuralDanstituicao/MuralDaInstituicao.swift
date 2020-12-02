@@ -63,27 +63,19 @@ struct MuralDaInstituicaoView: View {
     }
     
     var body: some View{
-        NavigationView{
-            ScrollView(.vertical){
-                VStack(alignment: .leading){
-                    BannerMeuMural(instituicaoID: $instituicaoID)
-                    
-                    colaboreSubview
-                    
-                    Spacer()
-                        .frame(height: 30.0)
-                    
-                    historiasSubview
-                }
-                .navigationBarTitleDisplayMode(.inline)
+        ScrollView(.vertical){
+            VStack(alignment: .leading){
+                BannerMeuMural(instituicaoID: $instituicaoID)
+                
+                colaboreSubview
+                
+                Spacer()
+                    .frame(height: 30.0)
+                
+                historiasSubview
             }
         }
-        //.navigationBarTitle("Voltar")
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $verMais) {
-            VerMaisView(historia: $verHistoria, verMais: $verMais)
-        }
-        
         .navigationBarItems(trailing:
                                 Button(action: {
                                     print("Favorite tapped!")
@@ -91,12 +83,15 @@ struct MuralDaInstituicaoView: View {
                                     Image(systemName: "heart")
                                 })
         )
+        .sheet(isPresented: $verMais) {
+            VerMaisView(historia: $verHistoria, verMais: $verMais)
+        }
     }
 }
 
 /*
-#if DEBUG
-
+ #if DEBUG
+ 
  struct MuralView_Previews: PreviewProvider {
  static var previews: some View {
  MuralDaInstituicaoView(isActive: .constant(true), instituicaoID: )
