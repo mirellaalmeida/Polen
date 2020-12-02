@@ -8,32 +8,60 @@
 import Foundation
 import SwiftUI
 
-struct OnboardingView2: View {
+struct OnboardingView3: View {
+    @State var mapaIsActive = false
+    
     var body: some View {
         
-        ZStack{
-            Image("BgRoxo")
-            VStack{
-                Image("titleOnboarding2")
-                    .padding([.top, .leading, .trailing])
-                
-                Image("imageOnboarding2").resizable().aspectRatio(CGSize(width: 6, height: 6), contentMode: .fit)
-                
-                Text("Você é uma instituição que apoia imigantes e refugiados?")
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 40.0)
-                
-                Text("Conecte-se com uma rede disposta a ajudar e receber apoio em suas atividades e ações")
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.all, 30.0)
-                
-                OnboardingPageControl(current: 1)
-                  
+        ZStack(alignment: .topTrailing){
+            NavigationLink(
+                destination: Mapa(bank: BancoInstituicoes(), mapaIsActive: $mapaIsActive),
+                isActive: $mapaIsActive){
+                EmptyView()
             }
-        }
+            
+            VStack{
+                Image("titleOnboarding3")
+                    .padding(.top, 25)
+                
+                Spacer()
+                
+                Text("Vamos florescer juntos essa jornada com instituições parceiras")
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
+                Spacer()
+                
+                Image("imageOnboarding3").resizable().aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
+                
+                Spacer()
+                
+                Button(action:{self.mapaIsActive.toggle()}, label: {
+                    ZStack{
+                        Image("BotaoOnboarding")
+                        Text("Conheça novas instituições")
+                    }
+                })
+                .foregroundColor(.white)
+                
+                Spacer()
+                
+                OnboardingPageControl(current: 2)
+            }
+            
+        }.background(Image("BgVerde")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                        .ignoresSafeArea())
+        .navigationBarHidden(true)
+    }
+}
+
+struct OnboardingView3_Previews: PreviewProvider {
+    static var previews: some View {
+        OnboardingView3()
     }
 }

@@ -189,10 +189,10 @@
 			children = (
 				ED4161752562CA1B00AF5696 /* Onboarding.swift */,
 				ACC56A692575C2F600BE35C3 /* OnboardingView1.swift */,
-				ACC56A802575D9BB00BE35C3 /* ContainersView.swift */,
-				ACC56A762575C38800BE35C3 /* OnboardingView3.swift */,
-				ACC56A7B2575D96700BE35C3 /* OnboardsView.swift */,
 				ACC56A712575C37E00BE35C3 /* OnboardingView2.swift */,
+				ACC56A762575C38800BE35C3 /* OnboardingView3.swift */,
+				ACC56A802575D9BB00BE35C3 /* ContainersView.swift */,
+				ACC56A7B2575D96700BE35C3 /* OnboardsView.swift */,
 			);
 			path = OnboardingViews;
 			sourceTree = "<group>";

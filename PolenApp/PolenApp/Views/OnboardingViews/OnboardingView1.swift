@@ -9,24 +9,56 @@ import Foundation
 import SwiftUI
 
 struct OnboardingView1: View {
+    @State var mapaIsActive = false
+
+    
     var body: some View {
         
-        ZStack{
-            Image("BgLaranja")
-            VStack{
-                Image("titleOnboarding1")
-                    .padding(.all)
-                
-                Text("Quem migra percorre caminhos de solidaridade através de experiências e trajetórias pelo mundo")
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.all, 40)
-                
-                Image("imageOnboarding1").resizable().aspectRatio(CGSize(width: 4, height: 3), contentMode: .fit)
-                                
-                OnboardingPageControl(current: 0)
+        ZStack(alignment: .topTrailing){
+            
+            NavigationLink(
+                destination: Mapa(bank: BancoInstituicoes(), mapaIsActive: $mapaIsActive),
+                isActive: $mapaIsActive){
+                EmptyView()
             }
-        }
+            
+                VStack{
+                    Image("titleOnboarding1")
+                        .padding(.top, 25)
+                    
+                    Spacer()
+                    //.frame(height: 50)
+                    
+                    Text("Quem migra percorre caminhos de solidaridade através de experiências e trajetórias pelo mundo")
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.center)
+                        .padding(.all, 40)
+                    
+                    Image("imageOnboarding1").resizable().aspectRatio(CGSize(width: 7, height: 5), contentMode: .fit)
+                    
+                    Spacer()
+                    //.frame(height: 50)
+                    
+                    OnboardingPageControl(current: 0).padding()
+                }
+            
+            Button(action: {self.mapaIsActive.toggle()}, label: {
+                    Text("Pular")
+                }).padding(10)
+                .foregroundColor(.white)
+            
+            }.background(Image("BgLaranja")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                            .ignoresSafeArea())
+        .navigationBarHidden(true)
+    }
+}
+
+struct OnboardingView1_Previews: PreviewProvider {
+    static var previews: some View {
+        OnboardingView1()
     }
 }

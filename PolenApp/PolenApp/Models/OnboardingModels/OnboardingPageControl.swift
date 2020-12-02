@@ -15,9 +15,9 @@ struct OnboardingPageControl: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<OnboardingPageControl>) -> UIPageControl {
         
         let page = UIPageControl()
-        page.currentPageIndicatorTintColor = .black
+        page.currentPageIndicatorTintColor = .white
         page.numberOfPages = 3
-        page.pageIndicatorTintColor = .gray
+        page.pageIndicatorTintColor = .lightGray
         return page
     }
     

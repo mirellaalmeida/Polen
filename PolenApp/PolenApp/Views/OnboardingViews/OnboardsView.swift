@@ -10,14 +10,14 @@ import SwiftUI
 
 struct Onboards: View {
     
-    var bg: String
+    var page: String
     
     var body: some View{
-        if bg == "1"{
+        if page == "1"{
             
             OnboardingView1()
             
-        }else if bg == "2"{
+        }else if page == "2"{
             
             OnboardingView2()
             

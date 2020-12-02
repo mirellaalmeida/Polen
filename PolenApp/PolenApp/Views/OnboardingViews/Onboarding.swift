@@ -8,13 +8,22 @@
 import SwiftUI
 
 struct Onboarding: View {
+    
+    @State var mapaIsActive = false
+
+    
     var body: some View {
-        ContainerViews(["1", "2", "3"])
+        NavigationView{
+            ZStack(alignment: .topTrailing){
+                
+                ContainerViews(["1", "2", "3"]).edgesIgnoringSafeArea(.all)
+            }
+        }
     }
 }
 
 struct Onboarding_Previews: PreviewProvider {
     static var previews: some View {
-        Onboarding()
+        Onboarding().ignoresSafeArea(.all, edges: .all)
     }
 }

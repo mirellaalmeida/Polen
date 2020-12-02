@@ -25,6 +25,7 @@ struct Mapa: View {
     
     @State var muralIsActive = false
     @State var loginIsActive = false
+    @Binding var mapaIsActive: Bool
 
     @State var instituicaoID: UUID = UUID()
     
@@ -72,17 +73,17 @@ struct Mapa: View {
                     }else{
                         MapView(checkpoints: $checkpoints, muralsActive: $muralIsActive, instituicaoID: $instituicaoID)
                     }
-                }
-            }
-            .navigationBarHidden(false)
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: Button(action: {
-                print("Mapa")
-                self.loginIsActive.toggle()
-            }, label: {
-                Text("Login")
-            }))
-        }
+                }.navigationBarHidden(true)
+            }.navigationBarHidden(true)
+        }.navigationBarHidden(false)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: Button(action: {
+            print("Mapa")
+            self.loginIsActive.toggle()
+        }, label: {
+            Text("Login")
+        }))
     }
 }
 

@@ -12,8 +12,8 @@ struct ContainerViews: View {
     
     public var controller: [UIHostingController<Onboards>]
     
-    init(_ bg: [String]) {
-        self.controller = bg.map { UIHostingController(rootView: Onboards(bg: $0)) }
+    init(_ page: [String]) {
+        self.controller = page.map { UIHostingController(rootView: Onboards(page: $0)) }
         
     }
     

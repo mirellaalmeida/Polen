@@ -8,30 +8,64 @@
 import Foundation
 import SwiftUI
 
-struct OnboardingView3: View {
+struct OnboardingView2: View {
+    @State var mapaIsActive = false
+    
     var body: some View {
         
-        ZStack{
-            Image("BgVerde")
+        ZStack(alignment: .topTrailing){
+            NavigationLink(
+                destination: Mapa(bank: BancoInstituicoes(), mapaIsActive: $mapaIsActive),
+                isActive: $mapaIsActive){
+                EmptyView()
+            }
+            
             VStack{
-                Image("titleOnboarding3")
-                    .padding([.top, .leading, .trailing])
+                Image("titleOnboarding2")
+                    .padding(.top, 25)
                 
-                Text("Vamos florescer juntos essa jornada com instituições parceiras")
+                Spacer()
+                
+                Image("imageOnboarding2").resizable().aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
+                
+                Spacer()
+                
+                Text("Você é uma instituição que apoia imigantes e refugiados?")
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.center)
-                    .padding(.all, 30.0)
+                    .padding(.horizontal, 40.0)
                 
-                Image("imageOnboarding3").resizable().aspectRatio(CGSize(width: 6, height: 6), contentMode: .fit)
+                Spacer()
                 
-                OnboardingPageControl(current: 2)
+                Text("Conecte-se com uma rede disposta a ajudar e receber apoio em suas atividades e ações")
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 28.0)
+                    .padding(.vertical, 20)
                 
-                Button(action: {print("clicou")}, label: {
-                    Text("Conheça novas instituições")
-                })
+                Spacer()
                 
+                OnboardingPageControl(current: 1)
             }
-        }
+            
+            Button(action: {self.mapaIsActive.toggle()}, label: {
+                    Text("Pular")
+                }).padding(10)
+                .foregroundColor(.white)
+            
+        }.background(Image("BgRoxo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                        .ignoresSafeArea())
+        .navigationBarHidden(true)
+    }
+}
+
+struct OnboardingView2_Previews: PreviewProvider {
+    static var previews: some View {
+        OnboardingView2()
     }
 }
