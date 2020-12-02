@@ -15,17 +15,18 @@ public var zoomInstituicao: Bool = false
 
 struct Mapa: View {
     @Environment(\.managedObjectContext) var viewContexts
-
+    
     var locationManager = LocationManager()
     @ObservedObject var bank: BancoInstituicoes
-   
+    
     @State var checkpoints: [Checkpoint] = [
         Checkpoint(title: "Recomeço Refugiados", subtitle: "Aulas de português para haitianos", coordinate: .init(latitude: -7.9015, longitude: -34.8268)),
         Checkpoint(title: "Adus", subtitle: "Integração social de refugiados e vítimas de migrações forçadas", coordinate: .init(latitude: -7.9021, longitude: -34.8296))]
     
     @State var muralIsActive = false
     @State var loginIsActive = false
-
+    @Binding var mapaIsActive: Bool
+    
     @State var instituicaoID: UUID = UUID()
     
     var searchInstituicao: some View {
@@ -65,16 +66,17 @@ struct Mapa: View {
                     }else{
                         MapView(checkpoints: $checkpoints, muralsActive: $muralIsActive, instituicaoID: $instituicaoID)
                     }
-                }
-            }
-            .navigationBarHidden(false)
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: Button(action: {
-                self.loginIsActive.toggle()
-            }, label: {
-                Text("Login")
-            }))
-        }
+                }.navigationBarHidden(true)
+            }.navigationBarHidden(true)
+        }.navigationBarHidden(false)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: Button(action: {
+            print("Mapa")
+            self.loginIsActive.toggle()
+        }, label: {
+            Text("Login")
+        }))
     }
 }
 
