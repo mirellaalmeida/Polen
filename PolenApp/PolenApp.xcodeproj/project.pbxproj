@@ -20,9 +20,7 @@
 		AC49942C256D5207000350C8 /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49942B256D5207000350C8 /* Checkpoint.swift */; };
 		AC499431256D525B000350C8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499430256D525B000350C8 /* Coordinator.swift */; };
 		AC499437256D556B000350C8 /* BancoInstituicoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499436256D556B000350C8 /* BancoInstituicoes.swift */; };
-<<<<<<< HEAD
 		B41293C5256BF08C00DBF26B /* AddHistoriaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41293C4256BF08C00DBF26B /* AddHistoriaCard.swift */; };
-=======
 		ACC56A6A2575C2F600BE35C3 /* OnboardingView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A692575C2F600BE35C3 /* OnboardingView1.swift */; };
 		ACC56A722575C37E00BE35C3 /* OnboardingView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A712575C37E00BE35C3 /* OnboardingView2.swift */; };
 		ACC56A772575C38800BE35C3 /* OnboardingView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A762575C38800BE35C3 /* OnboardingView3.swift */; };
@@ -30,8 +28,6 @@
 		ACC56A812575D9BB00BE35C3 /* ContainersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A802575D9BB00BE35C3 /* ContainersView.swift */; };
 		ACC56A862575DE8B00BE35C3 /* OnboardingPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A852575DE8B00BE35C3 /* OnboardingPageControl.swift */; };
 		ACC56A8B2575DEFF00BE35C3 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A8A2575DEFF00BE35C3 /* OnboardingPageViewController.swift */; };
-		B41293C5256BF08C00DBF26B /* AddHistoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41293C4256BF08C00DBF26B /* AddHistoria.swift */; };
->>>>>>> Onboarding
 		B4799A1125682821003A047F /* VerMaisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A1025682821003A047F /* VerMaisView.swift */; };
 		B4799A1925682895003A047F /* Colabore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A1825682895003A047F /* Colabore.swift */; };
 		B4799A21256828F6003A047F /* SobreNos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A20256828F6003A047F /* SobreNos.swift */; };
@@ -113,9 +109,7 @@
 		AC49942B256D5207000350C8 /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
 		AC499430256D525B000350C8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AC499436256D556B000350C8 /* BancoInstituicoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BancoInstituicoes.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		B41293C4256BF08C00DBF26B /* AddHistoriaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoriaCard.swift; sourceTree = "<group>"; };
-=======
 		ACC56A692575C2F600BE35C3 /* OnboardingView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView1.swift; sourceTree = "<group>"; };
 		ACC56A712575C37E00BE35C3 /* OnboardingView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView2.swift; sourceTree = "<group>"; };
 		ACC56A762575C38800BE35C3 /* OnboardingView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView3.swift; sourceTree = "<group>"; };
@@ -123,8 +117,6 @@
 		ACC56A802575D9BB00BE35C3 /* ContainersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersView.swift; sourceTree = "<group>"; };
 		ACC56A852575DE8B00BE35C3 /* OnboardingPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageControl.swift; sourceTree = "<group>"; };
 		ACC56A8A2575DEFF00BE35C3 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
-		B41293C4256BF08C00DBF26B /* AddHistoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoria.swift; sourceTree = "<group>"; };
->>>>>>> Onboarding
 		B4799A1025682821003A047F /* VerMaisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerMaisView.swift; sourceTree = "<group>"; };
 		B4799A1825682895003A047F /* Colabore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colabore.swift; sourceTree = "<group>"; };
 		B4799A20256828F6003A047F /* SobreNos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SobreNos.swift; sourceTree = "<group>"; };
@@ -321,12 +313,8 @@
 		ED4161702562C9EB00AF5696 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				ED4161752562CA1B00AF5696 /* Onboarding.swift */,
 				B4B55F8925753C0100075164 /* MeuMural */,
-=======
 				AC0D488D257529B500FD50DF /* OnboardingViews */,
->>>>>>> Onboarding
 				AC499414256D5129000350C8 /* MapaViews */,
 				B4B55F8825753B0C00075164 /* MuralDanstituicao */,
 				ED4161872562CA5900AF5696 /* Favoritos.swift */,
@@ -345,11 +333,8 @@
 		ED4161742562C9F500AF5696 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				B4B55F8A2575581200075164 /* NavigationLinks */,
-=======
 				AC0D48842575287B00FD50DF /* OnboardingModels */,
->>>>>>> Onboarding
 				AC499422256D518D000350C8 /* MapaModels */,
 				ED4161AD2562CB1400AF5696 /* CardAjuda.swift */,
 				ED4161B22562CB2500AF5696 /* CardStory.swift */,
@@ -671,14 +656,10 @@
 				ED4161972562CA8F00AF5696 /* Ajuda.swift in Sources */,
 				ED4161B82562CB3900AF5696 /* CardFavorito.swift in Sources */,
 				ED4161AE2562CB1400AF5696 /* CardAjuda.swift in Sources */,
-<<<<<<< HEAD
 				B41293C5256BF08C00DBF26B /* AddHistoriaCard.swift in Sources */,
 				B4B55F7F25752D5000075164 /* ColaboreMeuMuralView.swift in Sources */,
-=======
-				B41293C5256BF08C00DBF26B /* AddHistoria.swift in Sources */,
 				ACC56A7C2575D96700BE35C3 /* OnboardsView.swift in Sources */,
 				ACC56A772575C38800BE35C3 /* OnboardingView3.swift in Sources */,
->>>>>>> Onboarding
 				B4799A1125682821003A047F /* VerMaisView.swift in Sources */,
 				869D49C1256FD67F004B1AC1 /* ColaboreView.swift in Sources */,
 				ED4161BD2562CB4E00AF5696 /* CardRecurso.swift in Sources */,
@@ -691,13 +672,10 @@
 				B48EA955256DCB0E00B62F21 /* Instituicao+CoreDataClass.swift in Sources */,
 				ACC56A862575DE8B00BE35C3 /* OnboardingPageControl.swift in Sources */,
 				B4799A21256828F6003A047F /* SobreNos.swift in Sources */,
-<<<<<<< HEAD
 				B4B55F77257528B000075164 /* AddColaboreCard.swift in Sources */,
 				B4B55F8425752D6500075164 /* HistoriasMeuMuralView.swift in Sources */,
 				B4E235A32575687B00C412D5 /* AddCardInfos.swift in Sources */,
-=======
 				ACC56A812575D9BB00BE35C3 /* ContainersView.swift in Sources */,
->>>>>>> Onboarding
 				ED43D3452562C8B1009D1BA7 /* ContentView.swift in Sources */,
 				AC499416256D5149000350C8 /* MapView.swift in Sources */,
 				AC499431256D525B000350C8 /* Coordinator.swift in Sources */,
@@ -712,11 +690,8 @@
 				B4E2359625755DC200C412D5 /* EditButtonView.swift in Sources */,
 				B4E235B92575E64E00C412D5 /* LinkToLogin.swift in Sources */,
 				86F4C361256E8F4D00302AB5 /* BannerMeuMural.swift in Sources */,
-<<<<<<< HEAD
 				B4E2357A25755BDD00C412D5 /* LinkToAddColaboreCard.swift in Sources */,
-=======
 				ACC56A722575C37E00BE35C3 /* OnboardingView2.swift in Sources */,
->>>>>>> Onboarding
 				B48EA957256DCB0E00B62F21 /* ColaboreCard+CoreDataClass.swift in Sources */,
 				869D49BC256FD604004B1AC1 /* DuplaBotoes.swift in Sources */,
 				ED4161A12562CAB900AF5696 /* Cadastro.swift in Sources */,
