@@ -3,12 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		4D7027663055B850C09CDEA2 /* Pods_PolenApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07F438E3FDFEBD346B7B82F /* Pods_PolenApp.framework */; };
 		648B5423DA6CF957E8336241 /* Pods_PolenAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2417BF2CAAE596DB790A20BA /* Pods_PolenAppTests.framework */; };
+		8626A1562576852F00A42BA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8626A1552576852F00A42BA4 /* GoogleService-Info.plist */; };
+		8626A16E25768D2C00A42BA4 /* FirebaseSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626A16D25768D2C00A42BA4 /* FirebaseSession.swift */; };
+		8626A17D2577B99100A42BA4 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8626A17C2577B99100A42BA4 /* CloudKit.framework */; };
 		869D49BC256FD604004B1AC1 /* DuplaBotoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D49BB256FD604004B1AC1 /* DuplaBotoes.swift */; };
 		869D49C1256FD67F004B1AC1 /* ColaboreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D49C0256FD67F004B1AC1 /* ColaboreView.swift */; };
 		869D49C6256FD6CB004B1AC1 /* HistoriasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D49C5256FD6CB004B1AC1 /* HistoriasView.swift */; };
@@ -90,6 +93,10 @@
 		3DC2305AA4AA12A0D9B6F401 /* Pods-PolenAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenAppTests.debug.xcconfig"; path = "Target Support Files/Pods-PolenAppTests/Pods-PolenAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		416CB25BEBD4BC7C8254C560 /* Pods_PolenApp_PolenAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolenApp_PolenAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E9AE9BA5DC50432851DFFB /* Pods-PolenApp-PolenAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp-PolenAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-PolenApp-PolenAppUITests/Pods-PolenApp-PolenAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8626A1552576852F00A42BA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8626A16D25768D2C00A42BA4 /* FirebaseSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSession.swift; sourceTree = "<group>"; };
+		8626A1752577B97100A42BA4 /* PolenApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PolenApp.entitlements; sourceTree = "<group>"; };
+		8626A17C2577B99100A42BA4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		869D49BB256FD604004B1AC1 /* DuplaBotoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplaBotoes.swift; sourceTree = "<group>"; };
 		869D49C0256FD67F004B1AC1 /* ColaboreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColaboreView.swift; sourceTree = "<group>"; };
 		869D49C5256FD6CB004B1AC1 /* HistoriasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriasView.swift; sourceTree = "<group>"; };
@@ -163,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D7027663055B850C09CDEA2 /* Pods_PolenApp.framework in Frameworks */,
+				8626A17D2577B99100A42BA4 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +224,7 @@
 		AD24E7F4DBCA96DC2048C02C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8626A17C2577B99100A42BA4 /* CloudKit.framework */,
 				C07F438E3FDFEBD346B7B82F /* Pods_PolenApp.framework */,
 				416CB25BEBD4BC7C8254C560 /* Pods_PolenApp_PolenAppUITests.framework */,
 				2417BF2CAAE596DB790A20BA /* Pods_PolenAppTests.framework */,
@@ -340,6 +349,7 @@
 		ED43D33F2562C8B1009D1BA7 /* PolenApp */ = {
 			isa = PBXGroup;
 			children = (
+				8626A1752577B97100A42BA4 /* PolenApp.entitlements */,
 				ED4161702562C9EB00AF5696 /* Views */,
 				ED4161742562C9F500AF5696 /* Models */,
 				AC499435256D54DE000350C8 /* ViewModels */,
@@ -349,8 +359,10 @@
 				ED43D3492562C8B3009D1BA7 /* Assets.xcassets */,
 				ED43D34E2562C8B3009D1BA7 /* LaunchScreen.storyboard */,
 				ED43D3512562C8B3009D1BA7 /* Info.plist */,
+				8626A1552576852F00A42BA4 /* GoogleService-Info.plist */,
 				ED43D3462562C8B1009D1BA7 /* PolenApp.xcdatamodeld */,
 				ED43D34B2562C8B3009D1BA7 /* Preview Content */,
+				8626A16D25768D2C00A42BA4 /* FirebaseSession.swift */,
 			);
 			path = PolenApp;
 			sourceTree = "<group>";
@@ -393,6 +405,7 @@
 				ED43D33A2562C8B1009D1BA7 /* Frameworks */,
 				ED43D33B2562C8B1009D1BA7 /* Resources */,
 				B475E3592563F560009D0E77 /* ShellScript */,
+				420FF017F7638F90A24F5035 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -430,6 +443,7 @@
 				ED43D35D2562C8B3009D1BA7 /* Sources */,
 				ED43D35E2562C8B3009D1BA7 /* Frameworks */,
 				ED43D35F2562C8B3009D1BA7 /* Resources */,
+				2FBED150D9277660E170E789 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -489,6 +503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED43D3502562C8B3009D1BA7 /* LaunchScreen.storyboard in Resources */,
+				8626A1562576852F00A42BA4 /* GoogleService-Info.plist in Resources */,
 				ED43D34D2562C8B3009D1BA7 /* Preview Assets.xcassets in Resources */,
 				ED43D34A2562C8B3009D1BA7 /* Assets.xcassets in Resources */,
 			);
@@ -553,6 +568,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2FBED150D9277660E170E789 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PolenApp-PolenAppUITests/Pods-PolenApp-PolenAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PolenApp-PolenAppUITests/Pods-PolenApp-PolenAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PolenApp-PolenAppUITests/Pods-PolenApp-PolenAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		420FF017F7638F90A24F5035 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PolenApp/Pods-PolenApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PolenApp/Pods-PolenApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PolenApp/Pods-PolenApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		892701C095B26746289A0AC7 /* [CP] Check Pods Manifest.lock */ = {
@@ -628,6 +677,7 @@
 				869D49C6256FD6CB004B1AC1 /* HistoriasView.swift in Sources */,
 				ED4161762562CA1B00AF5696 /* Onboarding.swift in Sources */,
 				ED43D3432562C8B1009D1BA7 /* SceneDelegate.swift in Sources */,
+				8626A16E25768D2C00A42BA4 /* FirebaseSession.swift in Sources */,
 				86F4C359256E8F2600302AB5 /* BannerView.swift in Sources */,
 				B48EA955256DCB0E00B62F21 /* Instituicao+CoreDataClass.swift in Sources */,
 				B4799A21256828F6003A047F /* SobreNos.swift in Sources */,
@@ -819,9 +869,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PolenApp/PolenApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PolenApp/Preview Content\"";
-				DEVELOPMENT_TEAM = MWUZ9DKMH6;
+				DEVELOPMENT_TEAM = T6PW3HL3N4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PolenApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -829,7 +880,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.mirellaalmeida.PolenApp;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.mirellaalmeida.PolenApp2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -842,9 +893,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PolenApp/PolenApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PolenApp/Preview Content\"";
-				DEVELOPMENT_TEAM = MWUZ9DKMH6;
+				DEVELOPMENT_TEAM = T6PW3HL3N4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PolenApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -852,7 +904,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.mirellaalmeida.PolenApp;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.mirellaalmeida.PolenApp2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
