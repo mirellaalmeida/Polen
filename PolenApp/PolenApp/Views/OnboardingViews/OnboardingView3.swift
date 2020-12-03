@@ -9,14 +9,14 @@ import Foundation
 import SwiftUI
 
 struct OnboardingView3: View {
-    @State var mapaIsActive = false
-    
+    @State var tabViewIsActive = false
+
     var body: some View {
         
         ZStack(alignment: .topTrailing){
             NavigationLink(
-                destination: Mapa(bank: BancoInstituicoes(), mapaIsActive: $mapaIsActive),
-                isActive: $mapaIsActive){
+                destination: TabBarView( tabViewIsActive: $tabViewIsActive),
+                isActive: $tabViewIsActive){
                 EmptyView()
             }
             
@@ -39,7 +39,7 @@ struct OnboardingView3: View {
                 Spacer()
                 
                 Button(action: {
-                    self.mapaIsActive.toggle()
+                    self.tabViewIsActive.toggle()
                 }, label: {
                     ZStack {
                         Image("BotaoOnboarding")
