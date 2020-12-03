@@ -37,15 +37,17 @@ struct CardViewFavoritos: View {
             .padding()
         }
         .cornerRadius(7)
-        .overlay(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Overlay Content@*/Text("Placeholder")/*@END_MENU_TOKEN@*/)
+        .overlay
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.gray)
-        ding((.top, .horizontal))
-    }
+            
+        }
+    .padding([.top, .horizontal])
 }
+
 
 struct CardViewFavoritos_Previews: PreviewProvider {
     static var previews: some View {
-        CardViewFavoritos()
+        CardViewFavoritos(bannerFavoritos: <#T##String#>, tituloBanner: <#T##String#>, imagemFavoritos: <#T##String#>, tituloFavoritos: <#T##String#>, descricaoFavoritos: <#T##String#>)
     }
 }
