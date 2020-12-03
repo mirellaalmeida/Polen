@@ -27,6 +27,7 @@
 		ACC56A812575D9BB00BE35C3 /* ContainersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A802575D9BB00BE35C3 /* ContainersView.swift */; };
 		ACC56A862575DE8B00BE35C3 /* OnboardingPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A852575DE8B00BE35C3 /* OnboardingPageControl.swift */; };
 		ACC56A8B2575DEFF00BE35C3 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC56A8A2575DEFF00BE35C3 /* OnboardingPageViewController.swift */; };
+		ACFC5E78257911C900881712 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC5E77257911C900881712 /* TabBarView.swift */; };
 		B41293C5256BF08C00DBF26B /* AddHistoriaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41293C4256BF08C00DBF26B /* AddHistoriaCard.swift */; };
 		B4799A1125682821003A047F /* VerMaisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A1025682821003A047F /* VerMaisView.swift */; };
 		B4799A1925682895003A047F /* Colabore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A1825682895003A047F /* Colabore.swift */; };
@@ -116,6 +117,7 @@
 		ACC56A802575D9BB00BE35C3 /* ContainersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersView.swift; sourceTree = "<group>"; };
 		ACC56A852575DE8B00BE35C3 /* OnboardingPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageControl.swift; sourceTree = "<group>"; };
 		ACC56A8A2575DEFF00BE35C3 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
+		ACFC5E77257911C900881712 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		B41293C4256BF08C00DBF26B /* AddHistoriaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoriaCard.swift; sourceTree = "<group>"; };
 		B4799A1025682821003A047F /* VerMaisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerMaisView.swift; sourceTree = "<group>"; };
 		B4799A1825682895003A047F /* Colabore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colabore.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				ED4161912562CA8200AF5696 /* Recursos.swift */,
 				ED4161962562CA8F00AF5696 /* Ajuda.swift */,
 				ED41619B2562CAAB00AF5696 /* Login.swift */,
+				ACFC5E77257911C900881712 /* TabBarView.swift */,
 				ED4161A02562CAB900AF5696 /* Cadastro.swift */,
 				B4799A1025682821003A047F /* VerMaisView.swift */,
 				86F4C360256E8F4D00302AB5 /* BannerMeuMural.swift */,
@@ -663,6 +666,7 @@
 				B4799A1125682821003A047F /* VerMaisView.swift in Sources */,
 				869D49C1256FD67F004B1AC1 /* ColaboreView.swift in Sources */,
 				ED4161BD2562CB4E00AF5696 /* CardRecurso.swift in Sources */,
+				ACFC5E78257911C900881712 /* TabBarView.swift in Sources */,
 				ED4161922562CA8200AF5696 /* Recursos.swift in Sources */,
 				ED41617E2562CA2F00AF5696 /* Mapa.swift in Sources */,
 				869D49C6256FD6CB004B1AC1 /* HistoriasView.swift in Sources */,
