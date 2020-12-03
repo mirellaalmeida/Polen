@@ -28,7 +28,20 @@ struct ColaboreMeuMuralView: View {
             self.seeStickers.toggle()
         }, label: {
             Text("Ver adesivos (\(stickersCount))")
-        })
+                .font(.system(size:12, weight: .bold))
+                .foregroundColor(.white)
+                .padding(.vertical, 8)
+                .padding(.horizontal, 20)
+                
+            
+        }).background(Color("Roxo"))
+        .cornerRadius(5)
+            
+
+//        .foregroundColor(Color("Roxo"))
+//        .padding(.vertical, 8)
+//        .padding(.horizontal, 25)
+        
     }
     
     var buttons: some View {
@@ -39,7 +52,8 @@ struct ColaboreMeuMuralView: View {
 //                EmptyView()
 //            }
             
-            buttonStickers
+            EditButtonView(isEditing: $editColaboreCard)
+            
                 //.padding(.leading, 50)
             
             Spacer()
@@ -50,8 +64,8 @@ struct ColaboreMeuMuralView: View {
                 isActive: $editColaboreCard) {
                 EmptyView()
             }*/
+            buttonStickers
             
-            EditButtonView(isEditing: $editColaboreCard)
                 //.padding(.trailing, 50)
         }
     }

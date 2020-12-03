@@ -46,7 +46,13 @@ struct AddHistoriaCard: View {
         }, label: {
             Text("Publicar")
                 .padding()
+                .foregroundColor(.white)
+                .padding(.horizontal, 50)
         })
+        .background(Color("Roxo"))
+        .cornerRadius(10)
+        .padding(.top, 25)
+        .padding(.bottom, 40)
     }
     
     var body: some View {
@@ -57,8 +63,8 @@ struct AddHistoriaCard: View {
                 .multilineTextAlignment(.leading)
                 .padding()
             
-            Text("Aqui vai ficar o adicionar imagem!")
-                .padding()
+            ImagePickerView()
+            
             
             AddCardInfos(title: $title, description: $description)
             
