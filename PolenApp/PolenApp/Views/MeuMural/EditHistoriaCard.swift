@@ -9,13 +9,16 @@ import SwiftUI
 
 struct EditHistoriaCard: View {
     //@Binding var isEditing: Bool
-    var card: HistoriasCard
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    //@Binding var card: HistoriasCard
+    @Binding var titulo: String
+    @Binding var descricao: String
+    //@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     
-    init(card: HistoriasCard) {
-        self.card = card
-    }
+//    init(card: HistoriasCard, titulo: String) {
+//        self.card = card
+//        self.titulo = titulo
+//    }
     
     var saveStory: some View {
         Button(action: {
@@ -35,18 +38,40 @@ struct EditHistoriaCard: View {
     
     var body: some View {
         VStack{
-            Text("Edtar Publicação")
+            Text("Editar Publicação")
                 .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.leading)
                 .padding()
-            
-            Text(card.wrappedTitulo)
+                .padding(.top,30)
+//
+//            Text(card.wrappedTitulo)
+//                .padding()
+//
+//            Text(card.wrappedDescricao)
+//                .padding()
+//
+            TextField("", text: $titulo)
                 .padding()
+                .foregroundColor(.black)
+               // .background(Color(UIColor.secondarySystemBackground))
+                .padding([.leading, .trailing])
+                .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            Text(card.wrappedDescricao)
+            
+            TextField("", text: $descricao)
                 .padding()
+                .foregroundColor(.black)
+               // .background(Color(UIColor.secondarySystemBackground))
+                .padding([.leading, .trailing])
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                
             
+//            TextEditor(text: card.$wrappedDescricao )
+//                .font(.body)
+//                .cornerRadius(5)
+//                .shadow(color: Color.black.opacity(0.18), radius: 0.8, y: 1)
+//                .frame(height: 20)
             
             //AddCardInfos(title: $title, description: $description)
             

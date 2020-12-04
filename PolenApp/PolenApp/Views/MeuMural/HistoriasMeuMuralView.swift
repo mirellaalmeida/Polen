@@ -47,18 +47,18 @@ struct HistoriasMeuMuralView: View {
                      EmptyView()
                      }*/
                     
-                   // EditButtonView(isEditing: $isEditing)
+                   EditButtonView(isEditing: $isEditing, historia: historia)
 
-                    NavigationLink(destination: EditHistoriaCard(card:historia)){
-                        Text("Editar")
-                            .foregroundColor(Color("Roxo"))
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 25)
-                            .font(.system(size:12, weight: .bold))
-                            //.border(Color("Roxo"), width: 0.5)
-                            //.cornerRadius(10)
-                            .background(RoundedRectangle(cornerRadius: 4).stroke(Color("Roxo")))
-                    }
+//                    NavigationLink(destination: EditHistoriaCard(card: historia, titulo: historia.wrappedTitulo)){
+//                        Text("Editar")
+//                            .foregroundColor(Color("Roxo"))
+//                            .padding(.vertical, 8)
+//                            .padding(.horizontal, 25)
+//                            .font(.system(size:12, weight: .bold))
+//                            //.border(Color("Roxo"), width: 0.5)
+//                            //.cornerRadius(10)
+//                            .background(RoundedRectangle(cornerRadius: 4).stroke(Color("Roxo")))
+//                    }
                     //.padding(.leading, 50)
                     
                     Spacer()

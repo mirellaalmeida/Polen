@@ -52,7 +52,7 @@ struct ColaboreMeuMuralView: View {
 //                EmptyView()
 //            }
             
-            EditButtonView(isEditing: $editColaboreCard)
+           // EditButtonView(isEditing: $editColaboreCard)
             
                 //.padding(.leading, 50)
             

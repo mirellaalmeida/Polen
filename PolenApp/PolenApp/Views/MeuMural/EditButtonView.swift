@@ -10,14 +10,19 @@ import SwiftUI
 struct EditButtonView: View {
     @Binding var isEditing: Bool
    // var card: HistoriasCard
+    var historia: HistoriasCard
+    @State var titulo: String = ""
+    @State var descricao: String = ""
     
     
     var body: some View {
+        NavigationLink(destination: EditHistoriaCard(titulo: $titulo, descricao: $descricao), isActive: $isEditing){
+            EmptyView()
+        }
         Button(action: {
-            print(isEditing)
+            titulo = historia.wrappedTitulo
+            descricao = historia.wrappedDescricao
             self.isEditing.toggle()
-            print(isEditing)
-
         }, label: {
             Text("Editar")
                 .foregroundColor(Color("Roxo"))

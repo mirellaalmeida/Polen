@@ -102,9 +102,9 @@ struct MeuMural: View {
             .sheet(isPresented: $verMais) {
                 VerMaisView(historia: $verHistoria, verMais: $verMais)
             }
-            .sheet(isPresented: $editingHistoria) {
-                EditHistoriaCard(card: verHistoria!)
-            }
+//            .sheet(isPresented: $editingHistoria) {
+//                EditHistoriaCard(card: verHistoria!)
+//            }
             
         }
     }
