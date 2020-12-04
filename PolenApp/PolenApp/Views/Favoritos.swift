@@ -6,15 +6,43 @@
 //
 
 import SwiftUI
+// swiftlint:disable all
 
 struct Favoritos: View {
+    
+    @State var verFavoritos: CardViewFavoritos?
+    @State private var didTap: Bool = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            ScrollView(.vertical){
+                ZStack{
+                    Image("bannerFavoritos")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                    Text("Favoritos")
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .padding(.top, 10)
+                }
+                
+                LazyVStack{
+                    CardViewFavoritos(imagemFavoritos: "IconAdus", tituloFavoritos: "Instituto Adus", descricaoFavoritos: "Integração social de refugiados e estrangeiros vítimas de migrações forçadas.")
+                    CardViewFavoritos(imagemFavoritos: "IconAdus", tituloFavoritos: "Instituto Adus", descricaoFavoritos: "Integração social de refugiados e estrangeiros vítimas de migrações forçadas.")
+                    CardViewFavoritos(imagemFavoritos: "IconAdus", tituloFavoritos: "Instituto Adus", descricaoFavoritos: "Integração social de refugiados e estrangeiros vítimas de migrações forçadas.")
+                    
+                }
+            }
+            .navigationBarHidden(true)
+            .ignoresSafeArea(.all)
+        }
     }
+    
 }
-
 struct Favoritos_Previews: PreviewProvider {
     static var previews: some View {
         Favoritos()
     }
+    
 }

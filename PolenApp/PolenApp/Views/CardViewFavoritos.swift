@@ -6,48 +6,49 @@
 //
 
 import SwiftUI
-
+// swiftlint:disable all
 struct CardViewFavoritos: View {
     
-    var bannerFavoritos:String
-    var tituloBanner: String
     var imagemFavoritos: String
     var tituloFavoritos: String
     var descricaoFavoritos: String
     
     var body: some View {
+        
         VStack{
-            Image(imagemFavoritos)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-            
-            HStack{
-                VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
+            HStack {
+                Image(imagemFavoritos)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 120, height: 100, alignment: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+                VStack(alignment: .leading, spacing: 5, content: {
                     Text(tituloFavoritos)
-                        .font(.headline)
+                        .font(.system(size:18))
+                        .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
-                    Text(descricaoFavoritos.uppercased())
-                        .font(.caption)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.leading)
+                    Text(descricaoFavoritos)
+                        .font(.system(size:14))
+                        .font(.subheadline)
                         .foregroundColor(.secondary)
                 })
                 .layoutPriority(10)
-                
+                .frame(width: 250, height: 130)
                 Spacer()
             }
-            .padding()
+            .frame(width: 370, height: 130.0)
+            .background(Color.white)
+            .border(Color.gray, width: 0.5)
+            .cornerRadius(10)
+            .shadow(color: .gray, radius: 3, x: 0, y: 1)
+            .padding(8)
         }
-        .cornerRadius(7)
-        .overlay
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.gray)
-            
-        }
-    .padding([.top, .horizontal])
+    }
 }
-
 
 struct CardViewFavoritos_Previews: PreviewProvider {
     static var previews: some View {
-        CardViewFavoritos(bannerFavoritos: <#T##String#>, tituloBanner: <#T##String#>, imagemFavoritos: <#T##String#>, tituloFavoritos: <#T##String#>, descricaoFavoritos: <#T##String#>)
+        CardViewFavoritos(imagemFavoritos: "IconAdus", tituloFavoritos: "Instituto Adus", descricaoFavoritos: "Integração social de refugiados e estrangeiros vítimas de migrações forçadas.")
     }
 }

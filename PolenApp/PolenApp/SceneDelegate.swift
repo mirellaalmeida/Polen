@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //let contextView = Login().environment(\.managedObjectContext, context)
         //let contentView = Mapa(bank: BancoInstituicoes()).environment(\.managedObjectContext, context)
 //        let contentView = Onboarding().environment(\.managedObjectContext, context)
-        let contentView = CardViewFavoritos()
+        let contentView = Favoritos()
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
