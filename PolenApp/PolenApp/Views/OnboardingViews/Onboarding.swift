@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+var primeiroAcesso: Bool = true
 
 struct Onboarding: View {
     
