@@ -51,6 +51,7 @@
 		B4E235B42575E5B200C412D5 /* LinkToMuralDaInstituicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E235B32575E5B200C412D5 /* LinkToMuralDaInstituicao.swift */; };
 		B4E235B92575E64E00C412D5 /* LinkToLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E235B82575E64E00C412D5 /* LinkToLogin.swift */; };
 		BFBE53360B2757C986EB190A /* Pods_PolenApp_PolenAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 416CB25BEBD4BC7C8254C560 /* Pods_PolenApp_PolenAppUITests.framework */; };
+		ED0CF9E5257A81B3007C69E0 /* CardViewRecursos.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0CF9E4257A81B3007C69E0 /* CardViewRecursos.swift */; };
 		ED4161762562CA1B00AF5696 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161752562CA1B00AF5696 /* Onboarding.swift */; };
 		ED41617E2562CA2F00AF5696 /* Mapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED41617D2562CA2F00AF5696 /* Mapa.swift */; };
 		ED4161832562CA4700AF5696 /* MuralDaInstituicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161822562CA4700AF5696 /* MuralDaInstituicao.swift */; };
@@ -143,6 +144,7 @@
 		B90B89087C52636376FD8379 /* Pods-PolenApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp.debug.xcconfig"; path = "Target Support Files/Pods-PolenApp/Pods-PolenApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C07F438E3FDFEBD346B7B82F /* Pods_PolenApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolenApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC82473EF0D392B3DA4E6519 /* Pods-PolenApp-PolenAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp-PolenAppUITests.release.xcconfig"; path = "Target Support Files/Pods-PolenApp-PolenAppUITests/Pods-PolenApp-PolenAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		ED0CF9E4257A81B3007C69E0 /* CardViewRecursos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewRecursos.swift; sourceTree = "<group>"; };
 		ED4161752562CA1B00AF5696 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		ED41617D2562CA2F00AF5696 /* Mapa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapa.swift; sourceTree = "<group>"; };
 		ED4161822562CA4700AF5696 /* MuralDaInstituicao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuralDaInstituicao.swift; sourceTree = "<group>"; };
@@ -312,15 +314,31 @@
 			path = NavigationLinks;
 			sourceTree = "<group>";
 		};
+		ED0CF9D8257A816E007C69E0 /* RecursosModels */ = {
+			isa = PBXGroup;
+			children = (
+				ED0CF9E4257A81B3007C69E0 /* CardViewRecursos.swift */,
+			);
+			path = RecursosModels;
+			sourceTree = "<group>";
+		};
+		ED0CF9E9257A822B007C69E0 /* RecursosView */ = {
+			isa = PBXGroup;
+			children = (
+				ED4161912562CA8200AF5696 /* Recursos.swift */,
+			);
+			path = RecursosView;
+			sourceTree = "<group>";
+		};
 		ED4161702562C9EB00AF5696 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ED0CF9E9257A822B007C69E0 /* RecursosView */,
 				B4B55F8925753C0100075164 /* MeuMural */,
 				AC0D488D257529B500FD50DF /* OnboardingViews */,
 				AC499414256D5129000350C8 /* MapaViews */,
 				B4B55F8825753B0C00075164 /* MuralDanstituicao */,
 				ED4161872562CA5900AF5696 /* Favoritos.swift */,
-				ED4161912562CA8200AF5696 /* Recursos.swift */,
 				ED4161962562CA8F00AF5696 /* Ajuda.swift */,
 				ED41619B2562CAAB00AF5696 /* Login.swift */,
 				ACFC5E77257911C900881712 /* TabBarView.swift */,
@@ -336,6 +354,7 @@
 		ED4161742562C9F500AF5696 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ED0CF9D8257A816E007C69E0 /* RecursosModels */,
 				B4B55F8A2575581200075164 /* NavigationLinks */,
 				AC0D48842575287B00FD50DF /* OnboardingModels */,
 				AC499422256D518D000350C8 /* MapaModels */,
@@ -688,6 +707,7 @@
 				ACC56A6A2575C2F600BE35C3 /* OnboardingView1.swift in Sources */,
 				ED41618D2562CA6900AF5696 /* MeuMural.swift in Sources */,
 				B48EA959256DCB0E00B62F21 /* HistoriasCard+CoreDataClass.swift in Sources */,
+				ED0CF9E5257A81B3007C69E0 /* CardViewRecursos.swift in Sources */,
 				B4E2359B2575631E00C412D5 /* VerMaisButton.swift in Sources */,
 				B4B55FA325755A9500075164 /* AddButtonView.swift in Sources */,
 				ED4161882562CA5900AF5696 /* Favoritos.swift in Sources */,
