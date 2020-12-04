@@ -9,10 +9,15 @@ import SwiftUI
 
 struct EditButtonView: View {
     @Binding var isEditing: Bool
+   // var card: HistoriasCard
+    
     
     var body: some View {
         Button(action: {
+            print(isEditing)
             self.isEditing.toggle()
+            print(isEditing)
+
         }, label: {
             Text("Editar")
                 .foregroundColor(Color("Roxo"))

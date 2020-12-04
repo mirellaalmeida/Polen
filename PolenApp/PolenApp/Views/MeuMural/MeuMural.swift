@@ -18,6 +18,9 @@ struct MeuMural: View {
     @State var verHistoria: HistoriasCard?
     @State var addingHistoria = false
     @State var addingColabore = false
+    @State var editingColabore = false
+    @State var editingHistoria = false
+    
     
     @FetchRequest(
         entity: Instituicao.entity(),
@@ -80,7 +83,7 @@ struct MeuMural: View {
         VStack(alignment: .leading) {
             headerHistoriaView
             
-            HistoriasMeuMuralView(instituicaoID: $instituicaoID, verMais: $verMais, verHistoria: $verHistoria)
+            HistoriasMeuMuralView(instituicaoID: $instituicaoID, verMais: $verMais, verHistoria: $verHistoria, isEditing: editingHistoria)
         }
     }
     
@@ -97,12 +100,15 @@ struct MeuMural: View {
                 historiasSubview
             }
             .sheet(isPresented: $verMais) {
-               VerMaisView(historia: $verHistoria, verMais: $verMais)
+                VerMaisView(historia: $verHistoria, verMais: $verMais)
             }
+            .sheet(isPresented: $editingHistoria) {
+                EditHistoriaCard(card: verHistoria!)
+            }
+            
         }
     }
 }
-
 /*
  #if DEBUG
  struct MuralView_Previews: PreviewProvider {

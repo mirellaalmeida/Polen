@@ -10,6 +10,7 @@
 		4D7027663055B850C09CDEA2 /* Pods_PolenApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07F438E3FDFEBD346B7B82F /* Pods_PolenApp.framework */; };
 		648B5423DA6CF957E8336241 /* Pods_PolenAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2417BF2CAAE596DB790A20BA /* Pods_PolenAppTests.framework */; };
 		8626A1982579165700A42BA4 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626A1972579165700A42BA4 /* ImagePickerView.swift */; };
+		8626A1AF2579A83E00A42BA4 /* EditHistoriaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626A1AE2579A83E00A42BA4 /* EditHistoriaCard.swift */; };
 		869D49BC256FD604004B1AC1 /* DuplaBotoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D49BB256FD604004B1AC1 /* DuplaBotoes.swift */; };
 		869D49C1256FD67F004B1AC1 /* ColaboreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D49C0256FD67F004B1AC1 /* ColaboreView.swift */; };
 		869D49C6256FD6CB004B1AC1 /* HistoriasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D49C5256FD6CB004B1AC1 /* HistoriasView.swift */; };
@@ -99,6 +100,7 @@
 		416CB25BEBD4BC7C8254C560 /* Pods_PolenApp_PolenAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolenApp_PolenAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75E9AE9BA5DC50432851DFFB /* Pods-PolenApp-PolenAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp-PolenAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-PolenApp-PolenAppUITests/Pods-PolenApp-PolenAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8626A1972579165700A42BA4 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		8626A1AE2579A83E00A42BA4 /* EditHistoriaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHistoriaCard.swift; sourceTree = "<group>"; };
 		869D49BB256FD604004B1AC1 /* DuplaBotoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplaBotoes.swift; sourceTree = "<group>"; };
 		869D49C0256FD67F004B1AC1 /* ColaboreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColaboreView.swift; sourceTree = "<group>"; };
 		869D49C5256FD6CB004B1AC1 /* HistoriasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriasView.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				B4B55FA225755A9500075164 /* AddButtonView.swift */,
 				B4E2359525755DC200C412D5 /* EditButtonView.swift */,
 				B4E235A22575687B00C412D5 /* AddCardInfos.swift */,
+				8626A1AE2579A83E00A42BA4 /* EditHistoriaCard.swift */,
 			);
 			path = MeuMural;
 			sourceTree = "<group>";
@@ -699,6 +702,7 @@
 				B48EA957256DCB0E00B62F21 /* ColaboreCard+CoreDataClass.swift in Sources */,
 				869D49BC256FD604004B1AC1 /* DuplaBotoes.swift in Sources */,
 				ED4161A12562CAB900AF5696 /* Cadastro.swift in Sources */,
+				8626A1AF2579A83E00A42BA4 /* EditHistoriaCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
