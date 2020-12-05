@@ -40,7 +40,13 @@ struct AddColaboreCard: View {
         }, label: {
             Text("Publicar")
                 .padding()
+                .foregroundColor(.white)
+                .padding(.horizontal, 50)
         })
+        .background(Color("Roxo"))
+        .cornerRadius(10)
+        .padding(.top, 25)
+        .padding(.bottom, 40)
     }
     
     var body: some View {
