@@ -81,3 +81,12 @@ extension Instituicao {
     @NSManaged public func removeFromHistoriasList(_ values: NSSet)
 
 }
+
+extension Instituicao {
+    static func getInstituicoesFetchRequest() -> NSFetchRequest<Instituicao> {
+        let request: NSFetchRequest<Instituicao> = Instituicao.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "nome", ascending: true)]
+        
+        return request
+    }
+}

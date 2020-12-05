@@ -12,12 +12,7 @@ struct ColaboreMeuMuralView: View {
     
     @Binding var instituicaoID:UUID
     
-    @FetchRequest(
-        entity: Instituicao.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
-        ]
-    ) var instituicoes: FetchedResults<Instituicao>
+    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     @State var stickersCount: Int = DuplaBotoes().possoCount + DuplaBotoes().vaiCount
     @State var editColaboreCard = false

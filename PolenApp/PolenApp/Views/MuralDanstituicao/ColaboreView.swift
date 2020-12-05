@@ -12,12 +12,7 @@ struct ColaboreView: View {
     
     @Binding var instituicaoID:UUID
     
-    @FetchRequest(
-        entity: Instituicao.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
-        ]
-    ) var instituicoes: FetchedResults<Instituicao>
+    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     var cardInfos: some View {
         ForEach(instituicoes.first(where: {$0.id == instituicaoID})?.colaboreArray ?? [], id: \.self){ colabore in

@@ -19,12 +19,7 @@ struct MeuMural: View {
     @State var addingHistoria = false
     @State var addingColabore = false
     
-    @FetchRequest(
-        entity: Instituicao.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
-        ]
-    ) var instituicoes: FetchedResults<Instituicao>
+    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     init(isActive: Binding<Bool>, instituicaoID: Binding<UUID>) {
         _isActive = isActive

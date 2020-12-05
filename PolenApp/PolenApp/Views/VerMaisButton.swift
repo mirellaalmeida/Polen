@@ -15,12 +15,7 @@ struct VerMaisButton: View {
     
     var historia: HistoriasCard
     
-    @FetchRequest(
-        entity: Instituicao.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
-        ]
-    ) var instituicoes: FetchedResults<Instituicao>
+    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     var body: some View {
         Button(action: {

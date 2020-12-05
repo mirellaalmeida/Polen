@@ -17,12 +17,7 @@ struct AddHistoriaCard: View {
     @State var description: String = ""
     @State private var descriptionHeight: CGFloat = 0
     
-    @FetchRequest(
-        entity: Instituicao.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
-        ]
-    ) var instituicoes: FetchedResults<Instituicao>
+    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     func addStory() {
         let newStory = HistoriasCard(context: viewContext)

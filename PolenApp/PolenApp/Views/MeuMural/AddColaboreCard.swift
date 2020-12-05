@@ -16,12 +16,7 @@ struct AddColaboreCard: View {
     @State private var title: String = ""
     @State private var description: String = ""
     
-    @FetchRequest(
-        entity: Instituicao.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
-        ]
-    ) var instituicoes: FetchedResults<Instituicao>
+    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     func addCard() {
         let newCard = ColaboreCard(context: viewContext)

@@ -12,13 +12,9 @@ struct Login: View {
     //A partir dos dados do login, pegaremos a id da instituição e mandaremos pra Meu Mural (a id vai ser
     //meio que uma variável global entre todas as telas
     @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.presentationMode) var presentationMode
     
-    @FetchRequest(
-        entity: Instituicao.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
-        ]
-    ) var instituicoes: FetchedResults<Instituicao>
+    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     @State private var id = UUID()
     @State private var nome:String = ""
@@ -61,7 +57,7 @@ struct Login: View {
                 newInstituicao.descricao = descricao
                 newInstituicao.cidade = cidade
                 
-                instituicaoID = id
+                self.instituicaoID = newInstituicao.id!
                 
                 do {
                     try self.viewContext.save()
@@ -69,7 +65,6 @@ struct Login: View {
                 } catch {
                     print("não foi possível salvar")
                 }
-                
                 self.addedInst.toggle()
             }, label: {
                 Text("Adicionar Instituição")
@@ -96,6 +91,11 @@ struct Login: View {
                             .font(.title)
                             .fontWeight(.bold)
                     }
+                    .onTapGesture {
+                        self.instituicaoID = instituicao.id!
+                        self.addedInst.toggle()
+                        self.testView.toggle()
+                    }
                 }.onDelete(perform: { indexSet in
                     for index in indexSet {
                         let instituicao = instituicoes[index]
@@ -106,9 +106,6 @@ struct Login: View {
                     } catch {
                         print("não foi possível salvar")
                     }
-                })
-                .onTapGesture(perform: {
-                    self.addedInst.toggle()
                 })
             }
         }

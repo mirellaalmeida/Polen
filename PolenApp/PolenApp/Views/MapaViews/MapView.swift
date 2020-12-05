@@ -13,12 +13,7 @@ import MapKit
 struct MapView: UIViewRepresentable {
     @Environment(\.managedObjectContext) var viewContext
     
-    @FetchRequest(
-        entity: Instituicao.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
-        ]
-    ) var instituicoes: FetchedResults<Instituicao>
+    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     @Binding var checkpoints: [Checkpoint]
     @Binding var muralsActive: Bool

@@ -15,7 +15,7 @@
         <attribute name="cidade" optional="YES" attributeType="String"/>
         <attribute name="descricao" optional="YES" attributeType="String"/>
         <attribute name="facebook" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="imagem" optional="YES" attributeType="String"/>
         <attribute name="instagram" optional="YES" attributeType="String"/>
         <attribute name="nome" optional="YES" attributeType="String"/>
