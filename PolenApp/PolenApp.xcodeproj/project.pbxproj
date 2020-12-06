@@ -11,6 +11,8 @@
 		648B5423DA6CF957E8336241 /* Pods_PolenAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2417BF2CAAE596DB790A20BA /* Pods_PolenAppTests.framework */; };
 		8626A1982579165700A42BA4 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626A1972579165700A42BA4 /* ImagePickerView.swift */; };
 		8626A1AF2579A83E00A42BA4 /* EditHistoriaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626A1AE2579A83E00A42BA4 /* EditHistoriaCard.swift */; };
+		8626A1B4257D4A1700A42BA4 /* EditColaboreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626A1B3257D4A1700A42BA4 /* EditColaboreCard.swift */; };
+		8626A1B9257D4B2600A42BA4 /* EditButtonView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626A1B8257D4B2600A42BA4 /* EditButtonView2.swift */; };
 		869D49BC256FD604004B1AC1 /* DuplaBotoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D49BB256FD604004B1AC1 /* DuplaBotoes.swift */; };
 		869D49C1256FD67F004B1AC1 /* ColaboreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D49C0256FD67F004B1AC1 /* ColaboreView.swift */; };
 		869D49C6256FD6CB004B1AC1 /* HistoriasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D49C5256FD6CB004B1AC1 /* HistoriasView.swift */; };
@@ -101,6 +103,8 @@
 		75E9AE9BA5DC50432851DFFB /* Pods-PolenApp-PolenAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp-PolenAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-PolenApp-PolenAppUITests/Pods-PolenApp-PolenAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8626A1972579165700A42BA4 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		8626A1AE2579A83E00A42BA4 /* EditHistoriaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHistoriaCard.swift; sourceTree = "<group>"; };
+		8626A1B3257D4A1700A42BA4 /* EditColaboreCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditColaboreCard.swift; sourceTree = "<group>"; };
+		8626A1B8257D4B2600A42BA4 /* EditButtonView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonView2.swift; sourceTree = "<group>"; };
 		869D49BB256FD604004B1AC1 /* DuplaBotoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplaBotoes.swift; sourceTree = "<group>"; };
 		869D49C0256FD67F004B1AC1 /* ColaboreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColaboreView.swift; sourceTree = "<group>"; };
 		869D49C5256FD6CB004B1AC1 /* HistoriasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriasView.swift; sourceTree = "<group>"; };
@@ -300,6 +304,8 @@
 				B4E2359525755DC200C412D5 /* EditButtonView.swift */,
 				B4E235A22575687B00C412D5 /* AddCardInfos.swift */,
 				8626A1AE2579A83E00A42BA4 /* EditHistoriaCard.swift */,
+				8626A1B3257D4A1700A42BA4 /* EditColaboreCard.swift */,
+				8626A1B8257D4B2600A42BA4 /* EditButtonView2.swift */,
 			);
 			path = MeuMural;
 			sourceTree = "<group>";
@@ -676,6 +682,8 @@
 				ED4161762562CA1B00AF5696 /* Onboarding.swift in Sources */,
 				ED43D3432562C8B1009D1BA7 /* SceneDelegate.swift in Sources */,
 				B48EA955256DCB0E00B62F21 /* Instituicao+CoreDataClass.swift in Sources */,
+				8626A1B9257D4B2600A42BA4 /* EditButtonView2.swift in Sources */,
+				8626A1B4257D4A1700A42BA4 /* EditColaboreCard.swift in Sources */,
 				ACC56A862575DE8B00BE35C3 /* OnboardingPageControl.swift in Sources */,
 				B4799A21256828F6003A047F /* SobreNos.swift in Sources */,
 				B4B55F77257528B000075164 /* AddColaboreCard.swift in Sources */,

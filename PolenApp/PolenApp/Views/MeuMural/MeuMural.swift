@@ -75,7 +75,7 @@ struct MeuMural: View {
         VStack(alignment: .leading){
             headerColaboreView
             
-            ColaboreMeuMuralView(instituicaoID: $instituicaoID)
+            ColaboreMeuMuralView(instituicaoID: $instituicaoID, isEditing: editingColabore)
         }
     }
     

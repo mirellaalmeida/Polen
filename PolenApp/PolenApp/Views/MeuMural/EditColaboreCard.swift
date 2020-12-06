@@ -1,13 +1,13 @@
 //
-//  EditHistoriaCard.swift
+//  EditColaboreCard.swift
 //  PolenApp
 //
-//  Created by Elaine  Cruz on 03/12/20.
+//  Created by Elaine  Cruz on 06/12/20.
 //
 
 import SwiftUI
 
-struct EditHistoriaCard: View {
+struct EditColaboreCard: View {
     @Binding var titulo: String
     @Binding var descricao: String
     
@@ -37,7 +37,6 @@ struct EditHistoriaCard: View {
             TextField("", text: $titulo)
                 .padding()
                 .foregroundColor(.black)
-               // .background(Color(UIColor.secondarySystemBackground))
                 .padding([.leading, .trailing])
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
@@ -45,19 +44,18 @@ struct EditHistoriaCard: View {
             TextField("", text: $descricao)
                 .padding()
                 .foregroundColor(.black)
-               // .background(Color(UIColor.secondarySystemBackground))
                 .padding([.leading, .trailing])
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
             Spacer()
             
             saveStory
-        }.environment(\.horizontalSizeClass, .compact)
+        }
     }
 }
 
-//struct EditHistoriaCard_Previews: PreviewProvider {
+//struct EditColaboreCard_Previews: PreviewProvider {
 //    static var previews: some View {
-//        EditHistoriaCard()
+//        EditColaboreCard()
 //    }
 //}

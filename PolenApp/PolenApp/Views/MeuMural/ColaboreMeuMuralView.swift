@@ -22,6 +22,8 @@ struct ColaboreMeuMuralView: View {
     @State var stickersCount: Int = DuplaBotoes().possoCount + DuplaBotoes().vaiCount
     @State var editColaboreCard = false
     @State var seeStickers = false
+    @State var isEditing: Bool
+
     
     var buttonStickers: some View {
         Button(action: {
@@ -44,31 +46,6 @@ struct ColaboreMeuMuralView: View {
         
     }
     
-    var buttons: some View {
-        HStack{
-//            NavigationLink(
-//                destination: ,
-//                isActive: $seeStickers) {
-//                EmptyView()
-//            }
-            
-           // EditButtonView(isEditing: $editColaboreCard)
-            
-                //.padding(.leading, 50)
-            
-            Spacer()
-                .frame(width: 30)
-            
-            /*NavigationLink(
-                destination: AddColaboreCard(instituicaoID: $instituicaoID, isAdding: $editColaboreCard),
-                isActive: $editColaboreCard) {
-                EmptyView()
-            }*/
-            buttonStickers
-            
-                //.padding(.trailing, 50)
-        }
-    }
     
     var cardInfos: some View {
         ForEach(instituicoes.first(where: {$0.id == instituicaoID})?.colaboreArray ?? [], id: \.self){ colabore in
@@ -84,8 +61,16 @@ struct ColaboreMeuMuralView: View {
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
                     .padding()
+            
+            
+
+                HStack{
+                    EditButtonView2(isEditing: $isEditing, colabore: colabore)
+                    Spacer()
+                        .frame(width: 30)
+                    buttonStickers
+                }
                 
-                buttons
             }
             .frame(width: 340, height: 190)
             
