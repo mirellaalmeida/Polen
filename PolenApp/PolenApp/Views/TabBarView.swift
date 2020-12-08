@@ -39,7 +39,7 @@ struct TabBarView: View {
                     Image(systemName: "person.fill")
                     Text("Meu Mural")
                 }
-        }
+        }.accentColor(Color("Roxo"))
     }
 }
 
