@@ -36,8 +36,9 @@ struct BannerMeuMural: View {
     
     var header: some View {
         HStack{
-            Image("Adus")
+            Image("Recomeço")
                 .resizable().aspectRatio(contentMode: .fit).frame(width: 120, height: 170)
+                
             
             VStack{
                 Text(instituicoes.first(where: {$0.id == instituicaoID})?.nome ?? "None")
