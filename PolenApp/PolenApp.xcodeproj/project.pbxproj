@@ -15,6 +15,7 @@
 		869D49C1256FD67F004B1AC1 /* ColaboreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D49C0256FD67F004B1AC1 /* ColaboreView.swift */; };
 		869D49C6256FD6CB004B1AC1 /* HistoriasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D49C5256FD6CB004B1AC1 /* HistoriasView.swift */; };
 		86F4C361256E8F4D00302AB5 /* BannerMeuMural.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F4C360256E8F4D00302AB5 /* BannerMeuMural.swift */; };
+		AC0341D4257FA6F40056317C /* RecursosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0341D3257FA6F40056317C /* RecursosView.swift */; };
 		AC499416256D5149000350C8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499415256D5149000350C8 /* MapView.swift */; };
 		AC49941E256D5175000350C8 /* SearchBarMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49941D256D5175000350C8 /* SearchBarMap.swift */; };
 		AC499427256D51DA000350C8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC499426256D51DA000350C8 /* LocationManager.swift */; };
@@ -58,7 +59,6 @@
 		ED4161832562CA4700AF5696 /* MuralDaInstituicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161822562CA4700AF5696 /* MuralDaInstituicao.swift */; };
 		ED4161882562CA5900AF5696 /* Favoritos.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161872562CA5900AF5696 /* Favoritos.swift */; };
 		ED41618D2562CA6900AF5696 /* MeuMural.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED41618C2562CA6900AF5696 /* MeuMural.swift */; };
-		ED4161922562CA8200AF5696 /* Recursos.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161912562CA8200AF5696 /* Recursos.swift */; };
 		ED4161972562CA8F00AF5696 /* Ajuda.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161962562CA8F00AF5696 /* Ajuda.swift */; };
 		ED41619C2562CAAB00AF5696 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED41619B2562CAAB00AF5696 /* Login.swift */; };
 		ED4161A12562CAB900AF5696 /* Cadastro.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161A02562CAB900AF5696 /* Cadastro.swift */; };
@@ -107,6 +107,7 @@
 		869D49C5256FD6CB004B1AC1 /* HistoriasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriasView.swift; sourceTree = "<group>"; };
 		86F4C360256E8F4D00302AB5 /* BannerMeuMural.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerMeuMural.swift; sourceTree = "<group>"; };
 		AAA837FD8ECFE066B14D2153 /* Pods-PolenAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenAppTests.release.xcconfig"; path = "Target Support Files/Pods-PolenAppTests/Pods-PolenAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		AC0341D3257FA6F40056317C /* RecursosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursosView.swift; sourceTree = "<group>"; };
 		AC499415256D5149000350C8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		AC49941D256D5175000350C8 /* SearchBarMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarMap.swift; sourceTree = "<group>"; };
 		AC499426256D51DA000350C8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -152,7 +153,6 @@
 		ED4161822562CA4700AF5696 /* MuralDaInstituicao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuralDaInstituicao.swift; sourceTree = "<group>"; };
 		ED4161872562CA5900AF5696 /* Favoritos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favoritos.swift; sourceTree = "<group>"; };
 		ED41618C2562CA6900AF5696 /* MeuMural.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeuMural.swift; sourceTree = "<group>"; };
-		ED4161912562CA8200AF5696 /* Recursos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recursos.swift; sourceTree = "<group>"; };
 		ED4161962562CA8F00AF5696 /* Ajuda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ajuda.swift; sourceTree = "<group>"; };
 		ED41619B2562CAAB00AF5696 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		ED4161A02562CAB900AF5696 /* Cadastro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cadastro.swift; sourceTree = "<group>"; };
@@ -327,7 +327,7 @@
 		ED0CF9E9257A822B007C69E0 /* RecursosView */ = {
 			isa = PBXGroup;
 			children = (
-				ED4161912562CA8200AF5696 /* Recursos.swift */,
+				AC0341D3257FA6F40056317C /* RecursosView.swift */,
 			);
 			path = RecursosView;
 			sourceTree = "<group>";
@@ -342,7 +342,6 @@
 				B4B55F8825753B0C00075164 /* MuralDanstituicao */,
 				ED4161872562CA5900AF5696 /* Favoritos.swift */,
 				5A714D062578F9C80002A3A7 /* CardViewFavoritos.swift */,
-				ED4161912562CA8200AF5696 /* Recursos.swift */,
 				ED4161962562CA8F00AF5696 /* Ajuda.swift */,
 				ED41619B2562CAAB00AF5696 /* Login.swift */,
 				ACFC5E77257911C900881712 /* TabBarView.swift */,
@@ -670,6 +669,7 @@
 				B48EA956256DCB0E00B62F21 /* Instituicao+CoreDataProperties.swift in Sources */,
 				AC49941E256D5175000350C8 /* SearchBarMap.swift in Sources */,
 				ED43D3412562C8B1009D1BA7 /* AppDelegate.swift in Sources */,
+				AC0341D4257FA6F40056317C /* RecursosView.swift in Sources */,
 				ED41619C2562CAAB00AF5696 /* Login.swift in Sources */,
 				ACC56A8B2575DEFF00BE35C3 /* OnboardingPageViewController.swift in Sources */,
 				B48EA958256DCB0E00B62F21 /* ColaboreCard+CoreDataProperties.swift in Sources */,
@@ -691,7 +691,6 @@
 				5A714D072578F9C80002A3A7 /* CardViewFavoritos.swift in Sources */,
 				ED4161BD2562CB4E00AF5696 /* CardRecurso.swift in Sources */,
 				ACFC5E78257911C900881712 /* TabBarView.swift in Sources */,
-				ED4161922562CA8200AF5696 /* Recursos.swift in Sources */,
 				ED41617E2562CA2F00AF5696 /* Mapa.swift in Sources */,
 				869D49C6256FD6CB004B1AC1 /* HistoriasView.swift in Sources */,
 				ED4161762562CA1B00AF5696 /* Onboarding.swift in Sources */,
@@ -895,7 +894,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"PolenApp/Preview Content\"";
-				DEVELOPMENT_TEAM = MWUZ9DKMH6;
+				DEVELOPMENT_TEAM = 389X9SAV47;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PolenApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -919,7 +918,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"PolenApp/Preview Content\"";
-				DEVELOPMENT_TEAM = MWUZ9DKMH6;
+				DEVELOPMENT_TEAM = 389X9SAV47;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PolenApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;

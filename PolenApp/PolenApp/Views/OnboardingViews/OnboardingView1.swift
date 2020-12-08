@@ -35,7 +35,7 @@ struct OnboardingView1: View {
                         .multilineTextAlignment(.center)
                         .padding(.all, 40)
                     
-                    Image("imageOnboarding1").resizable().aspectRatio(CGSize(width: 7, height: 5), contentMode: .fit)
+                    Image("imageOnboarding1").resizable().aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
                     
                     Spacer()
                     //.frame(height: 50)

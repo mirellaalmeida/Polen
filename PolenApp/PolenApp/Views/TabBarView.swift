@@ -28,7 +28,7 @@ struct TabBarView: View {
                     Text("Favoritos")
                 }
             
-            Recursos()
+            RecursosView()
                 .tabItem {
                     Image(systemName: "book.fill")
                     Text("Recursos")
