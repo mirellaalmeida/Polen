@@ -10,6 +10,7 @@ import SwiftUI
 struct EditHistoriaCard: View {
     @Binding var titulo: String
     @Binding var descricao: String
+    @State private var descriptionHeight: CGFloat = 0
     
     var saveStory: some View {
         Button(action: {
@@ -41,11 +42,9 @@ struct EditHistoriaCard: View {
                 .padding([.leading, .trailing])
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            
-            TextField("", text: $descricao)
+                    
+            DynamicHeightTextField(text: $descricao, height: $descriptionHeight)
                 .padding()
-                .foregroundColor(.black)
-               // .background(Color(UIColor.secondarySystemBackground))
                 .padding([.leading, .trailing])
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             

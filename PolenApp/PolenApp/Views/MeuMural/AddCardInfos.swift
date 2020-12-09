@@ -27,6 +27,7 @@ struct AddCardInfos: View {
         return descriptionHeight
     }
     
+    
     var addTitle: some View {
         TextField("Título", text: $title)
             .foregroundColor(.black)

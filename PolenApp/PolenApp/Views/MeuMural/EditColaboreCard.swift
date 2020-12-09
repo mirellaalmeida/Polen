@@ -10,6 +10,8 @@ import SwiftUI
 struct EditColaboreCard: View {
     @Binding var titulo: String
     @Binding var descricao: String
+    @State private var descriptionHeight: CGFloat = 0
+
     
     var saveStory: some View {
         Button(action: {
@@ -41,9 +43,9 @@ struct EditColaboreCard: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
             
-            TextField("", text: $descricao)
+            
+            DynamicHeightTextField(text: $descricao, height: $descriptionHeight)
                 .padding()
-                .foregroundColor(.black)
                 .padding([.leading, .trailing])
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
