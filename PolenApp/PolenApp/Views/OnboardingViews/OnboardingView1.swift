@@ -43,6 +43,8 @@ struct OnboardingView1: View {
             
             Button(action: {
                 withAnimation(.easeOut(duration: 0.3)) {
+                    UserDefaults.standard.set(true, forKey: "firstTimeUsing")
+                    UserDefaults.standard.synchronize()
                     self.tabViewIsActive.toggle()
                 }
             }, label: {

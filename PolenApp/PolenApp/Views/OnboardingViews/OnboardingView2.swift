@@ -10,15 +10,15 @@ import SwiftUI
 
 struct OnboardingView2: View {
     @Binding var tabViewIsActive: Bool
-
+    
     var body: some View {
         
         ZStack(alignment: .topTrailing){
-//            NavigationLink(
-//                destination: TabBarView( tabViewIsActive: $tabViewIsActive, tabSelected: ),
-//                isActive: $tabViewIsActive){
-//                EmptyView()
-//            }
+            //            NavigationLink(
+            //                destination: TabBarView( tabViewIsActive: $tabViewIsActive, tabSelected: ),
+            //                isActive: $tabViewIsActive){
+            //                EmptyView()
+            //            }
             
             VStack {
                 Image("titleOnboarding2")
@@ -52,12 +52,14 @@ struct OnboardingView2: View {
             
             Button(action: {
                 withAnimation(.easeOut(duration: 0.3)) {
+                    UserDefaults.standard.set(true, forKey: "firstTimeUsing")
+                    UserDefaults.standard.synchronize()
                     self.tabViewIsActive.toggle()
                 }
             }, label: {
-                    Text("Pular")
-                }).padding(10)
-                .foregroundColor(.white)
+                Text("Pular")
+            }).padding(10)
+            .foregroundColor(.white)
             
         }
         .background(Image("BgRoxo")
