@@ -15,6 +15,7 @@ public var zoomInstituicao: Bool = false
 
 struct Mapa: View {
     @Environment(\.managedObjectContext) var viewContexts
+    @Environment(\.presentationMode) var isPresented
     
     var locationManager = LocationManager()
     @ObservedObject var bank: BancoInstituicoes
@@ -24,10 +25,8 @@ struct Mapa: View {
         Checkpoint(title: "Adus", subtitle: "Integração social de refugiados e vítimas de migrações forçadas", coordinate: .init(latitude: -7.9021, longitude: -34.8296))]
     
     @State var muralIsActive = false
-    @State var loginIsActive = false
-    @Binding var mapaIsActive: Bool
     
-    @State var instituicaoID: UUID = UUID()
+    @State var instituicaoID: String = ""
     
     var searchInstituicao: some View {
         List {
@@ -54,14 +53,6 @@ struct Mapa: View {
             VStack{
                 LinkToMuralDaInstituicao(muralIsActive: $muralIsActive, instituicaoID: $instituicaoID)
                 
-                LinkToLogin(loginIsActive: $loginIsActive, instituicaoID: $instituicaoID)
-                
-                Button(action: {
-                    self.loginIsActive.toggle()
-                }, label: {
-                    Text("Login")
-                })
-                
                 SearchBarMap(bank: bank)
                 
                 if bank.isSearching {
@@ -69,7 +60,7 @@ struct Mapa: View {
                     searchInstituicao
                     
                 }else {
-                    MapView(checkpoints: $checkpoints, muralsActive: $muralIsActive, instituicaoID: $instituicaoID)
+                    MapView(checkpoints: $checkpoints, muralIsActive: $muralIsActive, instituicaoID: $instituicaoID)
                 }
             }
         }
@@ -77,10 +68,10 @@ struct Mapa: View {
     }
 }
 
-//struct Mapa_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Mapa(bank: BancoInstituicoes()).colorScheme(.light)    }
-//}
+struct Mapa_Previews: PreviewProvider {
+    static var previews: some View {
+        Mapa(bank: BancoInstituicoes()).colorScheme(.light)    }
+}
 
 extension View {
     func resignKeyboardOnDragGesture() -> some View {

@@ -10,7 +10,7 @@ import SwiftUI
 struct HistoriasView: View {
     @Environment(\.managedObjectContext) var viewContext
     
-    @Binding var instituicaoID:UUID
+    @Binding var instituicaoID: String
     @Binding var verMais: Bool
     @Binding var verHistoria: HistoriasCard?
     

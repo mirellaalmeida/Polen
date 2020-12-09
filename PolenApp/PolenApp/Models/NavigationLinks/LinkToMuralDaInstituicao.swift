@@ -9,11 +9,11 @@ import SwiftUI
 
 struct LinkToMuralDaInstituicao: View {
     @Binding var muralIsActive: Bool
-    @Binding var instituicaoID: UUID
+    @Binding var instituicaoID: String
     
     var body: some View {
         NavigationLink(
-            destination: MuralDaInstituicaoView(muralDaInstituicaoIsActive: $muralIsActive, instituicaoID: $instituicaoID),
+            destination: MuralDaInstituicaoView(instituicaoID: $instituicaoID),
             isActive: $muralIsActive){
             EmptyView()
         }

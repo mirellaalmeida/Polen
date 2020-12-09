@@ -46,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
         description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        //description.setOption(false as NSNumber, forKey: NSInferMappingModelAutomaticallyOption)
         
         let containerID = "iCloud.br.com.Academy.PolenApp"
         let options = NSPersistentCloudKitContainerOptions(containerIdentifier: containerID)
@@ -57,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let publicDescription = NSPersistentStoreDescription(url: publicStoreURL)
         publicDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
         publicDescription.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        //publicDescription.setOption(false as NSNumber, forKey: NSInferMappingModelAutomaticallyOption)
         
         var publicOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: identifier)
         publicOptions.databaseScope = .public
@@ -64,6 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         publicDescription.cloudKitContainerOptions = publicOptions
         
         container.persistentStoreDescriptions.append(publicDescription)
+        
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        container.viewContext.automaticallyMergesChangesFromParent = true
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -80,9 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-        
-        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        container.viewContext.automaticallyMergesChangesFromParent = true
         
         do {
             try container.viewContext.setQueryGenerationFrom(.current)

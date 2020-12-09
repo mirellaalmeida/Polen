@@ -9,10 +9,10 @@ import SwiftUI
 
 struct LinkToMeuMural: View {
     @Binding var meuMuralIsActive: Bool
-    @Binding var instituicaoID: UUID
+    @Binding var instituicaoID: String
     
     var body: some View {
-        NavigationLink(destination: MeuMural(isActive: $meuMuralIsActive, instituicaoID: $instituicaoID), isActive: $meuMuralIsActive) {
+        NavigationLink(destination: MeuMural(instituicaoID: $instituicaoID), isActive: $meuMuralIsActive) {
             EmptyView()
         }
     }

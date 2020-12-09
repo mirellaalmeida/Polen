@@ -53,7 +53,6 @@ class TextCoordinator: NSObject, UITextViewDelegate, NSLayoutManagerDelegate {
     
     weak var textView: UITextView?
     
-    
     init(dynamicSizeTextField: DynamicHeightTextField) {
         self.dynamicHeightTextField = dynamicSizeTextField
     }
@@ -63,10 +62,10 @@ class TextCoordinator: NSObject, UITextViewDelegate, NSLayoutManagerDelegate {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        /*if (text == "\n") {
-            textView.resignFirstResponder()
-            return false
-        }*/
+//        if (text == "\n") {
+//            textView.resignFirstResponder()
+//            return false
+//        }
         return true
     }
     

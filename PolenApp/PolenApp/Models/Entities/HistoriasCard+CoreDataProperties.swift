@@ -1,8 +1,8 @@
 //
 //  HistoriasCard+CoreDataProperties.swift
-//  
+//  PolenApp
 //
-//  Created by Jéssica Amaral on 24/11/20.
+//  Created by Jéssica Amaral on 05/12/20.
 //
 //
 
@@ -20,5 +20,9 @@ extension HistoriasCard {
     @NSManaged public var imagem: String?
     @NSManaged public var titulo: String?
     @NSManaged public var daInstituicao: Instituicao?
+
+}
+
+extension HistoriasCard : Identifiable {
 
 }

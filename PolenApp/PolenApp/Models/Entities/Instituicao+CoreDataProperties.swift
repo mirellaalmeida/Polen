@@ -1,8 +1,8 @@
 //
 //  Instituicao+CoreDataProperties.swift
-//  
+//  PolenApp
 //
-//  Created by Jéssica Amaral on 24/11/20.
+//  Created by Jéssica Amaral on 05/12/20.
 //
 //
 
@@ -15,11 +15,12 @@ extension Instituicao {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Instituicao> {
         return NSFetchRequest<Instituicao>(entityName: "Instituicao")
     }
-
+    
+    @NSManaged public var email: String?
     @NSManaged public var cidade: String?
     @NSManaged public var descricao: String?
     @NSManaged public var facebook: String?
-    @NSManaged public var id: UUID?
+    @NSManaged public var id: String?
     @NSManaged public var imagem: String?
     @NSManaged public var instagram: String?
     @NSManaged public var nome: String?
@@ -79,6 +80,10 @@ extension Instituicao {
 
     @objc(removeHistoriasList:)
     @NSManaged public func removeFromHistoriasList(_ values: NSSet)
+
+}
+
+extension Instituicao : Identifiable {
 
 }
 

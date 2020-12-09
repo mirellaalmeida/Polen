@@ -1,8 +1,8 @@
 //
 //  ColaboreCard+CoreDataClass.swift
-//  
+//  PolenApp
 //
-//  Created by Jéssica Amaral on 24/11/20.
+//  Created by Jéssica Amaral on 05/12/20.
 //
 //
 

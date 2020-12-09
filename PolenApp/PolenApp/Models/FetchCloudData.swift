@@ -9,29 +9,28 @@ import Foundation
 import CloudKit
 
 class CKInstituicao {
-    static let database = CKContainer.default().publicCloudDatabase
+    static let database = CKContainer.default().privateCloudDatabase
     
     class func fetch(completion: @escaping (Result<[String], Error>) -> Void) {
-        print("here")
         let predicate = NSPredicate(value: true)
         let descriptor = NSSortDescriptor(key: "CD_nome", ascending: true)
         let query = CKQuery(recordType: "CD_Instituicao", predicate: predicate)
         query.sortDescriptors = [descriptor]
 
         let operation = CKQueryOperation(query: query)
-        operation.desiredKeys = ["CD_nome"]
+        operation.desiredKeys = ["CD_id"]
         //operation.resultsLimit = 50
         
         var instituicoes = [String]()
         
         operation.recordFetchedBlock = { record in
-            let nome = (record["CD_nome"] as String?)!
+            let id = (record["CD_id"] as String?)!
             
             //let instituicao = Instituicao()
-            print((record["CD_nome"] as String?)!)
+            print((record["CD_id"] as String?)!)
             //instituicao.nome = nome
             
-            instituicoes.append(nome)
+            instituicoes.append(id)
         }
         
         operation.queryCompletionBlock = { (_, error) in

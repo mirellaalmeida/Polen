@@ -1,8 +1,8 @@
 //
 //  Instituicao+CoreDataClass.swift
-//  
+//  PolenApp
 //
-//  Created by Jéssica Amaral on 24/11/20.
+//  Created by Jéssica Amaral on 05/12/20.
 //
 //
 
@@ -11,6 +11,9 @@ import CoreData
 
 @objc(Instituicao)
 public class Instituicao: NSManagedObject {
+    public var wrappedEmail: String {
+        email ?? " "
+    }
     public var wrappedCidade: String {
         cidade ?? " "
     }
@@ -19,6 +22,9 @@ public class Instituicao: NSManagedObject {
     }
     public var wrappedFacebook: String {
         facebook ?? " "
+    }
+    public var wrappedID: String {
+        id ?? " "
     }
     public var wrappedImagem: String {
         imagem ?? " "
@@ -49,5 +55,4 @@ public class Instituicao: NSManagedObject {
             $0.wrappedTitulo < $1.wrappedTitulo
         }
     }
-    
 }

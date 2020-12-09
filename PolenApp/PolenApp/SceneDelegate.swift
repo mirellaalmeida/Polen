@@ -11,7 +11,7 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    @State var tempID = UUID()
+    //@State var tempID = " "
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -29,7 +29,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //let contentView = Login(instituicaoID: $tempID, loginIsActive: .constant(true)).environment(\.managedObjectContext, context)
         //let contentView = Mapa(bank: BancoInstituicoes(), mapaIsActive: .constant(true)).environment(\.managedObjectContext, context)
         //let contentView = Onboarding().environment(\.managedObjectContext, context)
-        let contentView = CadastroViewTemp().environment(\.managedObjectContext, context)
+        //let contentView = LoginView().environment(\.managedObjectContext, context)
+        let contentView = InitialNavigationController().environment(\.managedObjectContext, context)
+        //let contentView = CadastroView1(instituicaoID: .constant(" ")).environment(\.managedObjectContext, context)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

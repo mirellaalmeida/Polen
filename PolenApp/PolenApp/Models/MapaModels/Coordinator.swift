@@ -16,11 +16,11 @@ var texto: String = ""
 final class Coordinator: NSObject, MKMapViewDelegate{
     var instituicoes: FetchedResults<Instituicao>
     @Binding var muralIsActive: Bool
-    @Binding var instituicaoID: UUID
+    @Binding var instituicaoID: String
 
     var control: MapView
     
-    init(_ control: MapView, instituicoes: FetchedResults<Instituicao>, muralIsActive: Binding<Bool>, instituicaoID: Binding<UUID>) {
+    init(_ control: MapView, instituicoes: FetchedResults<Instituicao>, muralIsActive: Binding<Bool>, instituicaoID: Binding<String>) {
         self.control = control
         self.instituicoes = instituicoes
         _muralIsActive = muralIsActive
@@ -94,11 +94,8 @@ final class Coordinator: NSObject, MKMapViewDelegate{
     
     
     @objc func buttonPinSelected(){
-        print(instituicoes.first?.nome == texto)
-        
-        print(instituicaoID)
         instituicaoID = instituicoes.first(where: {$0.nome == texto})?.id ?? instituicaoID
-        print(instituicaoID)
+
         muralIsActive.toggle()
     }
 }

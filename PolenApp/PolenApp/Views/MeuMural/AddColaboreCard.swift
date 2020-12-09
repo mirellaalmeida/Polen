@@ -6,29 +6,52 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct AddColaboreCard: View {
     @Environment(\.managedObjectContext) var viewContext
     
-    @Binding var instituicaoID: UUID
+    @Binding var instituicaoID: String
     @Binding var isAdding: Bool
     
     @State private var title: String = ""
     @State private var description: String = ""
     
+    private let publicDatabase = CKContainer.default().publicCloudDatabase
+    private let userData = UserDefaults.standard
+    
     @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     func addCard() {
-        let newCard = ColaboreCard(context: viewContext)
-        newCard.titulo = title
-        newCard.descricao = description
-        newCard.relationship = instituicoes.first(where: {$0.id == instituicaoID})
+        let userID = (userData.object(forKey: "userID") as? String)!
         
-        do {
-            try self.viewContext.save()
-        } catch {
-            print("não foi possível salvar")
+        publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: userID)) { (record, error) in
+            if let fetchedInfo = record {
+                let newCard = CKRecord(recordType: "CD_ColaboreCard")
+                let reference = CKRecord.Reference(recordID: fetchedInfo.recordID, action: .deleteSelf)
+                
+                newCard["CD_titulo"] = title
+                newCard["CD_descricao"] = description
+                newCard["relationship"] = reference as CKRecordValue
+                
+                publicDatabase.save(newCard) { _, _ in
+                    let newCard = ColaboreCard(context: viewContext)
+                    newCard.titulo = title
+                    newCard.descricao = description
+                    newCard.relationship = instituicoes.first(where: {$0.id == instituicaoID})
+                    
+                    do {
+                        try self.viewContext.save()
+                    } catch {
+                        print("não foi possível salvar")
+                    }
+                }
+                
+            } else {
+                print("failure on fetching user data from icloud: \(String(describing: error))")
+            }
         }
+        
     }
     
     var publishCard: some View {
@@ -67,8 +90,8 @@ struct AddColaboreCard: View {
 }
 
 /*
-struct AddColaboreCard_Previews: PreviewProvider {
-    static var previews: some View {
-        AddColaboreCard()
-    }
-}*/
+ struct AddColaboreCard_Previews: PreviewProvider {
+ static var previews: some View {
+ AddColaboreCard()
+ }
+ }*/

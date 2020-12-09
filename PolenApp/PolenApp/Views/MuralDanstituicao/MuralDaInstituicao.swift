@@ -12,19 +12,18 @@ import SwiftUI
 struct MuralDaInstituicaoView: View {
     @Environment(\.managedObjectContext) var viewContext
     
-    @Binding var muralDaInstituicaoIsActive: Bool
-    @Binding var instituicaoID:UUID
+    @Binding var instituicaoID: String
     
     @State var verMais = false
     @State var verHistoria:HistoriasCard?
     
-    @State private var didTap: Bool = false
+    @State private var isFavorite: Bool = false
     
     
     @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
-    init(muralDaInstituicaoIsActive: Binding<Bool>, instituicaoID: Binding<UUID>) {
-        _muralDaInstituicaoIsActive = muralDaInstituicaoIsActive
+    init(instituicaoID: Binding<String>) {
+        //_muralDaInstituicaoIsActive = muralDaInstituicaoIsActive
         _instituicaoID = instituicaoID
         //Configurações para NavigationBar
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "Banner"), for: .default)
@@ -42,6 +41,7 @@ struct MuralDaInstituicaoView: View {
                 .padding()
             
             ColaboreView(instituicaoID: $instituicaoID)
+                .padding(.bottom, 120)
         }
     }
     
@@ -73,9 +73,15 @@ struct MuralDaInstituicaoView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing:
                                 Button(action: {
-                                    print("Favorite tapped!")
+                                    //adicionar aos favoritos
+                                    self.isFavorite.toggle()
                                 }, label: {
-                                    Image(systemName: "heart")
+                                    if isFavorite {
+                                        Image(systemName: "heart.fill")
+                                    }
+                                    if !isFavorite {
+                                        Image(systemName: "heart")
+                                    }
                                 })
         )
         .sheet(isPresented: $verMais) {
@@ -84,15 +90,14 @@ struct MuralDaInstituicaoView: View {
     }
 }
 
-/*
  #if DEBUG
  
- struct MuralView_Previews: PreviewProvider {
+ struct MuralDaInstituicaoView_Previews: PreviewProvider {
  static var previews: some View {
- MuralDaInstituicaoView(isActive: .constant(true), instituicaoID: )
+    MuralDaInstituicaoView(instituicaoID: .constant(" "))
  .previewDevice("iPhone 11")
  }
  }
  #endif
- */
+ 
 

@@ -16,8 +16,8 @@ struct MapView: UIViewRepresentable {
     @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     @Binding var checkpoints: [Checkpoint]
-    @Binding var muralsActive: Bool
-    @Binding var instituicaoID: UUID
+    @Binding var muralIsActive: Bool
+    @Binding var instituicaoID: String
     
     func makeUIView(context: Context) -> MKMapView {
         let map = MKMapView()
@@ -30,13 +30,12 @@ struct MapView: UIViewRepresentable {
     func makeCoordinator() -> Coordinator {
         return Coordinator(self,
                            instituicoes: instituicoes,
-                           muralIsActive: $muralsActive,
+                           muralIsActive: $muralIsActive,
                            instituicaoID: $instituicaoID)
     }
     
     func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
         uiView.addAnnotations(checkpoints)
-        
     }
     
 }

@@ -14,7 +14,6 @@
     <entity name="Instituicao" representedClassName="Instituicao" syncable="YES">
         <attribute name="cidade" optional="YES" attributeType="String"/>
         <attribute name="descricao" optional="YES" attributeType="String"/>
-        <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="facebook" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="imagem" optional="YES" attributeType="String"/>
@@ -29,6 +28,6 @@
     <elements>
         <element name="ColaboreCard" positionX="-54" positionY="45" width="128" height="88"/>
         <element name="HistoriasCard" positionX="-45" positionY="54" width="128" height="103"/>
-        <element name="Instituicao" positionX="-54" positionY="-9" width="128" height="238"/>
+        <element name="Instituicao" positionX="-54" positionY="-9" width="128" height="223"/>
     </elements>
 </model>

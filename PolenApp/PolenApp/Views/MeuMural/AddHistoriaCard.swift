@@ -6,29 +6,51 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct AddHistoriaCard: View {
     @Environment(\.managedObjectContext) var viewContext
     
-    @Binding var instituicaoID: UUID
+    @Binding var instituicaoID: String
     @Binding var isAdding: Bool
     
     @State var title: String = ""
     @State var description: String = ""
     @State private var descriptionHeight: CGFloat = 0
     
+    private let publicDatabase = CKContainer.default().publicCloudDatabase
+    private let userData = UserDefaults.standard
+    
     @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     func addStory() {
-        let newStory = HistoriasCard(context: viewContext)
-        newStory.titulo = title
-        newStory.descricao = description
-        newStory.daInstituicao = instituicoes.first(where: {$0.id == instituicaoID})
+        let userID = (userData.object(forKey: "userID") as? String)!
         
-        do {
-            try self.viewContext.save()
-        } catch {
-            print("não foi possível salvar")
+        publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: userID)) { (record, error) in
+            if let fetchedInfo = record {
+                let newStory = CKRecord(recordType: "CD_HistoriasCard")
+                let reference = CKRecord.Reference(recordID: fetchedInfo.recordID, action: .deleteSelf)
+                
+                newStory["CD_titulo"] = title
+                newStory["CD_descricao"] = description
+                newStory["daInstituicao"] = reference as CKRecordValue
+                
+                publicDatabase.save(newStory) { _, _ in
+                    let newStory = HistoriasCard(context: viewContext)
+                    newStory.titulo = title
+                    newStory.descricao = description
+                    newStory.daInstituicao = instituicoes.first(where: {$0.id == instituicaoID})
+                    
+                    do {
+                        try self.viewContext.save()
+                    } catch {
+                        print("não foi possível salvar")
+                    }
+                }
+                
+            } else {
+                print("failure on fetching user data from icloud: \(String(describing: error))")
+            }
         }
     }
     
@@ -37,7 +59,6 @@ struct AddHistoriaCard: View {
             addStory()
             
             self.isAdding.toggle()
-            
         }, label: {
             Text("Publicar")
                 .padding()
@@ -59,7 +80,6 @@ struct AddHistoriaCard: View {
                 .padding()
             
             ImagePickerView()
-            
             
             AddCardInfos(title: $title, description: $description)
             

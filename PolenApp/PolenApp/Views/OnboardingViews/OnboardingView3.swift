@@ -9,16 +9,17 @@ import Foundation
 import SwiftUI
 
 struct OnboardingView3: View {
-    @State var tabViewIsActive = false
+    @Binding var tabViewIsActive: Bool
+    @State var tabSelected: Int? = 3
 
     var body: some View {
         
         ZStack(alignment: .topTrailing){
-            NavigationLink(
-                destination: TabBarView( tabViewIsActive: $tabViewIsActive),
-                isActive: $tabViewIsActive){
-                EmptyView()
-            }
+//            NavigationLink(
+//                destination: TabBarView( tabSelected: $tabSelected, tabViewIsActive: $tabViewIsActive),
+//                isActive: $tabViewIsActive){
+//                EmptyView()
+//            }
             
             VStack{
                 Image("titleOnboarding3")
@@ -39,7 +40,9 @@ struct OnboardingView3: View {
                 Spacer()
                 
                 Button(action: {
-                    self.tabViewIsActive.toggle()
+                    withAnimation(.easeOut(duration: 0.3)) {
+                        self.tabViewIsActive.toggle()
+                    }
                 }, label: {
                     ZStack {
                         Image("BotaoOnboarding")
@@ -64,6 +67,6 @@ struct OnboardingView3: View {
 
 struct OnboardingView3_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView3()
+        OnboardingView3(tabViewIsActive: .constant(true))
     }
 }

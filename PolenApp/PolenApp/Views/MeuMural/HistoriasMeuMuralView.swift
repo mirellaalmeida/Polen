@@ -10,7 +10,7 @@ import SwiftUI
 struct HistoriasMeuMuralView: View {
     @Environment(\.managedObjectContext) var viewContext
     
-    @Binding var instituicaoID:UUID
+    @Binding var instituicaoID: String
     
     @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     

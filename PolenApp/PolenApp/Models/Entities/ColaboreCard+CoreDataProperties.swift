@@ -1,8 +1,8 @@
 //
 //  ColaboreCard+CoreDataProperties.swift
-//  
+//  PolenApp
 //
-//  Created by Jéssica Amaral on 24/11/20.
+//  Created by Jéssica Amaral on 05/12/20.
 //
 //
 
@@ -19,5 +19,9 @@ extension ColaboreCard {
     @NSManaged public var descricao: String?
     @NSManaged public var titulo: String?
     @NSManaged public var relationship: Instituicao?
+
+}
+
+extension ColaboreCard : Identifiable {
 
 }

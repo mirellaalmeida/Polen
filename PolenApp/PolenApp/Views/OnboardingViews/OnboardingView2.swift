@@ -9,16 +9,16 @@ import Foundation
 import SwiftUI
 
 struct OnboardingView2: View {
-    @State var tabViewIsActive = false
+    @Binding var tabViewIsActive: Bool
 
     var body: some View {
         
         ZStack(alignment: .topTrailing){
-            NavigationLink(
-                destination: TabBarView( tabViewIsActive: $tabViewIsActive),
-                isActive: $tabViewIsActive){
-                EmptyView()
-            }
+//            NavigationLink(
+//                destination: TabBarView( tabViewIsActive: $tabViewIsActive, tabSelected: ),
+//                isActive: $tabViewIsActive){
+//                EmptyView()
+//            }
             
             VStack {
                 Image("titleOnboarding2")
@@ -50,7 +50,11 @@ struct OnboardingView2: View {
                 OnboardingPageControl(current: 1)
             }
             
-            Button(action: {self.tabViewIsActive.toggle()}, label: {
+            Button(action: {
+                withAnimation(.easeOut(duration: 0.3)) {
+                    self.tabViewIsActive.toggle()
+                }
+            }, label: {
                     Text("Pular")
                 }).padding(10)
                 .foregroundColor(.white)
@@ -67,6 +71,6 @@ struct OnboardingView2: View {
 
 struct OnboardingView2_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView2()
+        OnboardingView2(tabViewIsActive: .constant(true))
     }
 }
