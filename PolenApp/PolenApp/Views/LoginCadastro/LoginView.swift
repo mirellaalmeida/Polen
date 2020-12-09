@@ -31,20 +31,8 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            /*Button(action: {
-             for instituicao in instituicoes {
-             print(instituicao.wrappedNome)
-             }
-             }, label: {Text("Teste")})*/
-            
             let userID = userData.object(forKey: "userID") as? String
-            
-            NavigationLink(
-                destination: CadastroView1(instituicaoID: $instituicaoID, cadastroIsActive: $cadastroIsActive),
-                isActive: $cadastroIsActive) {
-                EmptyView()
-            }
-            
+      
             NavigationLink(destination: MeuMural(instituicaoID: $instituicaoID), isActive: $muralIsActive) {
                 EmptyView()
             }
@@ -88,9 +76,8 @@ struct LoginView: View {
                                         if let fetchedInfo = record {
                                             fetchRemoteInfos(record: fetchedInfo)
                                             
-                                            //print(instituicaoID)
-                                            
                                             self.muralIsActive.toggle()
+                                            
                                         } else {
                                             print("failure on fetching user data from icloud: \(String(describing: error))")
                                             
@@ -101,7 +88,6 @@ struct LoginView: View {
                                 
                             default:
                                 print("failure on fetching user's credentials")
-                            //break
                             }
                             
                         case .failure(let error):
@@ -116,21 +102,29 @@ struct LoginView: View {
                 }
                 
             } else {
-                HStack{
+                HStack {
                    VStack {
-                        Text("Desculpa, mas tivemos alguns problemas internos, por favor atualize a página.")
+                        Text("Aee!! Sua instituição já está no nosso banco de dados, veja como seu mural ficou lindão!")
+                            .frame(width: 80, alignment: .center)
                         
                         Button(action: {
                             loadInstituicoes()
                             
                         }, label: {
-                            Text("Atualizar Página")
+                            HStack {
+                                Text("Ver Meu Mural")
+                                    
+                                Image(systemName: "forward.fill")
+                            }
+                            .padding()
+                            
                         })
                     }
                 }
-               
-                
             }
+        }
+        .fullScreenCover(isPresented: $cadastroIsActive) {
+            CadastroView1(instituicaoID: $instituicaoID)
         }
     }
     

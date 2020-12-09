@@ -10,6 +10,7 @@ import CloudKit
 
 struct CadastroView2: View {
     @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.presentationMode) var presentation
     
     @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
@@ -24,7 +25,7 @@ struct CadastroView2: View {
     
     private let publicDatabase = CKContainer.default().publicCloudDatabase
     @Binding var instituicaoID: String
-    @Binding var cadastroIsActive: Bool
+    //@Binding var cadastroIsActive: Bool
     
     var addAddress: some View {
         TextField("Endereço ou cidade", text: $cidade)
@@ -160,8 +161,14 @@ struct CadastroView2: View {
     }
     
     var body: some View {
+//        NavigationLink(
+//            destination: CadastroView3(instituicaoID: $instituicaoID, cadastroIsActive: $cadastroIsActive),
+//            isActive: $view3IsActive) {
+//            EmptyView()
+//        }
+        
         NavigationLink(
-            destination: CadastroView3(instituicaoID: $instituicaoID, cadastroIsActive: $cadastroIsActive),
+            destination: CadastroView3(presentation: _presentation, instituicaoID: $instituicaoID),
             isActive: $view3IsActive) {
             EmptyView()
         }

@@ -10,6 +10,7 @@ import CloudKit
 
 struct CadastroView1: View {
     @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.presentationMode) var presentation
     
     @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
@@ -28,7 +29,7 @@ struct CadastroView1: View {
     private let publicDatabase = CKContainer.default().publicCloudDatabase
     
     @Binding var instituicaoID: String
-    @Binding var cadastroIsActive: Bool
+    //@Binding var cadastroIsActive: Bool
     
     var addNome: some View {
         TextField("Nome da Instituição*", text: $name)
@@ -105,12 +106,17 @@ struct CadastroView1: View {
     var body: some View {
         NavigationView {
             VStack {
+//                NavigationLink(
+//                    destination: CadastroView2(instituicaoID: $instituicaoID, cadastroIsActive: $cadastroIsActive),
+//                    isActive: $view2IsActive) {
+//                    EmptyView()
+//                }
                 NavigationLink(
-                    destination: CadastroView2(instituicaoID: $instituicaoID, cadastroIsActive: $cadastroIsActive),
+                    destination: CadastroView2(presentation: _presentation, instituicaoID: $instituicaoID),
                     isActive: $view2IsActive) {
                     EmptyView()
                 }
-                .navigationBarHidden(true)
+                
                 Text("Crie uma conta")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
@@ -137,7 +143,8 @@ struct CadastroView1: View {
                 Alert(title: Text("Atenção"), message: Text("Todos os campos devem ser preenchidos"), dismissButton: .cancel(Text("Voltar")))
             })
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+//        .navigationBarHidden(true)
+       .navigationViewStyle(StackNavigationViewStyle())
         //        .sheet(isPresented: $testView) {
         //            List {
         //                ForEach(instituicoes, id: \.self) {instituicao in

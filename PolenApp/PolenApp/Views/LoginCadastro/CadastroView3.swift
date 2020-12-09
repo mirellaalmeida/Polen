@@ -17,7 +17,7 @@ struct CadastroView3: View {
     @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     @Binding var instituicaoID: String
-    @Binding var cadastroIsActive: Bool
+   // @Binding var cadastroIsActive: Bool
     
     @State var meuMural = false
     @State var isChecked = false
@@ -56,10 +56,10 @@ struct CadastroView3: View {
             //                }
             //            }
             print(instituicoes.count)
-            withAnimation(.easeOut(duration: 0.3)) {
-                self.cadastroIsActive.toggle()
-            }
-            //presentation.wrappedValue.dismiss()
+//            withAnimation(.easeOut(duration: 0.3)) {
+//                self.cadastroIsActive.toggle()
+//            }
+            presentation.wrappedValue.dismiss()
         }, label: {
             Text("Salvar")
         })
@@ -79,28 +79,30 @@ struct CadastroView3: View {
         //            isActive: $meuMural) {
         //            EmptyView()
         //        }
-        
-        VStack {
-            Text("Estamos quase lá!")
-                .font(.title)
-                .fontWeight(.semibold)
-                .multilineTextAlignment(.leading)
-                .padding(.top)
+        ScrollView(.vertical){
             
-            Text("Nos ajude a entender os pilares da sua instituição selecionando as caixas abaixo que se enquadrem com as atividades da sua instituição")
-                .font(.subheadline)
-                //.fontWeight(.ultraLight)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-                .padding(.bottom, 40)
-                .padding(.top, 5)
-                .padding([.leading, .trailing], 70)
-            
-            checkboxes
-            
-            saveButton
-            
-            Spacer()
+            VStack {
+                Text("Estamos quase lá!")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.leading)
+                    .padding(.top)
+                
+                Text("Nos ajude a entender os pilares da sua instituição selecionando as caixas abaixo que se enquadrem com as atividades da sua instituição")
+                    .font(.subheadline)
+                    //.fontWeight(.ultraLight)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 40)
+                    .padding(.top, 5)
+                    .padding([.leading, .trailing], 70)
+                
+                checkboxes
+                
+                saveButton
+                
+                Spacer()
+            }
         }
     }
     
@@ -136,44 +138,40 @@ struct CheckBoxField: View {
     }
     
     var body: some View {
-        ScrollView(.vertical){
-            HStack {
-                Button(action: {
-                    self.isChecked.toggle()
-                    tags[label] = isChecked
-                    print(tags)
+        HStack {
+            Button(action: {
+                self.isChecked.toggle()
+                tags[label] = isChecked
+                print(tags)
+                
+            }, label: {
+                //HStack(alignment: .center, spacing: 10) {
+                if self.isChecked {
+                    Image(systemName: "checkmark.square.fill")
+                        //.renderingMode(.none)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: self.size, height: self.size)
+                        .background(Color(.white))
+                        .foregroundColor(color)
                     
-                }, label: {
-                    //HStack(alignment: .center, spacing: 10) {
-                    if self.isChecked {
-                        Image(systemName: "checkmark.square.fill")
-                            //.renderingMode(.none)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: self.size, height: self.size)
-                            .background(Color(.white))
-                            .foregroundColor(color)
-                        
-                    } else {
-                        Image(systemName: "square")
-                            .renderingMode(.original)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: self.size, height: self.size)
-                    }
-                    //}.foregroundColor(color)
-                })
-                
-                Text(label)
-                    .font(Font.system(size: size))
-                
-                Spacer()
-            }
-            .padding()
+                } else {
+                    Image(systemName: "square")
+                        .renderingMode(.original)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: self.size, height: self.size)
+                }
+                //}.foregroundColor(color)
+            })
             
+            Text(label)
+                .font(Font.system(size: size))
+            
+            Spacer()
         }
+        .padding()
     }
-    
 }
 
 //struct CadastroView3_Previews: PreviewProvider {
