@@ -81,7 +81,7 @@ struct MeuMural: View {
                     Image("Banner3")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .ignoresSafeArea(.all)
+                        .edgesIgnoringSafeArea(.top)
                         .frame(height:2)
                     
                     BannerMeuMural(instituicaoID: $instituicaoID)

@@ -34,7 +34,7 @@ struct Favoritos: View {
             }
         }
         .navigationBarHidden(true)
-        .ignoresSafeArea(.all)
+        .edgesIgnoringSafeArea(.top)
         .navigationBarBackButtonHidden(true)
     }
     

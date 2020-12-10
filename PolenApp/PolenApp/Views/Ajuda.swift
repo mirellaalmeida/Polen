@@ -52,7 +52,7 @@ struct Ajuda: View {
                     .padding()
             }
             
-        } .ignoresSafeArea(.all)
+        } .edgesIgnoringSafeArea(.top)
        
     }
 }

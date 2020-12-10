@@ -54,7 +54,7 @@ struct TabBarView: View {
                     }
                     
                     if (login) {
-                        MeuMural(instituicaoID: .constant(instituicoes.first(where: {$0.id == userID})!.wrappedID))
+                        MeuMural(instituicaoID: .constant(instituicoes.first(where: {$0.id == userID})?.wrappedID ?? ""))
                     }
                 }
                 .navigationViewStyle(StackNavigationViewStyle())

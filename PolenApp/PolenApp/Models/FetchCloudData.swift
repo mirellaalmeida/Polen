@@ -66,9 +66,9 @@ class CKInstituicao {
         operation.recordFetchedBlock = { record in
             let instituicao: InstituicaoResume = .init(
                 id: (record.recordID),
-                name: (record["CD_nome"] as String?)!,
-                description: (record["CD_descricao"] as String?)!,
-                address: (record["CD_cidade"] as String?)!
+                name: (record["CD_nome"] as String?) ?? " ",
+                description: (record["CD_descricao"] as String?) ?? " ",
+                address: (record["CD_cidade"] as String?) ?? " "
             )
             instituicoes.append(instituicao)
         }

@@ -32,28 +32,30 @@ struct OnboardingView1: View {
                 //.frame(height: 50)
                 
                 OnboardingPageControl(current: 0).padding()
-                Button(action: {
-                    withAnimation(.easeOut(duration: 0.3)) {
-                        UserDefaults.standard.set(true, forKey: "firstTimeUsing")
-                        UserDefaults.standard.synchronize()
-                        self.tabViewIsActive.toggle()
-                    }
-                }, label: {
-                    Text("Pular")
-                    
-                })
-                .padding(10)
-                .foregroundColor(.white)
-                
             }
-            .background(Image("BgLaranja")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                            .ignoresSafeArea())
-            .navigationBarHidden(true)
+            
+            Button(action: {
+                withAnimation(.easeOut(duration: 0.3)) {
+                    UserDefaults.standard.set(true, forKey: "firstTimeUsing")
+                    UserDefaults.standard.synchronize()
+                    self.tabViewIsActive.toggle()
+                }
+            }, label: {
+                Text("Pular")
+                
+            })
+            .padding(10)
+            .foregroundColor(.white)
         }
+        
+        .background(Image("BgLaranja")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                        .edgesIgnoringSafeArea(.top))
+        .navigationBarHidden(true)
     }
+    
 }
 struct OnboardingView1_Previews: PreviewProvider {
     static var previews: some View {

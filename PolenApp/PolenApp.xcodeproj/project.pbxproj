@@ -753,7 +753,6 @@
 				5A714D072578F9C80002A3A7 /* CardViewFavoritos.swift in Sources */,
 				ED4161BD2562CB4E00AF5696 /* CardRecurso.swift in Sources */,
 				ACFC5E78257911C900881712 /* TabBarView.swift in Sources */,
-				ED4161922562CA8200AF5696 /* Recursos.swift in Sources */,
 				B47B7FC9257C74B400E5C0B7 /* PolenApp.xcdatamodeld in Sources */,
 				B42F76EA257C222E007C6BAF /* LinkToMeuMural.swift in Sources */,
 				ED41617E2562CA2F00AF5696 /* Mapa.swift in Sources */,
@@ -779,7 +778,6 @@
 				AC499427256D51DA000350C8 /* LocationManager.swift in Sources */,
 				ACC56A6A2575C2F600BE35C3 /* OnboardingView1.swift in Sources */,
 				ED41618D2562CA6900AF5696 /* MeuMural.swift in Sources */,
-				B48EA959256DCB0E00B62F21 /* HistoriasCard+CoreDataClass.swift in Sources */,
 				ED0CF9E5257A81B3007C69E0 /* CardViewRecursos.swift in Sources */,
 				B47B7FD9257C74FB00E5C0B7 /* Instituicao+CoreDataProperties.swift in Sources */,
 				B4E2359B2575631E00C412D5 /* VerMaisButton.swift in Sources */,
@@ -970,7 +968,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"PolenApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 389X9SAV47;
+				DEVELOPMENT_TEAM = SZDYT9A2D8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PolenApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -995,7 +993,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"PolenApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 389X9SAV47;
+				DEVELOPMENT_TEAM = SZDYT9A2D8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PolenApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;

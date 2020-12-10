@@ -48,6 +48,7 @@ struct RecursosView: View {
                 }
             }
         }
+        .edgesIgnoringSafeArea(.top)
     }
     
 }

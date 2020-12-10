@@ -20,7 +20,7 @@ struct BannerMeuMural: View {
         Image("Banner3")
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .ignoresSafeArea(.all)
+            .edgesIgnoringSafeArea(.top)
     }
     
     var header: some View {

@@ -66,7 +66,7 @@ struct OnboardingView2: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                        .ignoresSafeArea())
+                        .edgesIgnoringSafeArea(.top))
         .navigationBarHidden(true)
     }
 }
