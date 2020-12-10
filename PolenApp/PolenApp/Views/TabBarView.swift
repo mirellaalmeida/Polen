@@ -63,7 +63,7 @@ struct TabBarView: View {
                     Text("Meu Mural")
                 }
                 .tag(3)
-            }
+            }.accentColor(Color("Roxo"))
     }
 
     func checkLogin(){

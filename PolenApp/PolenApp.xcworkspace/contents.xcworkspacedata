@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <Group
-      location = "container:"
-      name = "Entities">
-      <FileRef
-         location = "group:PolenApp/Instituicao+CoreDataClass.swift">
-      </FileRef>
-      <FileRef
-         location = "group:PolenApp/Instituicao+CoreDataProperties.swift">
-      </FileRef>
-      <FileRef
-         location = "group:PolenApp/ColaboreCard+CoreDataClass.swift">
-      </FileRef>
-      <FileRef
-         location = "group:PolenApp/ColaboreCard+CoreDataProperties.swift">
-      </FileRef>
-      <FileRef
-         location = "group:PolenApp/HistoriasCard+CoreDataClass.swift">
-      </FileRef>
-      <FileRef
-         location = "group:PolenApp/HistoriasCard+CoreDataProperties.swift">
-      </FileRef>
-   </Group>
    <FileRef
       location = "group:PolenApp.xcodeproj">
    </FileRef>
