@@ -36,7 +36,7 @@ struct AddCardInfos: View {
             .textFieldStyle(RoundedBorderTextFieldStyle())
     }
     
-    var addDescrption: some View {
+    var addDescription: some View {
         ZStack(alignment: .topLeading){
             Color.white
             
@@ -55,7 +55,7 @@ struct AddCardInfos: View {
     var body: some View {
         addTitle
         
-        addDescrption
+        addDescription
     }
 }
 

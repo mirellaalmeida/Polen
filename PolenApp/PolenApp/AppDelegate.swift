@@ -10,9 +10,6 @@ import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
@@ -42,6 +39,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          error conditions that could cause the creation of the store to fail.
         */
         let container = NSPersistentCloudKitContainer(name: "PolenApp")
+        
+        guard let description = container.persistentStoreDescriptions.first else {
+            fatalError("###\(#function): Failed to retrieve a persistent store description.")
+        }
+        
+        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        //description.setOption(false as NSNumber, forKey: NSInferMappingModelAutomaticallyOption)
+        
+        let containerID = "iCloud.br.com.Academy.PolenApp"
+        let options = NSPersistentCloudKitContainerOptions(containerIdentifier: containerID)
+        description.cloudKitContainerOptions = options
+        
+        let publicStoreURL = description.url!.deletingLastPathComponent().appendingPathComponent("PolenApp-public.sqlite")
+        let identifier = description.cloudKitContainerOptions!.containerIdentifier
+        
+        let publicDescription = NSPersistentStoreDescription(url: publicStoreURL)
+        publicDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        publicDescription.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        //publicDescription.setOption(false as NSNumber, forKey: NSInferMappingModelAutomaticallyOption)
+        
+        var publicOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: identifier)
+        publicOptions.databaseScope = .public
+        
+        publicDescription.cloudKitContainerOptions = publicOptions
+        
+        container.persistentStoreDescriptions.append(publicDescription)
+        
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -57,6 +82,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        
+        do {
+            try container.viewContext.setQueryGenerationFrom(.current)
+        } catch {
+            fatalError("###\(#function): Failed to pin viewContext to the current generation: \(error)")
+        }
+        
         return container
     }()
 

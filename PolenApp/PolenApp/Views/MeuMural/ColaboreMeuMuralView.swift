@@ -10,14 +10,9 @@ import SwiftUI
 struct ColaboreMeuMuralView: View {
     @Environment(\.managedObjectContext) var viewContext
     
-    @Binding var instituicaoID:UUID
+    @Binding var instituicaoID: String
     
-    @FetchRequest(
-        entity: Instituicao.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
-        ]
-    ) var instituicoes: FetchedResults<Instituicao>
+    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     @State var stickersCount: Int = DuplaBotoes().possoCount + DuplaBotoes().vaiCount
     @State var editColaboreCard = false
@@ -64,7 +59,7 @@ struct ColaboreItem: View {
                 .foregroundColor(.white)
                 .padding(.vertical, 8)
                 .padding(.horizontal, 20)
-                
+            
             
         }).background(Color("Roxo"))
         .cornerRadius(5)
@@ -93,10 +88,18 @@ struct ColaboreItem: View {
                 Spacer()
                     .frame(width: 30)
                 buttonStickers
+
             }
             
         }
         .frame(width: 340, height: 190)
     }
 }
+
+//struct ColaboreMuralView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ColaboreMeuMuralView(instituicaoID: .constant(" "))
+//            .previewDevice("iPhone 11")
+//    }
+//}
 

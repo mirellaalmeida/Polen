@@ -6,24 +6,23 @@
 //
 
 import SwiftUI
+var primeiroAcesso: Bool = true
 
 struct Onboarding: View {
-    
-    @State var mapaIsActive = false
-
+    @Binding var tabViewIsActive: Bool
     
     var body: some View {
-        NavigationView{
-            ZStack(alignment: .topTrailing){
-                
-                ContainerViews(["1", "2", "3"]).edgesIgnoringSafeArea(.all)
-            }
+        //NavigationView{
+        
+        ZStack(alignment: .topTrailing){
+            ContainerViews(tabViewIsActive: $tabViewIsActive, page: ["1", "2", "3"]).edgesIgnoringSafeArea(.all)
         }
+        //}
     }
 }
 
 struct Onboarding_Previews: PreviewProvider {
     static var previews: some View {
-        Onboarding().ignoresSafeArea(.all, edges: .all)
+        Onboarding(tabViewIsActive: .constant(true)).ignoresSafeArea(.all, edges: .all)
     }
 }

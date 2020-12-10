@@ -6,29 +6,23 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct ColaboreView: View {
     @Environment(\.managedObjectContext) var viewContext
     
-    @Binding var instituicaoID:UUID
-    
-    @FetchRequest(
-        entity: Instituicao.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
-        ]
-    ) var instituicoes: FetchedResults<Instituicao>
+    var cards: [HistoriasResume]?
     
     var cardInfos: some View {
-        ForEach(instituicoes.first(where: {$0.id == instituicaoID})?.colaboreArray ?? [], id: \.self){ colabore in
+        ForEach(cards ?? [], id: \.self){ colabore in
             VStack{
-                Text(colabore.wrappedTitulo)
+                Text(colabore.id)
                     .font(.system(size:16))
                     .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)
                 
-                Text(colabore.wrappedDescricao)
+                Text(colabore.description)
                     .font(/*@START_MENU_TOKEN@*/.subheadline/*@END_MENU_TOKEN@*/)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
