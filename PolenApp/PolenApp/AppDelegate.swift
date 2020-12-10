@@ -67,9 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         container.persistentStoreDescriptions.append(publicDescription)
         
-        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        container.viewContext.automaticallyMergesChangesFromParent = true
-        
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -85,6 +82,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        container.viewContext.automaticallyMergesChangesFromParent = true
         
         do {
             try container.viewContext.setQueryGenerationFrom(.current)

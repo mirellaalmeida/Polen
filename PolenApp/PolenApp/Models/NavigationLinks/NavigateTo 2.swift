@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct NavigateToAddHistoria: View {
-    @Binding var instituicaoID:UUID
-    @Binding var addingHistoria:Bool
+    @Binding var instituicaoID: UUID
+    @Binding var addingHistoria: Bool
     
     var body: some View {
         NavigationLink(destination: AddHistoria(instituicaoID: $instituicaoID, isAdding: self.$addingHistoria),
-                       isActive: $addingHistoria){
+                       isActive: $addingHistoria) {
             EmptyView()
         }
     }

@@ -8,13 +8,18 @@
 //
 
 import SwiftUI
+import CloudKit
 
-struct BannerMeuMural: View {
-    @Environment(\.managedObjectContext) var viewContext
+struct BannerMuralDaInstituicao: View {
+    //@Environment(\.managedObjectContext) var viewContext
     
-    @Binding var instituicaoID: String
+//    @Binding var instituicaoID: String
+    //@Binding var instituicaoID: CKRecord?
+    var nome: String?
+    var descricao: String?
+    var cidade: String?
     
-    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
+//    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     var background: some View {
         Image("Banner3")
@@ -31,18 +36,26 @@ struct BannerMeuMural: View {
                 .frame(width: 120, height: 120)
             
             VStack(alignment: .leading, spacing: 10) {
-                
-                Text(instituicoes.first(where: {$0.id == instituicaoID})?.wrappedNome ?? " ")
+                Text(nome ?? "None")
                     .font(.title)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)
-                
-                Text(instituicoes.first(where: {$0.id == instituicaoID})?.wrappedDescricao ?? " ")
+
+                Text(descricao ?? "None")
                     .font(.system(size: 12, weight: .regular, design: .default))
                     .fontWeight(.regular)
                     .multilineTextAlignment(.leading)
                     .frame(width: 200, alignment: .leading)
-                
+//                Text(instituicoes.first(where: {$0.id == instituicaoID})?.wrappedNome ?? " ")
+//                    .font(.title)
+//                    .fontWeight(.bold)
+//                    .multilineTextAlignment(.leading)
+//
+//                Text(instituicoes.first(where: {$0.id == instituicaoID})?.wrappedDescricao ?? " ")
+//                    .font(.system(size: 12, weight: .regular, design: .default))
+//                    .fontWeight(.regular)
+//                    .multilineTextAlignment(.leading)
+//                    .frame(width: 200, alignment: .leading)
             }
             
             Spacer()
@@ -58,10 +71,13 @@ struct BannerMeuMural: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 20, height: 20, alignment: .center)
             
-            
-            Text(instituicoes.first(where: {$0.id == instituicaoID})?.cidade ?? "None")
+            Text(cidade ?? "None")
                 .font(.system(size: 14, weight: .medium, design: .default))
                 .frame(height: 2, alignment: .leading)
+            
+//            Text(instituicoes.first(where: {$0.id == instituicaoID})?.cidade ?? "None")
+//                .font(.system(size: 14, weight: .medium, design: .default))
+//                .frame(height: 2, alignment: .leading)
         }
         .padding([.leading, .top])
     }
@@ -116,8 +132,8 @@ struct BannerMeuMural: View {
     }
 }
 
-struct BannerView_Previews: PreviewProvider {
-    static var previews: some View {
-        BannerMeuMural(instituicaoID: .constant(" "))
-    }
-}
+//struct BannerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BannerMeuMural(instituicaoID: .constant(" "))
+//    }
+//}

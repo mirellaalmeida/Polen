@@ -33,8 +33,7 @@ struct TabBarView: View {
                 }
                 .tag(0)
                 .navigationViewStyle(StackNavigationViewStyle())
-                
-                
+           
                 Favoritos()
                     .tabItem {
                         Image(systemName: "heart.fill")

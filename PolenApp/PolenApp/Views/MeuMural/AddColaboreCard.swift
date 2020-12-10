@@ -27,26 +27,42 @@ struct AddColaboreCard: View {
         
         publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: userID)) { (record, error) in
             if let fetchedInfo = record {
-                let newCard = CKRecord(recordType: "CD_ColaboreCard")
+                let newRecord = CKRecord(recordType: "CD_ColaboreCard")
                 let reference = CKRecord.Reference(recordID: fetchedInfo.recordID, action: .deleteSelf)
                 
-                newCard["CD_titulo"] = title
-                newCard["CD_descricao"] = description
-                newCard["relationship"] = reference as CKRecordValue
+                newRecord["CD_titulo"] = title
+                newRecord["CD_descricao"] = description
+                newRecord["relationship"] = reference as CKRecordValue
                 
-                publicDatabase.save(newCard) { _, _ in
-                    let newCard = ColaboreCard(context: viewContext)
-                    newCard.titulo = title
-                    newCard.descricao = description
-                    newCard.relationship = instituicoes.first(where: {$0.id == instituicaoID})
-                    
-                    do {
-                        try self.viewContext.save()
-                    } catch {
-                        print("não foi possível salvar")
-                    }
+                var cardsList = fetchedInfo["colaboreList"] as? [CKRecord.Reference]
+                
+
+                let cardReference = CKRecord.Reference(recordID: newRecord.recordID, action: .none)
+                print("cardReferencce")
+                if cardsList == nil {
+                    cardsList = []
+                    cardsList?.append(cardReference)
+                } else if !(cardsList?.contains(cardReference))! {
+                    cardsList?.append(cardReference)
+                } else {
+                    print("Didn`t Bind")
                 }
                 
+                fetchedInfo["colaboreList"] = cardsList
+                publicDatabase.save(fetchedInfo) {  _, _ in
+                    publicDatabase.save(newRecord) { _, _ in
+                        let newCard = ColaboreCard(context: viewContext)
+                        newCard.titulo = title
+                        newCard.descricao = description
+                        newCard.relationship = instituicoes.first(where: {$0.id == instituicaoID})
+                        
+                        do {
+                            try self.viewContext.save()
+                        } catch {
+                            print("não foi possível salvar")
+                        }
+                    }
+                }
             } else {
                 print("failure on fetching user data from icloud: \(String(describing: error))")
             }

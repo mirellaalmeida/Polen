@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import CloudKit
 
 public var selecionada: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
 
@@ -22,11 +23,14 @@ struct Mapa: View {
     
     @State var checkpoints: [Checkpoint] = [
         Checkpoint(title: "Recomeço Refugiados", subtitle: "Aulas de português para haitianos", coordinate: .init(latitude: -7.9015, longitude: -34.8268)),
-        Checkpoint(title: "Adus", subtitle: "Integração social de refugiados e vítimas de migrações forçadas", coordinate: .init(latitude: -7.9021, longitude: -34.8296))]
+        Checkpoint(title: "Instituto Adus", subtitle: "Integração social de refugiados e vítimas de migrações forçadas", coordinate: .init(latitude: -7.9021, longitude: -34.8296))]
     
     @State var muralIsActive = false
     
-    @State var instituicaoID: String = ""
+    //@State var instituicaoID: String = ""
+    @State var instituicao: CKRecord?
+    @State var colaboreCards: [HistoriasResume]?
+    @State var historiaCards: [HistoriasResume]?
     
     var searchInstituicao: some View {
         List {
@@ -51,7 +55,7 @@ struct Mapa: View {
     public var body: some View {
         ZStack{
             VStack{
-                LinkToMuralDaInstituicao(muralIsActive: $muralIsActive, instituicaoID: $instituicaoID)
+                LinkToMuralDaInstituicao(muralIsActive: $muralIsActive, instituicao: $instituicao, colaboreCards: $colaboreCards, historiaCards: $historiaCards)
                 
                 SearchBarMap(bank: bank)
                 
@@ -59,8 +63,12 @@ struct Mapa: View {
                     
                     searchInstituicao
                     
-                }else {
-                    MapView(checkpoints: $checkpoints, muralIsActive: $muralIsActive, instituicaoID: $instituicaoID)
+                } else {
+                    MapView(instituicao: $instituicao,
+                            colaboreCards: $colaboreCards,
+                            historiaCards: $historiaCards,
+                            checkpoints: $checkpoints,
+                            muralIsActive: $muralIsActive)
                 }
             }
         }

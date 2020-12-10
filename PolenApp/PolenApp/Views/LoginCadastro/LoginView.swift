@@ -16,17 +16,15 @@ struct LoginView: View {
     @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     @State private var login = UserDefaults.standard.bool(forKey: "isLogged")
-    //@State var name = ""
     @State var instituicaoID: String = ""
     
     @State var cadastroIsActive = false
     @State var alertIsActive = false
     @State var alert2IsActive = false
     @State var muralIsActive = false
-    //@State var dataIsSaved = false
-    
-    //@FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes
+
     private let publicDatabase = CKContainer.default().publicCloudDatabase
+    
     private let userData = UserDefaults.standard
     
     var body: some View {
@@ -67,11 +65,13 @@ struct LoginView: View {
                                     }
                                     
                                     UserDefaults.standard.set(true, forKey: "isLogged")
+                                    self.login.toggle()
                                     
                                     self.cadastroIsActive.toggle()
                                     
                                 } else {
                                     //singIn
+                                    print("entrei")
                                     publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: userAppleID)) { (record, error) in
                                         if let fetchedInfo = record {
                                             fetchRemoteInfos(record: fetchedInfo)
@@ -81,6 +81,7 @@ struct LoginView: View {
                                         } else {
                                             print("failure on fetching user data from icloud: \(String(describing: error))")
                                             
+                                            self.login.toggle()
                                             self.alertIsActive.toggle()
                                         }
                                     }
@@ -105,7 +106,7 @@ struct LoginView: View {
                 HStack {
                    VStack {
                         Text("Aee!! Sua instituição já está no nosso banco de dados, veja como seu mural ficou lindão!")
-                            .frame(width: 80, alignment: .center)
+                            .frame(width: 200, alignment: .center)
                         
                         Button(action: {
                             loadInstituicoes()
@@ -136,6 +137,8 @@ struct LoginView: View {
         
         instituicaoID = newInstituicao.id!
         
+        viewContext.refresh(newInstituicao, mergeChanges: true)
+        
         do {
             try self.viewContext.save()
         } catch {
@@ -144,6 +147,7 @@ struct LoginView: View {
     }
     
     private func fetchRemoteInfos(record: CKRecord) {
+        
         let newInstituicao = Instituicao(context: viewContext)
         newInstituicao.id = record.recordID.recordName as String
         
@@ -157,6 +161,8 @@ struct LoginView: View {
         newInstituicao.facebook = record["CD_facebook"]
         newInstituicao.site = record["CD_site"]
         newInstituicao.email = record["CD_email"]
+        
+        viewContext.refresh(newInstituicao, mergeChanges: true)
         
         do {
             try self.viewContext.save()

@@ -13,19 +13,40 @@ import CoreData
 
 var texto: String = ""
 
-final class Coordinator: NSObject, MKMapViewDelegate{
-    var instituicoes: FetchedResults<Instituicao>
+final class Coordinator: NSObject, MKMapViewDelegate {
+    //var instituicoes: FetchedResults<Instituicao>
+    @Binding var instituicoes: [InstituicaoResume]
+    
+    @Binding var colaboreCards: [HistoriasResume]?
+    @Binding var historiaCards: [HistoriasResume]?
+    @Binding var instituicao: CKRecord?
+    
     @Binding var muralIsActive: Bool
-    @Binding var instituicaoID: String
-
+    
+    private let publicDatabase = CKContainer.default().publicCloudDatabase
+    
     var control: MapView
     
-    init(_ control: MapView, instituicoes: FetchedResults<Instituicao>, muralIsActive: Binding<Bool>, instituicaoID: Binding<String>) {
+    init(_ control: MapView,
+            instituicoes: Binding<[InstituicaoResume]>,
+            colaboreCards: Binding<[HistoriasResume]?>,
+            historiaCards:Binding<[HistoriasResume]?>,
+            muralIsActive: Binding<Bool>,
+            instituicao: Binding<CKRecord?>) {
         self.control = control
-        self.instituicoes = instituicoes
+        _instituicoes = instituicoes
+        _colaboreCards = colaboreCards
+        _historiaCards = historiaCards
         _muralIsActive = muralIsActive
-        _instituicaoID = instituicaoID
+        _instituicao = instituicao
     }
+    
+//    init(_ control: MapView, instituicoes: Binding<[InstituicaoResume]>, muralIsActive: Binding<Bool>, instituicao: Binding<CKRecord?>) {
+//        self.control = control
+//        _instituicoes = instituicoes
+//        _muralIsActive = muralIsActive
+//        _instituicao = instituicao
+//    }
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
         if let annotationView = views.first{
@@ -94,8 +115,42 @@ final class Coordinator: NSObject, MKMapViewDelegate{
     
     
     @objc func buttonPinSelected(){
-        instituicaoID = instituicoes.first(where: {$0.nome == texto})?.id ?? instituicaoID
+        if let index = instituicoes.firstIndex(where: {$0.name == texto}) {
+            publicDatabase.fetch(withRecordID: instituicoes[index].id) { (record, error) in
+                if let fetchedInfo = record {
+                    self.instituicao = fetchedInfo
+                    
+                    CKInstituicao.fetchHistorias(instituicaoID: fetchedInfo.recordID) { results in
+                        switch results {
+                        case .success(let newHistorias):
+                            if newHistorias != self.historiaCards {
+                                self.historiaCards = newHistorias
+                            }
+                            
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                    
+                    CKInstituicao.fetchColabore(instituicaoID: fetchedInfo.recordID) { results in
+                        switch results {
+                        case .success(let newCards):
+                            if newCards != self.colaboreCards {
+                                self.colaboreCards = newCards
+                            }
+                            
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                    
+                    self.muralIsActive.toggle()
+                } else {
+                    print("failure on fetching user data from icloud: \(String(describing: error))")
+                }
+            }
+        }
 
-        muralIsActive.toggle()
+       // muralIsActive.toggle()
     }
 }

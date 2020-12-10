@@ -14,7 +14,7 @@ struct LinkToMuralDaInstituicao: View {
     var body: some View {
         NavigationLink(
             destination: MuralDaInstituicaoView(muralDaInstituicaoIsActive: $muralIsActive, instituicaoID: $instituicaoID),
-            isActive: $muralIsActive){
+            isActive: $muralIsActive) {
             EmptyView()
         }
     }

@@ -38,8 +38,31 @@ extension BancoInstituicoes {
     func getInstitutions() -> [Checkpoint] {
         var instituicoes: [Checkpoint] = []
         instituicoes.append(Checkpoint(title: "Recomeço Refugiados", subtitle: "Aulas de português para haitianos", coordinate: .init(latitude: -7.9015, longitude: -34.8268)))
-        instituicoes.append(Checkpoint(title: "Adus", subtitle: "Integração social de refugiados e vítimas de migrações forçadas", coordinate: .init(latitude: -7.9021, longitude: -34.8296)))
+        instituicoes.append(Checkpoint(title: "Instituto Adus", subtitle: "Integração social de refugiados e vítimas de migrações forçadas", coordinate: .init(latitude: -7.9021, longitude: -34.8296)))
+        
+        
         
         return instituicoes
     }
+    
+    private func getCoordinate(addressString: String,
+                               completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void) {
+        
+        let geocoder = CLGeocoder()
+        
+        geocoder.geocodeAddressString(addressString) { (placemarks, error) in
+            
+            if error == nil {
+                if let placemark = placemarks?[0] {
+                    let location = placemark.location!
+                    
+                    completionHandler(location.coordinate, nil)
+                    return
+                }
+            }
+            
+            completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
+        }
+    }
+    
 }

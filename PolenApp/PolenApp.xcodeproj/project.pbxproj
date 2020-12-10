@@ -33,8 +33,9 @@
 		B422959F2579752A00869C24 /* CadastroView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B422959E2579752A00869C24 /* CadastroView1.swift */; };
 		B42295A72579CEF000869C24 /* FetchCloudData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42295A62579CEF000869C24 /* FetchCloudData.swift */; };
 		B42F76EA257C222E007C6BAF /* LinkToMeuMural.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42F76E9257C222E007C6BAF /* LinkToMeuMural.swift */; };
-		B45F68EA257E6DD2006302A9 /* CadastroNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F68E9257E6DD2006302A9 /* CadastroNavigationController.swift */; };
 		B45F68EF257FC633006302A9 /* temporario.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F68EE257FC633006302A9 /* temporario.swift */; };
+		B45F69082581A5E7006302A9 /* InstituicaoResume.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F69072581A5E7006302A9 /* InstituicaoResume.swift */; };
+		B45F690D2581A994006302A9 /* BannerMuralDaInstituicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F690C2581A994006302A9 /* BannerMuralDaInstituicao.swift */; };
 		B4799A1125682821003A047F /* VerMaisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A1025682821003A047F /* VerMaisView.swift */; };
 		B4799A1925682895003A047F /* Colabore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A1825682895003A047F /* Colabore.swift */; };
 		B4799A21256828F6003A047F /* SobreNos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4799A20256828F6003A047F /* SobreNos.swift */; };
@@ -58,10 +59,12 @@
 		B4E235A32575687B00C412D5 /* AddCardInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E235A22575687B00C412D5 /* AddCardInfos.swift */; };
 		B4E235B42575E5B200C412D5 /* LinkToMuralDaInstituicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E235B32575E5B200C412D5 /* LinkToMuralDaInstituicao.swift */; };
 		B4E235B92575E64E00C412D5 /* LinkToLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E235B82575E64E00C412D5 /* LinkToLogin.swift */; };
+		B4EDB49725826CD80099D927 /* HistoriasResume.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EDB49625826CD80099D927 /* HistoriasResume.swift */; };
+		B4EDB4A32582751E0099D927 /* VerMaisButtonCloudkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EDB4A22582751E0099D927 /* VerMaisButtonCloudkit.swift */; };
+		B4EDB4AB2582770A0099D927 /* VerMaisViewCloudkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EDB4AA2582770A0099D927 /* VerMaisViewCloudkit.swift */; };
 		B4FA7FF5257D39BF00E8B56B /* CadastroView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FA7FF4257D39BF00E8B56B /* CadastroView2.swift */; };
 		B4FA7FFD257D39D200E8B56B /* CadastroView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FA7FFC257D39D200E8B56B /* CadastroView3.swift */; };
 		B4FA8009257D710000E8B56B /* InitialNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FA8008257D710000E8B56B /* InitialNavigationController.swift */; };
-		B4FA801C257DA4E500E8B56B /* MeuMuralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FA801B257DA4E500E8B56B /* MeuMuralController.swift */; };
 		BFBE53360B2757C986EB190A /* Pods_PolenApp_PolenAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 416CB25BEBD4BC7C8254C560 /* Pods_PolenApp_PolenAppUITests.framework */; };
 		ED4161762562CA1B00AF5696 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4161752562CA1B00AF5696 /* Onboarding.swift */; };
 		ED41617E2562CA2F00AF5696 /* Mapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED41617D2562CA2F00AF5696 /* Mapa.swift */; };
@@ -134,8 +137,9 @@
 		B422959E2579752A00869C24 /* CadastroView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroView1.swift; sourceTree = "<group>"; };
 		B42295A62579CEF000869C24 /* FetchCloudData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCloudData.swift; sourceTree = "<group>"; };
 		B42F76E9257C222E007C6BAF /* LinkToMeuMural.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkToMeuMural.swift; sourceTree = "<group>"; };
-		B45F68E9257E6DD2006302A9 /* CadastroNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroNavigationController.swift; sourceTree = "<group>"; };
 		B45F68EE257FC633006302A9 /* temporario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temporario.swift; sourceTree = "<group>"; };
+		B45F69072581A5E7006302A9 /* InstituicaoResume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstituicaoResume.swift; sourceTree = "<group>"; };
+		B45F690C2581A994006302A9 /* BannerMuralDaInstituicao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerMuralDaInstituicao.swift; sourceTree = "<group>"; };
 		B4799A1025682821003A047F /* VerMaisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerMaisView.swift; sourceTree = "<group>"; };
 		B4799A1825682895003A047F /* Colabore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colabore.swift; sourceTree = "<group>"; };
 		B4799A20256828F6003A047F /* SobreNos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SobreNos.swift; sourceTree = "<group>"; };
@@ -160,11 +164,13 @@
 		B4E235A22575687B00C412D5 /* AddCardInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardInfos.swift; sourceTree = "<group>"; };
 		B4E235B32575E5B200C412D5 /* LinkToMuralDaInstituicao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkToMuralDaInstituicao.swift; sourceTree = "<group>"; };
 		B4E235B82575E64E00C412D5 /* LinkToLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkToLogin.swift; sourceTree = "<group>"; };
+		B4EDB49625826CD80099D927 /* HistoriasResume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriasResume.swift; sourceTree = "<group>"; };
+		B4EDB4A22582751E0099D927 /* VerMaisButtonCloudkit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerMaisButtonCloudkit.swift; sourceTree = "<group>"; };
+		B4EDB4AA2582770A0099D927 /* VerMaisViewCloudkit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerMaisViewCloudkit.swift; sourceTree = "<group>"; };
 		B4FA7FE4257C7C0400E8B56B /* PolenApp 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "PolenApp 2.xcdatamodel"; sourceTree = "<group>"; };
 		B4FA7FF4257D39BF00E8B56B /* CadastroView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroView2.swift; sourceTree = "<group>"; };
 		B4FA7FFC257D39D200E8B56B /* CadastroView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroView3.swift; sourceTree = "<group>"; };
 		B4FA8008257D710000E8B56B /* InitialNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialNavigationController.swift; sourceTree = "<group>"; };
-		B4FA801B257DA4E500E8B56B /* MeuMuralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeuMuralController.swift; sourceTree = "<group>"; };
 		B90B89087C52636376FD8379 /* Pods-PolenApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp.debug.xcconfig"; path = "Target Support Files/Pods-PolenApp/Pods-PolenApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C07F438E3FDFEBD346B7B82F /* Pods_PolenApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PolenApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC82473EF0D392B3DA4E6519 /* Pods-PolenApp-PolenAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PolenApp-PolenAppUITests.release.xcconfig"; path = "Target Support Files/Pods-PolenApp-PolenAppUITests/Pods-PolenApp-PolenAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -322,7 +328,6 @@
 				B4FA7FFC257D39D200E8B56B /* CadastroView3.swift */,
 				ED41619B2562CAAB00AF5696 /* Login.swift */,
 				ED4161A02562CAB900AF5696 /* LoginView.swift */,
-				B45F68E9257E6DD2006302A9 /* CadastroNavigationController.swift */,
 			);
 			path = LoginCadastro;
 			sourceTree = "<group>";
@@ -334,6 +339,9 @@
 				869D49BB256FD604004B1AC1 /* DuplaBotoes.swift */,
 				869D49C0256FD67F004B1AC1 /* ColaboreView.swift */,
 				869D49C5256FD6CB004B1AC1 /* HistoriasView.swift */,
+				B45F690C2581A994006302A9 /* BannerMuralDaInstituicao.swift */,
+				B4EDB4A22582751E0099D927 /* VerMaisButtonCloudkit.swift */,
+				B4EDB4AA2582770A0099D927 /* VerMaisViewCloudkit.swift */,
 			);
 			path = MuralDanstituicao;
 			sourceTree = "<group>";
@@ -341,6 +349,9 @@
 		B4B55F8925753C0100075164 /* MeuMural */ = {
 			isa = PBXGroup;
 			children = (
+				B4799A1025682821003A047F /* VerMaisView.swift */,
+				B4E2359A2575631E00C412D5 /* VerMaisButton.swift */,
+				86F4C360256E8F4D00302AB5 /* BannerMeuMural.swift */,
 				ED41618C2562CA6900AF5696 /* MeuMural.swift */,
 				B4B55F7E25752D5000075164 /* ColaboreMeuMuralView.swift */,
 				B4B55F8325752D6500075164 /* HistoriasMeuMuralView.swift */,
@@ -350,7 +361,6 @@
 				B4E2359525755DC200C412D5 /* EditButtonView.swift */,
 				B4E235A22575687B00C412D5 /* AddCardInfos.swift */,
 				B4E2359025755D0200C412D5 /* CustomTextView.swift */,
-				B4FA801B257DA4E500E8B56B /* MeuMuralController.swift */,
 			);
 			path = MeuMural;
 			sourceTree = "<group>";
@@ -380,9 +390,6 @@
 				ED4161912562CA8200AF5696 /* Recursos.swift */,
 				ED4161962562CA8F00AF5696 /* Ajuda.swift */,
 				ACFC5E77257911C900881712 /* TabBarView.swift */,
-				B4799A1025682821003A047F /* VerMaisView.swift */,
-				86F4C360256E8F4D00302AB5 /* BannerMeuMural.swift */,
-				B4E2359A2575631E00C412D5 /* VerMaisButton.swift */,
 				8626A1972579165700A42BA4 /* ImagePickerView.swift */,
 				B45F68EE257FC633006302A9 /* temporario.swift */,
 			);
@@ -403,6 +410,8 @@
 				B4799A1825682895003A047F /* Colabore.swift */,
 				B4799A20256828F6003A047F /* SobreNos.swift */,
 				B42295A62579CEF000869C24 /* FetchCloudData.swift */,
+				B45F69072581A5E7006302A9 /* InstituicaoResume.swift */,
+				B4EDB49625826CD80099D927 /* HistoriasResume.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -702,10 +711,12 @@
 				ACC56A8B2575DEFF00BE35C3 /* OnboardingPageViewController.swift in Sources */,
 				B47B7FDA257C74FB00E5C0B7 /* ColaboreCard+CoreDataClass.swift in Sources */,
 				B4B55F8C2575583200075164 /* LinkToAddHistoriaCard.swift in Sources */,
+				B4EDB4A32582751E0099D927 /* VerMaisButtonCloudkit.swift in Sources */,
 				B4799A1925682895003A047F /* Colabore.swift in Sources */,
 				ED4161B32562CB2500AF5696 /* CardStory.swift in Sources */,
 				B47B7FD7257C74FB00E5C0B7 /* HistoriasCard+CoreDataProperties.swift in Sources */,
 				B4E2359125755D0200C412D5 /* CustomTextView.swift in Sources */,
+				B45F69082581A5E7006302A9 /* InstituicaoResume.swift in Sources */,
 				B4E235B42575E5B200C412D5 /* LinkToMuralDaInstituicao.swift in Sources */,
 				ED4161972562CA8F00AF5696 /* Ajuda.swift in Sources */,
 				ED4161B82562CB3900AF5696 /* CardFavorito.swift in Sources */,
@@ -714,9 +725,8 @@
 				B4FA8009257D710000E8B56B /* InitialNavigationController.swift in Sources */,
 				B41293C5256BF08C00DBF26B /* AddHistoriaCard.swift in Sources */,
 				B4B55F7F25752D5000075164 /* ColaboreMeuMuralView.swift in Sources */,
+				B4EDB49725826CD80099D927 /* HistoriasResume.swift in Sources */,
 				ACC56A7C2575D96700BE35C3 /* OnboardsView.swift in Sources */,
-				B45F68EA257E6DD2006302A9 /* CadastroNavigationController.swift in Sources */,
-				B4FA801C257DA4E500E8B56B /* MeuMuralController.swift in Sources */,
 				ACC56A772575C38800BE35C3 /* OnboardingView3.swift in Sources */,
 				B4799A1125682821003A047F /* VerMaisView.swift in Sources */,
 				869D49C1256FD67F004B1AC1 /* ColaboreView.swift in Sources */,
@@ -752,7 +762,9 @@
 				B47B7FD9257C74FB00E5C0B7 /* Instituicao+CoreDataProperties.swift in Sources */,
 				B4E2359B2575631E00C412D5 /* VerMaisButton.swift in Sources */,
 				B4B55FA325755A9500075164 /* AddButtonView.swift in Sources */,
+				B45F690D2581A994006302A9 /* BannerMuralDaInstituicao.swift in Sources */,
 				ED4161882562CA5900AF5696 /* Favoritos.swift in Sources */,
+				B4EDB4AB2582770A0099D927 /* VerMaisViewCloudkit.swift in Sources */,
 				B4E2359625755DC200C412D5 /* EditButtonView.swift in Sources */,
 				B4E235B92575E64E00C412D5 /* LinkToLogin.swift in Sources */,
 				B45F68EF257FC633006302A9 /* temporario.swift in Sources */,

@@ -14,9 +14,6 @@ struct CadastroView1: View {
     
     @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
-    //@State var instituicoes: [String] = []
-    
-    //@State var testView = false
     @State var alertIsActive = false
     @State var view2IsActive = false
     
@@ -106,11 +103,6 @@ struct CadastroView1: View {
     var body: some View {
         NavigationView {
             VStack {
-//                NavigationLink(
-//                    destination: CadastroView2(instituicaoID: $instituicaoID, cadastroIsActive: $cadastroIsActive),
-//                    isActive: $view2IsActive) {
-//                    EmptyView()
-//                }
                 NavigationLink(
                     destination: CadastroView2(presentation: _presentation, instituicaoID: $instituicaoID),
                     isActive: $view2IsActive) {
@@ -143,33 +135,12 @@ struct CadastroView1: View {
                 Alert(title: Text("Atenção"), message: Text("Todos os campos devem ser preenchidos"), dismissButton: .cancel(Text("Voltar")))
             })
         }
-//        .navigationBarHidden(true)
        .navigationViewStyle(StackNavigationViewStyle())
-        //        .sheet(isPresented: $testView) {
-        //            List {
-        //                ForEach(instituicoes, id: \.self) {instituicao in
-        //                    Text(instituicao)
-        //                        .font(.title)
-        //                        .fontWeight(.bold)
-        //                }
-        //            }
-        //        }
-        //    }
-        //    private func loadInstituicoes() {
-        //        CKInstituicao.fetch { results in
-        //            switch results {
-        //            case .success(let newInstituicoes):
-        //                self.instituicoes = newInstituicoes
-        //            case .failure(let error):
-        //                print(error)
-        //            }
-        //        }
-        //    }
     }
 }
 
-//struct CadastroView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CadastroView1(instituicaoID: .constant("D246BE18-3657-4E3A-8C6C-5712B8AAEFAF"))
-//    }
-//}
+struct CadastroView_Previews: PreviewProvider {
+    static var previews: some View {
+        CadastroView1(instituicaoID: .constant("D246BE18-3657-4E3A-8C6C-5712B8AAEFAF"))
+    }
+}

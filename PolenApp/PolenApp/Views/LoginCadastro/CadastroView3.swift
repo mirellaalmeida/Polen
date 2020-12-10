@@ -17,7 +17,6 @@ struct CadastroView3: View {
     @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     @Binding var instituicaoID: String
-   // @Binding var cadastroIsActive: Bool
     
     @State var meuMural = false
     @State var isChecked = false
@@ -48,17 +47,6 @@ struct CadastroView3: View {
     
     var saveButton: some View {
         Button(action: {
-            //            publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: instituicaoID)) { (record, error) in
-            //                if let fetchedInfo = record {
-            //                    let instituicao = instituicoes.first(where: {$0.id == instituicaoID})
-            //
-            //
-            //                }
-            //            }
-            print(instituicoes.count)
-//            withAnimation(.easeOut(duration: 0.3)) {
-//                self.cadastroIsActive.toggle()
-//            }
             presentation.wrappedValue.dismiss()
         }, label: {
             Text("Salvar")
@@ -68,17 +56,6 @@ struct CadastroView3: View {
     
     
     var body: some View {
-        //        NavigationLink(
-        //            destination: MeuMural(instituicaoID: $instituicaoID),
-        //            isActive: $meuMural) {
-        //            EmptyView()
-        //        }
-        
-        //        NavigationLink(
-        //            destination: TabBarView(tabViewIsActive: $meuMural),
-        //            isActive: $meuMural) {
-        //            EmptyView()
-        //        }
         ScrollView(.vertical){
             
             VStack {
@@ -90,7 +67,6 @@ struct CadastroView3: View {
                 
                 Text("Nos ajude a entender os pilares da sua instituição selecionando as caixas abaixo que se enquadrem com as atividades da sua instituição")
                     .font(.subheadline)
-                    //.fontWeight(.ultraLight)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 40)
@@ -145,7 +121,6 @@ struct CheckBoxField: View {
                 print(tags)
                 
             }, label: {
-                //HStack(alignment: .center, spacing: 10) {
                 if self.isChecked {
                     Image(systemName: "checkmark.square.fill")
                         //.renderingMode(.none)
@@ -162,7 +137,6 @@ struct CheckBoxField: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: self.size, height: self.size)
                 }
-                //}.foregroundColor(color)
             })
             
             Text(label)
@@ -174,8 +148,8 @@ struct CheckBoxField: View {
     }
 }
 
-//struct CadastroView3_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CadastroView3(instituicaoID: .constant("D246BE18-3657-4E3A-8C6C-5712B8AAEFAF"))
-//    }
-//}
+struct CadastroView3_Previews: PreviewProvider {
+    static var previews: some View {
+        CadastroView3(instituicaoID: .constant("D246BE18-3657-4E3A-8C6C-5712B8AAEFAF"))
+    }
+}

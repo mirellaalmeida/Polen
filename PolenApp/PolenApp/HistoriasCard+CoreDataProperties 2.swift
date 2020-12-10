@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension HistoriasCard {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<HistoriasCard> {

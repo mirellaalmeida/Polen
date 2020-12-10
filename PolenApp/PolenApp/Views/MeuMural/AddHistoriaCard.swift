@@ -28,23 +28,40 @@ struct AddHistoriaCard: View {
         
         publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: userID)) { (record, error) in
             if let fetchedInfo = record {
-                let newStory = CKRecord(recordType: "CD_HistoriasCard")
+                let newRecord = CKRecord(recordType: "CD_HistoriasCard")
                 let reference = CKRecord.Reference(recordID: fetchedInfo.recordID, action: .deleteSelf)
                 
-                newStory["CD_titulo"] = title
-                newStory["CD_descricao"] = description
-                newStory["daInstituicao"] = reference as CKRecordValue
+                newRecord["CD_titulo"] = title
+                newRecord["CD_descricao"] = description
+                newRecord["daInstituicao"] = reference as CKRecordValue
                 
-                publicDatabase.save(newStory) { _, _ in
-                    let newStory = HistoriasCard(context: viewContext)
-                    newStory.titulo = title
-                    newStory.descricao = description
-                    newStory.daInstituicao = instituicoes.first(where: {$0.id == instituicaoID})
-                    
-                    do {
-                        try self.viewContext.save()
-                    } catch {
-                        print("não foi possível salvar")
+                var cardsList = fetchedInfo["historiasList"] as? [CKRecord.Reference]
+                
+
+                let cardReference = CKRecord.Reference(recordID: newRecord.recordID, action: .none)
+                
+                if cardsList == nil {
+                    cardsList = []
+                    cardsList?.append(cardReference)
+                } else if !(cardsList?.contains(cardReference))! {
+                    cardsList?.append(cardReference)
+                } else {
+                    print("Didn`t Bind")
+                }
+                
+                fetchedInfo["historiasList"] = cardsList
+                publicDatabase.save(fetchedInfo) {  _, _ in
+                    publicDatabase.save(newRecord) { _, _ in
+                        let newStory = HistoriasCard(context: viewContext)
+                        newStory.titulo = title
+                        newStory.descricao = description
+                        newStory.daInstituicao = instituicoes.first(where: {$0.id == instituicaoID})
+                        
+                        do {
+                            try self.viewContext.save()
+                        } catch {
+                            print("não foi possível salvar")
+                        }
                     }
                 }
                 
