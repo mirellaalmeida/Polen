@@ -12,7 +12,7 @@ struct AddButtonView: View {
     
     var body: some View {
         Button(action: {
-            self.isAdding.toggle()
+            self.isAdding = true
         }, label: {
             Image(systemName: "plus")
         })

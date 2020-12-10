@@ -10,14 +10,9 @@ import SwiftUI
 struct ColaboreMeuMuralView: View {
     @Environment(\.managedObjectContext) var viewContext
     
-    @Binding var instituicaoID:UUID
+    @Binding var instituicaoID: String
     
-    @FetchRequest(
-        entity: Instituicao.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
-        ]
-    ) var instituicoes: FetchedResults<Instituicao>
+    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     @State var stickersCount: Int = DuplaBotoes().possoCount + DuplaBotoes().vaiCount
     @State var editColaboreCard = false
@@ -32,41 +27,41 @@ struct ColaboreMeuMuralView: View {
                 .foregroundColor(.white)
                 .padding(.vertical, 8)
                 .padding(.horizontal, 20)
-                
+            
             
         }).background(Color("Roxo"))
         .cornerRadius(5)
-            
-
-//        .foregroundColor(Color("Roxo"))
-//        .padding(.vertical, 8)
-//        .padding(.horizontal, 25)
+        
+        
+        //        .foregroundColor(Color("Roxo"))
+        //        .padding(.vertical, 8)
+        //        .padding(.horizontal, 25)
         
     }
     
     var buttons: some View {
         HStack{
-//            NavigationLink(
-//                destination: ,
-//                isActive: $seeStickers) {
-//                EmptyView()
-//            }
+            //            NavigationLink(
+            //                destination: ,
+            //                isActive: $seeStickers) {
+            //                EmptyView()
+            //            }
             
             EditButtonView(isEditing: $editColaboreCard)
             
-                //.padding(.leading, 50)
+            //.padding(.leading, 50)
             
             Spacer()
                 .frame(width: 30)
             
             /*NavigationLink(
-                destination: AddColaboreCard(instituicaoID: $instituicaoID, isAdding: $editColaboreCard),
-                isActive: $editColaboreCard) {
-                EmptyView()
-            }*/
+             destination: AddColaboreCard(instituicaoID: $instituicaoID, isAdding: $editColaboreCard),
+             isActive: $editColaboreCard) {
+             EmptyView()
+             }*/
             buttonStickers
             
-                //.padding(.trailing, 50)
+            //.padding(.trailing, 50)
         }
     }
     
@@ -103,6 +98,13 @@ struct ColaboreMeuMuralView: View {
             }
             .padding([.leading, .trailing])
         }
+    }
+}
+
+struct ColaboreMuralView_Previews: PreviewProvider {
+    static var previews: some View {
+        ColaboreMeuMuralView(instituicaoID: .constant(" "))
+            .previewDevice("iPhone 11")
     }
 }
 

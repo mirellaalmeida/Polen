@@ -11,31 +11,21 @@ import SwiftUI
 struct MeuMural: View {
     @Environment(\.managedObjectContext) var viewContext
     
-    @Binding var isActive:Bool
-    @Binding var instituicaoID:UUID
+    @Binding var instituicaoID: String
     
     @State var verMais = false
     @State var verHistoria: HistoriasCard?
     @State var addingHistoria = false
     @State var addingColabore = false
     
-    @FetchRequest(
-        entity: Instituicao.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
-        ]
-    ) var instituicoes: FetchedResults<Instituicao>
+    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
-    init(isActive: Binding<Bool>, instituicaoID: Binding<UUID>) {
-        _isActive = isActive
+    init(instituicaoID: Binding<String>) {
         _instituicaoID = instituicaoID
         
-        //Configurações para NavigationBar
-        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "Banner"), for: .default)
-        //UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.9688708186, green: 0.8066166639, blue: 0.3180420101, alpha: 1)
+        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "Banner3"), for: .default)
         UINavigationBar.appearance().shadowImage = UIImage()
         UIScrollView.appearance().bounces = false
-        //        UIScrollView.appearance().backgroundColor = #colorLiteral(red: 0.9688708186, green: 0.8066166639, blue: 0.3180420101, alpha: 1)
     }
     
     var headerColaboreView: some View {
@@ -74,6 +64,7 @@ struct MeuMural: View {
             
             ColaboreMeuMuralView(instituicaoID: $instituicaoID)
         }
+        .padding(.bottom)
     }
     
     var historiasSubview: some View {
@@ -87,8 +78,15 @@ struct MeuMural: View {
     var body: some View {
         ScrollView(.vertical){
             VStack(alignment: .leading){
-                BannerMeuMural(instituicaoID: $instituicaoID)
-                
+                    Image("Banner3")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .ignoresSafeArea(.all)
+                        .frame(height:2)
+                    
+                    BannerMeuMural(instituicaoID: $instituicaoID)
+                        .padding(.top, 20)
+
                 colaboreSubview
                 
                 Spacer()
@@ -96,20 +94,21 @@ struct MeuMural: View {
                 
                 historiasSubview
             }
-            .sheet(isPresented: $verMais) {
-               VerMaisView(historia: $verHistoria, verMais: $verMais)
-            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(true)
+        .sheet(isPresented: $verMais) {
+            VerMaisView(historia: $verHistoria, verMais: $verMais)
         }
     }
 }
 
-/*
- #if DEBUG
- struct MuralView_Previews: PreviewProvider {
- static var previews: some View {
- MeuMural(isActive: .constant(true))
- .previewDevice("iPhone 11")
- }
- }
- #endif
- */
+#if DEBUG
+
+struct MuralView_Previews: PreviewProvider {
+    static var previews: some View {
+        MeuMural(instituicaoID: .constant(" "))
+            .previewDevice("iPhone 11")
+    }
+}
+#endif

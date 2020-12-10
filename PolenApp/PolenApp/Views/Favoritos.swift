@@ -14,30 +14,27 @@ struct Favoritos: View {
     @State private var didTap: Bool = false
     
     var body: some View {
-        NavigationView{
-            ScrollView(.vertical){
-                ZStack{
-                    Image("bannerFavoritos")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                    Text("Favoritos")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .padding(.top, 10)
-                }
-                
-                LazyVStack{
-                    CardViewFavoritos(imagemFavoritos: "IconAdus", tituloFavoritos: "Instituto Adus", descricaoFavoritos: "Integração social de refugiados e estrangeiros vítimas de migrações forçadas.")
-                    CardViewFavoritos(imagemFavoritos: "IconAdus", tituloFavoritos: "Instituto Adus", descricaoFavoritos: "Integração social de refugiados e estrangeiros vítimas de migrações forçadas.")
-                    CardViewFavoritos(imagemFavoritos: "IconAdus", tituloFavoritos: "Instituto Adus", descricaoFavoritos: "Integração social de refugiados e estrangeiros vítimas de migrações forçadas.")
-                    
-                }
+        ScrollView(.vertical){
+            ZStack{
+                Image("bannerFavoritos")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                Text("Favoritos")
+                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .padding(.top, 10)
             }
-            .navigationBarHidden(true)
-            .ignoresSafeArea(.all)
+            
+            LazyVStack{
+                CardViewFavoritos(imagemFavoritos: "IconAdus", tituloFavoritos: "Instituto Adus", descricaoFavoritos: "Integração social de refugiados e estrangeiros vítimas de migrações forçadas.")
+                CardViewFavoritos(imagemFavoritos: "IconAdus", tituloFavoritos: "Instituto Adus", descricaoFavoritos: "Integração social de refugiados e estrangeiros vítimas de migrações forçadas.")
+                CardViewFavoritos(imagemFavoritos: "IconAdus", tituloFavoritos: "Instituto Adus", descricaoFavoritos: "Integração social de refugiados e estrangeiros vítimas de migrações forçadas.")
+                
+            }
         }
         .navigationBarHidden(true)
+        .ignoresSafeArea(.all)
         .navigationBarBackButtonHidden(true)
     }
     

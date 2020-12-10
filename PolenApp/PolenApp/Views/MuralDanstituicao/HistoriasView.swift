@@ -10,19 +10,14 @@ import SwiftUI
 struct HistoriasView: View {
     @Environment(\.managedObjectContext) var viewContext
     
-    @Binding var instituicaoID:UUID
+    var cards: [HistoriasResume]?
     @Binding var verMais: Bool
-    @Binding var verHistoria: HistoriasCard?
+    @Binding var verHistoria: HistoriasResume?
     
-    @FetchRequest(
-        entity: Instituicao.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instituicao.nome, ascending: true)
-        ]
-    ) var instituicoes: FetchedResults<Instituicao>
+    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     var cardInfos: some View {
-        ForEach(instituicoes.first(where: {$0.id == instituicaoID})?.historiasArray ?? [], id: \.self){ historia in
+        ForEach(cards ?? [], id: \.self){ historia in
             VStack{
                 Image("Doação")
                     .resizable()
@@ -31,18 +26,18 @@ struct HistoriasView: View {
                     .shadow(color: .gray, radius: 0.5, x: 0, y: 0)
                     .padding()
                 
-                Text(historia.wrappedTitulo)
+                Text(historia.id)
                     .font(.system(size:16, weight: .bold))       .multilineTextAlignment(.leading)
                     .frame(width: 160, height: 5, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 
-                Text(historia.wrappedDescricao)
+                Text(historia.description)
                     .font(/*@START_MENU_TOKEN@*/.subheadline/*@END_MENU_TOKEN@*/)
                     .font(.system(size: 12))
                     .multilineTextAlignment(.leading)
                     .lineLimit(3)
                     .padding()
                 
-                VerMaisButton(verMais: $verMais, verHistoria: $verHistoria, historia: historia)
+                VerMaisButtonCloudkit(verMais: $verMais, verHistoria: $verHistoria, historia: historia)
             }
             .frame(width: 320, height: 400)
             

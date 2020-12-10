@@ -6,14 +6,18 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct LinkToMuralDaInstituicao: View {
     @Binding var muralIsActive: Bool
-    @Binding var instituicaoID: UUID
+//    @Binding var instituicaoID: String
+    @Binding var instituicao: CKRecord?
+    @Binding var colaboreCards: [HistoriasResume]?
+    @Binding var historiaCards: [HistoriasResume]?
     
     var body: some View {
         NavigationLink(
-            destination: MuralDaInstituicaoView(muralDaInstituicaoIsActive: $muralIsActive, instituicaoID: $instituicaoID),
+            destination: MuralDaInstituicaoView(instituicao: $instituicao, colaboreCards: $colaboreCards, historiaCards: $historiaCards),
             isActive: $muralIsActive){
             EmptyView()
         }

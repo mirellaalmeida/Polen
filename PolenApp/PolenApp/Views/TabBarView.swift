@@ -6,45 +6,77 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct TabBarView: View {
-    @State var muralIsActive = false
-    @State var mapaIsActive = false
-    @State var instituicaoID: UUID = UUID()
+    @Environment(\.managedObjectContext) var viewContext
+    
+    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
+    
+    @State var instituicaoID: String = ""
+    @State var tabSelected: Int?
     
     @Binding var tabViewIsActive: Bool
-
+    
+    let login = UserDefaults.standard.bool(forKey: "isLogged")
+    let userID = UserDefaults.standard.object(forKey: "userID") as? String
+    
     var body: some View {
-        TabView{
-            Mapa(bank: BancoInstituicoes(), mapaIsActive: $mapaIsActive)
+        //NavigationView {
+            TabView {
+                NavigationView {
+                    Mapa(bank: BancoInstituicoes())
+                }
                 .tabItem {
                     Image(systemName: "map.fill")
                     Text("Mapa")
                 }
-            
-            Favoritos()
+                .tag(0)
+                .navigationViewStyle(StackNavigationViewStyle())
+           
+                Favoritos()
                 .tabItem {
                     Image(systemName: "heart.fill")
                     Text("Favoritos")
                 }
-            
-            RecursosView()
+                .tag(1)
+                
+                RecursosView()
                 .tabItem {
                     Image(systemName: "book.fill")
                     Text("Recursos")
                 }
-            
-            MeuMural(isActive: $muralIsActive, instituicaoID: $instituicaoID)
+                .tag(2)
+
+                NavigationView {
+                    if (!login) {
+                        LoginView()
+                    }
+                    
+                    if (login) {
+                        MeuMural(instituicaoID: .constant(instituicoes.first(where: {$0.id == userID})!.wrappedID))
+                    }
+                }
+                .navigationViewStyle(StackNavigationViewStyle())
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Meu Mural")
                 }
-        }.accentColor(Color("Roxo"))
+                .tag(3)
+            }
+    }
+
+    func checkLogin(){
+        
     }
 }
 
-//struct TabBarView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TabBarView()
-//    }
-//}
+struct TabBarView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            TabBarView(tabViewIsActive: .constant(true))
+            TabBarView(tabViewIsActive: .constant(true))
+                .previewDevice("iPad Pro (9.7-inch)")
+        }
+    }
+}

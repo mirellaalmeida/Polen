@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct LinkToAddHistoriaCard: View {
-    @Binding var instituicaoID:UUID
-    @Binding var addingHistoria:Bool
+    @Binding var instituicaoID: String
+    @Binding var addingHistoria: Bool
     
     var body: some View {
         NavigationLink(destination: AddHistoriaCard(instituicaoID: $instituicaoID, isAdding: self.$addingHistoria),
