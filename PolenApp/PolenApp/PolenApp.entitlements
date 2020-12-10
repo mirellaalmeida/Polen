@@ -10,7 +10,7 @@
 	</array>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
-		<string>iCloud.br.com.mirellaalmeida.PolenApp2</string>
+		<string>iCloud.br.com.Academy.PolenApp</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>

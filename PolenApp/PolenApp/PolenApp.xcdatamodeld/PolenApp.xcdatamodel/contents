@@ -5,7 +5,7 @@
         <attribute name="titulo" optional="YES" attributeType="String"/>
         <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Instituicao" inverseName="colaboreList" inverseEntity="Instituicao"/>
     </entity>
-    <entity name="HistoriasResume" representedClassName="HistoriasResume" syncable="YES">
+    <entity name="HistoriasCard" representedClassName="HistoriasCard" syncable="YES">
         <attribute name="descricao" optional="YES" attributeType="String"/>
         <attribute name="imagem" optional="YES" attributeType="String"/>
         <attribute name="titulo" optional="YES" attributeType="String"/>
@@ -24,11 +24,11 @@
         <attribute name="telefone" optional="YES" attributeType="String"/>
         <relationship name="colaboreList" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ColaboreCard" inverseName="relationship" inverseEntity="ColaboreCard"/>
         <relationship name="favoritos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Instituicao" inverseName="favoritos" inverseEntity="Instituicao"/>
-        <relationship name="historiasList" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HistoriasResume" inverseName="daInstituicao" inverseEntity="HistoriasResume"/>
+        <relationship name="historiasList" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HistoriasCard" inverseName="daInstituicao" inverseEntity="HistoriasCard"/>
     </entity>
     <elements>
-        <element name="ColaboreCard" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="HistoriasResume" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Instituicao" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ColaboreCard" positionX="0" positionY="0" width="128" height="88"/>
+        <element name="HistoriasCard" positionX="0" positionY="0" width="128" height="103"/>
+        <element name="Instituicao" positionX="0" positionY="0" width="128" height="238"/>
     </elements>
 </model>
