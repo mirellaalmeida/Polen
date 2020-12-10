@@ -14,7 +14,7 @@ struct EditButtonView2: View {
     @State var descricao: String = ""
     
     var body: some View {
-        NavigationLink(destination: EditHistoriaCard(titulo: $titulo, descricao: $descricao), isActive: $isEditing){
+        NavigationLink(destination: EditColaboreCard(titulo: $titulo, tituloAntigo: colabore.wrappedTitulo, descricao: $descricao, isEditing: $isEditing), isActive: $isEditing){
             EmptyView()
         }
         Button(action: {

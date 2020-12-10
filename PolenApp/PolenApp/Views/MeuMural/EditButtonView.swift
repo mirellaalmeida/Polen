@@ -13,16 +13,20 @@ struct EditButtonView: View {
     var historia: HistoriasCard
     @State var titulo: String = ""
     @State var descricao: String = ""
-    
+    @Environment(\.managedObjectContext) var viewContext    
     
     var body: some View {
-        NavigationLink(destination: EditHistoriaCard(titulo: $titulo, descricao: $descricao), isActive: $isEditing){
+        NavigationLink(destination: EditHistoriaCard(titulo: $titulo, tituloAntigo: historia.wrappedTitulo, descricao: $descricao, isEditing: $isEditing), isActive: $isEditing){
             EmptyView()
         }
         Button(action: {
             titulo = historia.wrappedTitulo
             descricao = historia.wrappedDescricao
+  
+            
             self.isEditing.toggle()
+            
+            
         }, label: {
             Text("Editar")
                 .foregroundColor(Color("Roxo"))

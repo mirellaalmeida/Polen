@@ -9,12 +9,44 @@ import SwiftUI
 
 struct EditColaboreCard: View {
     @Binding var titulo: String
+    var tituloAntigo: String
     @Binding var descricao: String
     @State private var descriptionHeight: CGFloat = 0
+    @Environment(\.managedObjectContext) var viewContext
+    @Binding var isEditing: Bool
 
+
+    @FetchRequest(
+        entity: ColaboreCard.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \ColaboreCard.titulo, ascending: true)
+        ]
+    ) var cards: FetchedResults<ColaboreCard>
     
+    func saveCard() {
+        for card in cards {
+            print(card.titulo)
+            print("Titulo antigo: " + tituloAntigo)
+            if (card.titulo == tituloAntigo){
+                card.titulo = titulo
+                card.descricao = descricao
+                
+                
+                do {
+                    print("entrou no if")
+                    print(card.titulo)
+                    try self.viewContext.save()
+                } catch {
+                    print("não foi possível salvar")
+                }
+            }
+        }
+    }
     var saveStory: some View {
         Button(action: {
+            saveCard()
+            isEditing.toggle()
+            
         }, label: {
             Text("Salvar")
                 .padding()
