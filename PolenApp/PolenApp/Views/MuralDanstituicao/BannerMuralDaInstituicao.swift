@@ -30,10 +30,17 @@ struct BannerMuralDaInstituicao: View {
     
     var header: some View {
         HStack (alignment: .center, spacing: 30){
-            Image("Adus")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 120, height: 120)
+            if nome == "Adus" {
+                Image("Adus")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 120, height: 120)
+            } else {
+                Image("Recomeço")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 120, height: 120)
+            }
             
             VStack(alignment: .leading, spacing: 10) {
                 Text(nome ?? "None")
@@ -103,7 +110,7 @@ struct BannerMuralDaInstituicao: View {
     }
     
     var otherInfos: some View {
-        VStack {
+        VStack(alignment: .leading) {
             localization
             
             Image("Separador")

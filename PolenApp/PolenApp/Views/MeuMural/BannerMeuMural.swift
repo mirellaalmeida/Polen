@@ -25,7 +25,7 @@ struct BannerMeuMural: View {
     
     var header: some View {
         HStack (alignment: .center, spacing: 30){
-            Image("Adus")
+            Image("userIcon")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 120, height: 120)
@@ -56,7 +56,7 @@ struct BannerMeuMural: View {
             Image("Location")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 20, height: 20, alignment: .center)
+                .frame(width: 20, height: 20, alignment: .leading)
 
             
             Text(instituicoes.first(where: {$0.id == instituicaoID})?.cidade ?? "None")
@@ -87,7 +87,7 @@ struct BannerMeuMural: View {
     }
     
     var otherInfos: some View {
-        VStack {
+        VStack(alignment: .leading) {
             localization
             
             Image("Separador")

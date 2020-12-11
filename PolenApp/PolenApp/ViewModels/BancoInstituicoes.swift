@@ -37,8 +37,12 @@ public class BancoInstituicoes: ObservableObject, Identifiable {
 extension BancoInstituicoes {
     func getInstitutions() -> [Checkpoint] {
         var instituicoes: [Checkpoint] = []
-        instituicoes.append(Checkpoint(title: "Recomeço Refugiados", subtitle: "Aulas de português para haitianos", coordinate: .init(latitude: -16.3624, longitude: -49.1534)))
-        instituicoes.append(Checkpoint(title: "Instituto Adus", subtitle: "Integração social de refugiados e vítimas de migrações forçadas", coordinate: .init(latitude: -22.0015, longitude: -53.5950)))
+        instituicoes.append(Checkpoint(title: "Recomeço Refugiados",
+                                       subtitle: "Aulas de português para haitianos",
+                                       coordinate: .init(latitude: -16.3624, longitude: -49.1534)))
+        instituicoes.append(Checkpoint(title: "Instituto Adus",
+                                       subtitle: "Integração social de refugiados e vítimas de migrações forçadas",
+                                       coordinate: .init(latitude: -22.0015, longitude: -53.5950)))
         
         return instituicoes
     }
