@@ -30,7 +30,7 @@ struct BannerMuralDaInstituicao: View {
     
     var header: some View {
         HStack (alignment: .center, spacing: 30){
-            if nome == "Adus" {
+            if nome == "Instituto Adus" {
                 Image("Adus")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
