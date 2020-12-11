@@ -23,7 +23,7 @@ struct Mapa: View {
     
     @State var checkpoints: [Checkpoint] = [
         Checkpoint(title: "Recomeço Refugiados", subtitle: "Aulas de português para haitianos", coordinate: .init(latitude: -16.3624, longitude: -49.1534)),
-        Checkpoint(title: "Instituto Adus", subtitle: "Integração social de refugiados e vítimas de migrações forçadas", coordinate: .init(latitude: -7.9021, longitude: -34.8296))]
+        Checkpoint(title: "Instituto Adus", subtitle: "Integração social de refugiados e vítimas de migrações forçadas", coordinate: .init(latitude: -22.0015, longitude: -53.5950))]
     
     @State var muralIsActive = false
     
