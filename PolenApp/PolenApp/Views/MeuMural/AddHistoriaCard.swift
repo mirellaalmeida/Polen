@@ -96,7 +96,7 @@ struct AddHistoriaCard: View {
                 .multilineTextAlignment(.leading)
                 .padding()
             
-            ImagePickerView()
+            //ImagePickerView()
             
             AddCardInfos(title: $title, description: $description)
             

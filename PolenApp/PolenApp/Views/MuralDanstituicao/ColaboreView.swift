@@ -16,7 +16,7 @@ struct ColaboreView: View {
     var cardInfos: some View {
         ForEach(cards ?? [], id: \.self){ colabore in
             VStack{
-                Text(colabore.id)
+                Text(colabore.name)
                     .font(.system(size:16))
                     .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
                     .fontWeight(.bold)

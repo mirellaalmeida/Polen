@@ -19,18 +19,15 @@ struct HistoriasMeuMuralView: View {
         ]
     )  var instituicoes: FetchedResults<Instituicao>
 
-    
-    // @State var editHistoriaCard = false
     @Binding var verMais: Bool
     @Binding var verHistoria: HistoriasCard?
-    @State var isEditing: Bool
-   // @State private var refreshing = false
-   // private var didSave =  NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave)
+    @Binding var editHistoria: HistoriasCard?
+    @Binding var isEditing: Bool
     
     var cardsInfos: some View {
         ForEach(instituicoes.first(where: {$0.id == instituicaoID})?.historiasArray ?? [], id: \.self){ historia in
 
-            HistoriaItem(historia: historia, verMais: $verMais, verHistoria: $verHistoria, isEditing: isEditing)
+            HistoriaItem(instituicaoID: $instituicaoID, historia: historia, verMais: $verMais, verHistoria: $verHistoria, editHistoria: $editHistoria, isEditing: isEditing)
 
         }
         .background(Color.white)
@@ -50,13 +47,17 @@ struct HistoriasMeuMuralView: View {
 }
 
 struct HistoriaItem: View {
+    @Environment(\.managedObjectContext) var viewContext
+    
+    @Binding var instituicaoID: String
     @ObservedObject var historia: HistoriasCard   // !! @ObserveObject is the key!!!
     @Binding var verMais: Bool
     @Binding var verHistoria: HistoriasCard?
+    @Binding var editHistoria: HistoriasCard?
     @State var isEditing: Bool
     
+    
     var body: some View {
-        
         VStack{
             Text(historia.wrappedTitulo)
                 .font(.system(size:16))
@@ -71,8 +72,8 @@ struct HistoriaItem: View {
                 .padding()
             
             HStack{
-
-               EditButtonView(isEditing: $isEditing, historia: historia)
+                
+                EditButtonView(instituicaoID: $instituicaoID, isEditing: $isEditing, editHistoria: $editHistoria, historia: historia)
                 
                 Spacer()
                     .frame(width: 30)

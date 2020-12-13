@@ -13,7 +13,7 @@ struct VerMaisViewCloudkit: View {
     
     var body: some View {
         VStack{
-            Text(historia!.id)
+            Text(historia!.name)
                 .font(.title2)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)

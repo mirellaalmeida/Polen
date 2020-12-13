@@ -15,6 +15,8 @@ struct MeuMural: View {
     
     @State var verMais = false
     @State var verHistoria: HistoriasCard?
+    @State var editHistoria: HistoriasCard?
+    @State var editColabore: ColaboreCard?
     @State var addingHistoria = false
     @State var addingColabore = false
     @State var editingColabore = false
@@ -65,7 +67,7 @@ struct MeuMural: View {
         VStack(alignment: .leading){
             headerColaboreView
             
-            ColaboreMeuMuralView(instituicaoID: $instituicaoID, isEditing: editingColabore)
+            ColaboreMeuMuralView(instituicaoID: $instituicaoID, editCard: $editColabore, isEditing: $editingColabore)
         }
         .padding(.bottom)
     }
@@ -74,7 +76,7 @@ struct MeuMural: View {
         VStack(alignment: .leading) {
             headerHistoriaView
             
-            HistoriasMeuMuralView(instituicaoID: $instituicaoID, verMais: $verMais, verHistoria: $verHistoria, isEditing: editingHistoria)
+            HistoriasMeuMuralView(instituicaoID: $instituicaoID, verMais: $verMais, verHistoria: $verHistoria, editHistoria: $editHistoria, isEditing: $editingHistoria)
         }
     }
     

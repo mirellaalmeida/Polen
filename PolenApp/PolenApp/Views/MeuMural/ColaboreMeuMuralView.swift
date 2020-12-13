@@ -11,19 +11,20 @@ struct ColaboreMeuMuralView: View {
     @Environment(\.managedObjectContext) var viewContext
     
     @Binding var instituicaoID: String
+    @Binding var editCard: ColaboreCard?
+    @Binding var isEditing: Bool
     
     @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     @State var stickersCount: Int = DuplaBotoes().possoCount + DuplaBotoes().vaiCount
-    @State var editColaboreCard = false
+    
     @State var seeStickers = false
-    @State var isEditing: Bool
 
 
     var cardInfos: some View {
         ForEach(instituicoes.first(where: {$0.id == instituicaoID})?.colaboreArray ?? [], id: \.self){ colabore in
 
-            ColaboreItem(colabore: colabore, isEditing: isEditing, stickersCount: stickersCount , editColaboreCard: editColaboreCard, seeStickers: seeStickers)
+            ColaboreItem(colabore: colabore, instituicaoID: $instituicaoID, isEditing: $isEditing, editCard: $editCard, stickersCount: stickersCount , seeStickers: seeStickers)
         }
         .background(Color.white)
         .border(Color.gray, width: 0.5)
@@ -43,11 +44,12 @@ struct ColaboreMeuMuralView: View {
 
 struct ColaboreItem: View {
     @ObservedObject var colabore: ColaboreCard   // !! @ObserveObject is the key!!!
-   // @Binding var verHistoria: ColaboreCard?
-    @State var isEditing: Bool
+    @Binding var instituicaoID: String
+    @Binding var isEditing: Bool
+    @Binding var editCard: ColaboreCard?
     
     @State var stickersCount: Int = DuplaBotoes().possoCount + DuplaBotoes().vaiCount
-    @State var editColaboreCard = false
+    
     @State var seeStickers = false
 
     var buttonStickers: some View {
@@ -84,7 +86,7 @@ struct ColaboreItem: View {
         
 
             HStack{
-                EditButtonView2(isEditing: $isEditing, colabore: colabore)
+                EditButtonView2(instituicaoID: $instituicaoID, isEditing: $isEditing, editCard: $editCard, colabore: colabore)
                 Spacer()
                     .frame(width: 30)
                 buttonStickers

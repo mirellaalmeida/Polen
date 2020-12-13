@@ -26,7 +26,7 @@ struct HistoriasView: View {
                     .shadow(color: .gray, radius: 0.5, x: 0, y: 0)
                     .padding()
                 
-                Text(historia.id)
+                Text(historia.name)
                     .font(.system(size:16, weight: .bold))       .multilineTextAlignment(.leading)
                     .frame(width: 160, height: 5, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 

@@ -980,7 +980,7 @@
 				CODE_SIGN_ENTITLEMENTS = PolenApp/PolenApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"PolenApp/Preview Content\"";
 				DEVELOPMENT_TEAM = SZDYT9A2D8;
 				ENABLE_PREVIEWS = YES;
@@ -1007,7 +1007,7 @@
 				CODE_SIGN_ENTITLEMENTS = PolenApp/PolenApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"PolenApp/Preview Content\"";
 				DEVELOPMENT_TEAM = SZDYT9A2D8;
 				ENABLE_PREVIEWS = YES;

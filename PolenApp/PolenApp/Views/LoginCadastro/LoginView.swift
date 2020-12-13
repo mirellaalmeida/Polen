@@ -61,14 +61,18 @@ struct LoginView: View {
                                     
                                 } else {
                                     //singIn
-                                    if instID == nil {
-                                        self.cadastroIsActive.toggle()
-                                    } else {
+//                                    if instID == nil {
+//                                        self.cadastroIsActive.toggle()
+//                                    } else {
                                         publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: userAppleID)) { (record, error) in
                                             if let fetchedInfo = record {
-                                                fetchRemoteInfos(record: fetchedInfo)
-                                                
-                                                self.muralIsActive.toggle()
+                                                if instID == nil && record?["CD_nome"] == nil {
+                                                    self.cadastroIsActive.toggle()
+                                                } else {
+                                                    fetchRemoteInfos(record: fetchedInfo)
+                                                    
+                                                    self.muralIsActive.toggle()
+                                                }
                                                 
                                             } else {
                                                 print("failure on fetching user data from icloud: \(String(describing: error))")
@@ -77,7 +81,7 @@ struct LoginView: View {
                                                 self.alertIsActive.toggle()
                                             }
                                         }
-                                    }
+                                    //}
                                 }
                                 
                             default:
@@ -129,6 +133,7 @@ struct LoginView: View {
     }
     
     private func fetchRemoteInfos(record: CKRecord) {
+        UserDefaults.standard.set(record.recordID.recordName, forKey: "userID")
         
         let newInstituicao = Instituicao(context: viewContext)
         newInstituicao.id = record.recordID.recordName as String
@@ -154,10 +159,22 @@ struct LoginView: View {
     }
     
     private func loadInstituicoes() {
+        for instituicao in instituicoes where instituicao.wrappedNome == " "  {
+            
+            instituicao.id = " "
+            
+            do {
+                try self.viewContext.save()
+            } catch {
+                print("não foi possível salvar")
+            }
+            
+        }
         CKInstituicao.fetch { results in
             switch results {
             case .success(let newInstituicoes):
-                self.instituicaoID = newInstituicoes.last!
+                print(newInstituicoes.first!)
+                self.instituicaoID = newInstituicoes.first!
                 
                 self.muralIsActive.toggle()
             case .failure(let error):

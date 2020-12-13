@@ -8,21 +8,43 @@
 import SwiftUI
 
 struct EditButtonView: View {
+    @Environment(\.managedObjectContext) var viewContext
+    
+    @Binding var instituicaoID: String
     @Binding var isEditing: Bool
-   // var card: HistoriasCard
+    @Binding var editHistoria: HistoriasCard?
+   
     var historia: HistoriasCard
+    
     @State var titulo: String = ""
     @State var descricao: String = ""
-    @Environment(\.managedObjectContext) var viewContext    
     
     var body: some View {
-        NavigationLink(destination: EditHistoriaCard(titulo: $titulo, tituloAntigo: historia.wrappedTitulo, descricao: $descricao, isEditing: $isEditing), isActive: $isEditing){
+//        NavigationLink(destination: EditHistoriaCard(titulo: $titulo,
+//                                                     tituloAntigo: historia.wrappedTitulo,
+//                                                     descricao: $descricao,
+//                                                     isEditing: $isEditing,
+//                                                     editHistoria: $editHistoria),
+//                       isActive: $isEditing) {
+//
+//            EmptyView()
+//        }
+        
+        NavigationLink(destination: EditHistoriaCard(instituicaoID: $instituicaoID,
+                                                     titulo: $titulo,
+                                                     descricao: $descricao,
+                                                     isEditing: $isEditing,
+                                                     editHistoria: $editHistoria),
+                       isActive: $isEditing) {
+            
             EmptyView()
         }
+        
         Button(action: {
-            titulo = historia.wrappedTitulo
-            descricao = historia.wrappedDescricao
-  
+            self.titulo = historia.wrappedTitulo
+            self.descricao = historia.wrappedDescricao
+            
+            self.editHistoria = historia
             
             self.isEditing.toggle()
             
@@ -39,8 +61,5 @@ struct EditButtonView: View {
 //        .border(Color("Roxo"), width: 2)
 //        .cornerRadius(10)
         .background(RoundedRectangle(cornerRadius: 4).stroke(Color("Roxo")))
-
-
-
     }
 }

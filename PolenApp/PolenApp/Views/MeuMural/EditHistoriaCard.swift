@@ -6,15 +6,20 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct EditHistoriaCard: View {
+    @Environment(\.managedObjectContext) var viewContext
+    
+    @Binding var instituicaoID: String
     @Binding var titulo: String
-    var tituloAntigo: String
     @Binding var descricao: String
     @State private var descriptionHeight: CGFloat = 0
-    @Environment(\.managedObjectContext) var viewContext
     @Binding var isEditing: Bool
+    @Binding var editHistoria: HistoriasCard?
 
+    private let publicDatabase = CKContainer.default().publicCloudDatabase
+    
     @FetchRequest(
         entity: HistoriasCard.entity(),
         sortDescriptors: [
@@ -23,20 +28,52 @@ struct EditHistoriaCard: View {
     ) var cards: FetchedResults<HistoriasCard>
     
     func saveCard() {
-        for card in cards {
-            print(card.titulo)
-            print("Titulo antigo: " + tituloAntigo)
-            if (card.titulo == tituloAntigo){
-                card.titulo = titulo
-                card.descricao = descricao
-                
-                do {
-                    print("entrou no if")
-                    print(card.titulo)
-                    try self.viewContext.save()
-                } catch {
-                    print("não foi possível salvar")
+//        for card in cards {
+//            print(card.titulo)
+//            print("Titulo antigo: " + tituloAntigo)
+//            if (card.titulo == editHistoria?.wrappedTitulo){
+//                card.titulo = titulo
+//                card.descricao = descricao
+//
+//                do {
+//                    print("entrou no if")
+//                    print(card.titulo)
+//                    try self.viewContext.refresh(card, mergeChanges: true)
+//                    break
+//                } catch {
+//                    print("não foi possível salvar")
+//                }
+//            }
+//        }
+        CKInstituicao.fetchHistorias(instituicaoID: CKRecord.ID(recordName: instituicaoID)) { results in
+            switch results {
+            case .success(let historias):
+                for historia in historias {
+                    if historia.name == editHistoria?.titulo {
+                        publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: historia.id)) { (record, error) in
+                            if let fetchedInfo = record {
+                                fetchedInfo["CD_titulo"] = titulo
+                                fetchedInfo["CD_descricao"] = descricao
+                                
+                                publicDatabase.save(fetchedInfo) {  _, _ in
+                                    editHistoria?.titulo = titulo
+                                    editHistoria?.descricao = descricao
+                                    
+                                    do {
+                                        try self.viewContext.save()
+                                    } catch {
+                                        print("não foi possível salvar")
+                                    }
+                                }
+                            } else {
+                                print("failure on fetching user historia from icloud: \(String(describing: error))")
+                            }
+                        }
+                    }
                 }
+                
+            case .failure(let error):
+                print(error)
             }
         }
     }

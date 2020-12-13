@@ -19,19 +19,23 @@ class CKInstituicao {
         query.sortDescriptors = [descriptor]
 
         let operation = CKQueryOperation(query: query)
-        operation.desiredKeys = ["CD_id"]
+        operation.desiredKeys = ["CD_id", "CD_nome"]
         //operation.resultsLimit = 50
         
         var instituicoes = [String]()
         
         operation.recordFetchedBlock = { record in
             let id = (record["CD_id"] as String?)!
-            
+            if record["CD_nome"] != nil {
+                instituicoes.append(id)
+            } else {
+                record["CD_id"] = " "
+            }
             //let instituicao = Instituicao()
             //print((record["CD_id"] as String?)!)
             //instituicao.nome = nome
             
-            instituicoes.append(id)
+            //instituicoes.append(id)
         }
         
         operation.queryCompletionBlock = { (_, error) in
@@ -88,7 +92,7 @@ class CKInstituicao {
     class func fetchHistorias (instituicaoID: CKRecord.ID, completion: @escaping (Result<[HistoriasResume], Error>) -> Void) {
         let recordSearched = CKRecord.Reference(recordID: instituicaoID, action: .deleteSelf)
         let predicate = NSPredicate(format: "daInstituicao == %@", recordSearched)
-        let descriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        let descriptor = NSSortDescriptor(key: "creationDate", ascending: true)
         
         let query = CKQuery(recordType: "CD_HistoriasCard", predicate: predicate)
         query.sortDescriptors = [descriptor]
@@ -99,7 +103,8 @@ class CKInstituicao {
         
         operation.recordFetchedBlock = { record in
             let historia: HistoriasResume = .init(
-                id: (record["CD_titulo"] as String?)!,
+                id: record.recordID.recordName, 
+                name: (record["CD_titulo"] as String?)!,
                 description: (record["CD_descricao"] as String?)!
             )
 
@@ -118,10 +123,10 @@ class CKInstituicao {
         publicDatabase.add(operation)
     }
     
-    class func fetchColabore (instituicaoID: CKRecord.ID, completion: @escaping (Result<[HistoriasResume]?, Error>) -> Void) {
+    class func fetchColabore (instituicaoID: CKRecord.ID, completion: @escaping (Result<[HistoriasResume], Error>) -> Void) {
         let recordSearched = CKRecord.Reference(recordID: instituicaoID, action: .deleteSelf)
         let predicate = NSPredicate(format: "relationship == %@", recordSearched)
-        let descriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        let descriptor = NSSortDescriptor(key: "creationDate", ascending: true)
         
         let query = CKQuery(recordType: "CD_ColaboreCard", predicate: predicate)
         query.sortDescriptors = [descriptor]
@@ -132,7 +137,8 @@ class CKInstituicao {
         
         operation.recordFetchedBlock = { record in
             let card: HistoriasResume = .init(
-                id: (record["CD_titulo"] as String?)!,
+                id: record.recordID.recordName,
+                name: (record["CD_titulo"] as String?)!,
                 description: (record["CD_descricao"] as String?)!
             )
             
