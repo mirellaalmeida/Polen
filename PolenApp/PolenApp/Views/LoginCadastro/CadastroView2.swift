@@ -17,6 +17,11 @@ struct CadastroView2: View {
     @State var view3IsActive = false
     @State var isEditing = false
     
+    @Binding var name: String
+    @Binding var description: String
+    @Binding var isLogged: Bool
+    @Binding var userAppleID: String
+    
 //    @State var rua = ""
 //    @State var bairro = ""
     @State var cidade = ""
@@ -29,7 +34,7 @@ struct CadastroView2: View {
     @State var site = ""
     
     private let publicDatabase = CKContainer.default().publicCloudDatabase
-    @Binding var instituicaoID: String
+    //@Binding var instituicaoID: String
     
     var addAddress: some View {
         VStack(alignment:.leading) {
@@ -145,71 +150,71 @@ struct CadastroView2: View {
     
     var nextButton: some View {
         Button(action: {
-            publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: instituicaoID)) { (record, error) in
-                if let fetchedInfo = record {
-                    let instituicao = instituicoes.first(where: {$0.id == instituicaoID})
+//            publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: instituicaoID)) { (record, error) in
+//                if let fetchedInfo = record {
+//                    let instituicao = instituicoes.first(where: {$0.id == instituicaoID})
                     
-                    if cidade != "" {
-                        fetchedInfo.setValue(cidade, forKey: "CD_cidade")
-                        
-                        publicDatabase.save(fetchedInfo) { _, _ in
-                            instituicao?.cidade = cidade
-                            
-                            saveLocalInfos()
-                        }
-                    }
-                    
-                    if telefone != "" {
-                        fetchedInfo.setValue(telefone, forKey: "CD_telefone")
-                        
-                        publicDatabase.save(fetchedInfo) { _, _ in
-                            instituicao?.telefone = telefone
-                            
-                            saveLocalInfos()
-                        }
-                    }
-                    
-                    if email != "" {
-                        fetchedInfo.setValue(email, forKey: "CD_email")
-                        
-                        publicDatabase.save(fetchedInfo) { _, _ in
-                            instituicao?.email = email
-                            
-                            saveLocalInfos()
-                        }
-                    }
-                    
-                    if facebook != "" {
-                        fetchedInfo.setValue(facebook, forKey: "CD_facebook")
-                        
-                        publicDatabase.save(fetchedInfo) { _, _ in
-                            instituicao?.facebook = facebook
-                            
-                            saveLocalInfos()
-                        }
-                    }
-                    
-                    if instagram != "" {
-                        fetchedInfo.setValue(instagram, forKey: "CD_instagram")
-                        
-                        publicDatabase.save(fetchedInfo) { _, _ in
-                            instituicao?.instagram = instagram
-                            
-                            saveLocalInfos()
-                        }
-                    }
-                    
-                    if site != "" {
-                        fetchedInfo.setValue(site, forKey: "CD_site")
-                        
-                        publicDatabase.save(fetchedInfo) { _, _ in
-                            instituicao?.site = site
-                            
-                            saveLocalInfos()
-                        }
-                    }
-                }
-            }
+//                    if cidade != "" {
+//                        fetchedInfo.setValue(cidade, forKey: "CD_cidade")
+//
+//                        publicDatabase.save(fetchedInfo) { _, _ in
+//                            instituicao?.cidade = cidade
+//
+//                            saveLocalInfos()
+//                        }
+//                    }
+//
+//                    if telefone != "" {
+//                        fetchedInfo.setValue(telefone, forKey: "CD_telefone")
+//
+//                        publicDatabase.save(fetchedInfo) { _, _ in
+//                            instituicao?.telefone = telefone
+//
+//                            saveLocalInfos()
+//                        }
+//                    }
+//
+//                    if email != "" {
+//                        fetchedInfo.setValue(email, forKey: "CD_email")
+//
+//                        publicDatabase.save(fetchedInfo) { _, _ in
+//                            instituicao?.email = email
+//
+//                            saveLocalInfos()
+//                        }
+//                    }
+//
+//                    if facebook != "" {
+//                        fetchedInfo.setValue(facebook, forKey: "CD_facebook")
+//
+//                        publicDatabase.save(fetchedInfo) { _, _ in
+//                            instituicao?.facebook = facebook
+//
+//                            saveLocalInfos()
+//                        }
+//                    }
+//
+//                    if instagram != "" {
+//                        fetchedInfo.setValue(instagram, forKey: "CD_instagram")
+//
+//                        publicDatabase.save(fetchedInfo) { _, _ in
+//                            instituicao?.instagram = instagram
+//
+//                            saveLocalInfos()
+//                        }
+//                    }
+//
+//                    if site != "" {
+//                        fetchedInfo.setValue(site, forKey: "CD_site")
+//
+//                        publicDatabase.save(fetchedInfo) { _, _ in
+//                            instituicao?.site = site
+//
+//                            saveLocalInfos()
+//                        }
+//                    }
+//                }
+//            }
             
             self.view3IsActive.toggle()
             
@@ -222,7 +227,18 @@ struct CadastroView2: View {
     var body: some View {
         
         NavigationLink(
-            destination: CadastroView3(presentation: _presentation, instituicaoID: $instituicaoID),
+            destination: CadastroView3(presentation: _presentation,
+                                       name: $name,
+                                       description: $description,
+                                       cidade: $cidade,
+                                       telefone: $telefone,
+                                       email: $email,
+                                       facebook: $facebook,
+                                       instagram: $instagram,
+                                       site: $site,
+                                       isLogged: $isLogged,
+                                       userAppleID: $userAppleID),
+            
             isActive: $view3IsActive) {
             EmptyView()
         }
@@ -267,6 +283,6 @@ struct CadastroView2: View {
 
 struct CadastroView2_Previews: PreviewProvider {
     static var previews: some View {
-        CadastroView2(instituicaoID: .constant("D246BE18-3657-4E3A-8C6C-5712B8AAEFAF"))
+        CadastroView2(name: .constant(" "), description: .constant(""), isLogged: .constant(false), userAppleID: .constant(""))
     }
 }

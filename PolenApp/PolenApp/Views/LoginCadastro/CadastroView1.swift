@@ -17,16 +17,17 @@ struct CadastroView1: View {
     @State var alertIsActive = false
     @State var view2IsActive = false
     
-    @State private var name:String = ""
-    @State private var description:String = ""
+    @State var name: String = ""
+    @State var description: String = ""
     
     
     @State private var descriptionHeight: CGFloat = 0
     
     private let publicDatabase = CKContainer.default().publicCloudDatabase
     
-    @Binding var instituicaoID: String
-    //@Binding var cadastroIsActive: Bool
+    //@Binding var instituicaoID: String
+    @Binding var isLogged: Bool
+    @Binding var userAppleID: String
     
     var addNome: some View {
         TextField("Nome da Instituição*", text: $name)
@@ -70,26 +71,6 @@ struct CadastroView1: View {
     var nextButton: some View {
         Button(action: {
             if !name.isEmpty && !description.isEmpty {
-                publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: instituicaoID)) { (record, error) in
-                    if let fetchedInfo = record {
-                        fetchedInfo.setValue(name, forKey: "CD_nome")
-                        fetchedInfo.setValue(description, forKey: "CD_descricao")
-
-                        publicDatabase.save(fetchedInfo) { _, _ in
-                            let instituicao = instituicoes.first(where: {$0.id == instituicaoID})
-
-                            instituicao?.nome = name
-                            instituicao?.descricao = description
-
-                            do {
-                                try self.viewContext.save()
-                                print("Salvo")
-                            } catch {
-                                print("não foi possível salvar")
-                            }
-                        }
-                    }
-                }
                 self.view2IsActive.toggle()
             } else {
                 self.alertIsActive.toggle()
@@ -104,7 +85,12 @@ struct CadastroView1: View {
         NavigationView {
             VStack {
                 NavigationLink(
-                    destination: CadastroView2(presentation: _presentation, instituicaoID: $instituicaoID),
+                    destination: CadastroView2(presentation: _presentation,
+                                               name: $name,
+                                               description: $description,
+                                               isLogged: $isLogged,
+                                               userAppleID: $userAppleID),
+                    
                     isActive: $view2IsActive) {
                     EmptyView()
                 }
@@ -141,6 +127,6 @@ struct CadastroView1: View {
 
 struct CadastroView_Previews: PreviewProvider {
     static var previews: some View {
-        CadastroView1(instituicaoID: .constant("D246BE18-3657-4E3A-8C6C-5712B8AAEFAF"))
+        CadastroView1(isLogged: .constant(false), userAppleID: .constant(""))
     }
 }

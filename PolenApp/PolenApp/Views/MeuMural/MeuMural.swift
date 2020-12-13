@@ -105,6 +105,7 @@ struct MeuMural: View {
 //            }
             
         }
+        .navigationBarHidden(true)
     }
 }
 /*

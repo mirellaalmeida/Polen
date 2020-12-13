@@ -38,7 +38,7 @@ struct AddColaboreCard: View {
                 
 
                 let cardReference = CKRecord.Reference(recordID: newRecord.recordID, action: .none)
-                print("cardReferencce")
+                
                 if cardsList == nil {
                     cardsList = []
                     cardsList?.append(cardReference)

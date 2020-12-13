@@ -16,17 +16,27 @@ struct CadastroView3: View {
     
     @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
-    @Binding var instituicaoID: String
+    @State var instituicaoID: String = ""
     
     @State var meuMural = false
     @State var isChecked = false
     
-    @State var cidade = ""
-    @State var telefone = ""
-    @State var email = ""
-    @State var facebook = ""
-    @State var instagram = ""
-    @State var site = ""
+    @Binding var name: String
+    @Binding var description: String
+    
+//    @Binding var rua: String
+//    @Binding var bairro: String
+    @Binding var cidade: String
+//    @Binding var cep: String
+    
+    @Binding var telefone: String
+    @Binding var email: String
+    @Binding var facebook: String
+    @Binding var instagram: String
+    @Binding var site: String
+    
+    @Binding var isLogged: Bool
+    @Binding var userAppleID: String
     
     private let publicDatabase = CKContainer.default().publicCloudDatabase
     
@@ -47,7 +57,23 @@ struct CadastroView3: View {
     
     var saveButton: some View {
         Button(action: {
+            //Cria Instituição na Nuvem
+            let record = CKRecord(recordType: "CD_Instituicao",
+                                  recordID: CKRecord.ID(recordName: userAppleID))
+            record["CD_id"] = record.recordID.recordName
+            
+            publicDatabase.save(record) { _, _ in
+                //Salva localmente
+                saveLocalInfos(record: record)
+            }
+            
+            
+            UserDefaults.standard.set(true, forKey: "isLogged")
+            
+            self.isLogged.toggle()
+            
             presentation.wrappedValue.dismiss()
+            
         }, label: {
             Text("Salvar")
         })
@@ -86,10 +112,81 @@ struct CadastroView3: View {
         print("\(label) is checked: \(isChecked)")
     }
     
-    func saveLocalInfos() {
+    private func saveLocalInfos(record: CKRecord) {
+        UserDefaults.standard.set(record.recordID.recordName, forKey: "userID")
+        
+        let newInstituicao = Instituicao(context: viewContext)
+        newInstituicao.id = record.recordID.recordName as String
+        
+        instituicaoID = newInstituicao.id!
+        
+        viewContext.refresh(newInstituicao, mergeChanges: true)
+        
+        publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: instituicaoID)) { (record, error) in
+            if let fetchedInfo = record {
+                fetchedInfo.setValue(name, forKey: "CD_nome")
+                fetchedInfo.setValue(description, forKey: "CD_descricao")
+
+                publicDatabase.save(fetchedInfo) { _, _ in
+                    let instituicao = instituicoes.first(where: {$0.id == instituicaoID})
+
+                    instituicao?.nome = name
+                    instituicao?.descricao = description
+                }
+                
+                if cidade != "" {
+                    fetchedInfo.setValue(cidade, forKey: "CD_cidade")
+                    
+                    publicDatabase.save(fetchedInfo) { _, _ in
+                        newInstituicao.cidade = cidade
+                    }
+                }
+                
+                if telefone != "" {
+                    fetchedInfo.setValue(telefone, forKey: "CD_telefone")
+                    
+                    publicDatabase.save(fetchedInfo) { _, _ in
+                        newInstituicao.telefone = telefone
+                    }
+                }
+                
+                if email != "" {
+                    fetchedInfo.setValue(email, forKey: "CD_email")
+                    
+                    publicDatabase.save(fetchedInfo) { _, _ in
+                        newInstituicao.email = email
+                    }
+                }
+                
+                if facebook != "" {
+                    fetchedInfo.setValue(facebook, forKey: "CD_facebook")
+                    
+                    publicDatabase.save(fetchedInfo) { _, _ in
+                        newInstituicao.facebook = facebook
+                    }
+                }
+                
+                if instagram != "" {
+                    fetchedInfo.setValue(instagram, forKey: "CD_instagram")
+                    
+                    publicDatabase.save(fetchedInfo) { _, _ in
+                        newInstituicao.instagram = instagram
+                    }
+                }
+                
+                if site != "" {
+                    fetchedInfo.setValue(site, forKey: "CD_site")
+                    
+                    publicDatabase.save(fetchedInfo) { _, _ in
+                        newInstituicao.site = site
+                    }
+                }
+            }
+        }
+
+        
         do {
             try self.viewContext.save()
-            print("Salvo")
         } catch {
             print("não foi possível salvar")
         }
@@ -150,6 +247,15 @@ struct CheckBoxField: View {
 
 struct CadastroView3_Previews: PreviewProvider {
     static var previews: some View {
-        CadastroView3(instituicaoID: .constant("D246BE18-3657-4E3A-8C6C-5712B8AAEFAF"))
+        CadastroView3(name: .constant(" "),
+                      description: .constant(" "),
+                      cidade: .constant(" "),
+                      telefone: .constant(" "),
+                      email: .constant(" "),
+                      facebook: .constant(" "),
+                      instagram: .constant(" "),
+                      site: .constant(" "),
+                      isLogged: .constant(false),
+                      userAppleID: .constant(" "))
     }
 }

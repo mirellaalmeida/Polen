@@ -22,20 +22,23 @@ struct LoginView: View {
     @State var alertIsActive = false
     @State var alert2IsActive = false
     @State var muralIsActive = false
+    
+    @State var userID: String = ""
 
     private let publicDatabase = CKContainer.default().publicCloudDatabase
     
     private let userData = UserDefaults.standard
     
+    
     var body: some View {
         VStack {
-            let userID = userData.object(forKey: "userID") as? String
+            let instID = userData.object(forKey: "userID") as? String
       
             NavigationLink(destination: MeuMural(instituicaoID: $instituicaoID), isActive: $muralIsActive) {
                 EmptyView()
             }
             
-            if (!login) && (userID == nil) {
+            if (!login) && (instID == nil) {
                 SignInWithAppleButton(
                     //Request User Infos
                     onRequest: { request in
@@ -50,39 +53,29 @@ struct LoginView: View {
                             case let appleIDCredential as ASAuthorizationAppleIDCredential:
                                 
                                 let userAppleID = appleIDCredential.user
+                                userID = userAppleID
                                 
                                 if appleIDCredential.email != nil {
-                                    //singUp
-                                    
-                                    //Cria Instituição na Nuvem
-                                    let record = CKRecord(recordType: "CD_Instituicao",
-                                                          recordID: CKRecord.ID(recordName: userAppleID))
-                                    record["CD_id"] = record.recordID.recordName
-                                    
-                                    publicDatabase.save(record) { _, _ in
-                                        //Salva localmente
-                                        saveLocalInfos(record: record)
-                                    }
-                                    
-                                    UserDefaults.standard.set(true, forKey: "isLogged")
-                                    self.login.toggle()
                                     
                                     self.cadastroIsActive.toggle()
                                     
                                 } else {
                                     //singIn
-                                    print("entrei")
-                                    publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: userAppleID)) { (record, error) in
-                                        if let fetchedInfo = record {
-                                            fetchRemoteInfos(record: fetchedInfo)
-                                            
-                                            self.muralIsActive.toggle()
-                                            
-                                        } else {
-                                            print("failure on fetching user data from icloud: \(String(describing: error))")
-                                            
-                                            self.login.toggle()
-                                            self.alertIsActive.toggle()
+                                    if instID == nil {
+                                        self.cadastroIsActive.toggle()
+                                    } else {
+                                        publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: userAppleID)) { (record, error) in
+                                            if let fetchedInfo = record {
+                                                fetchRemoteInfos(record: fetchedInfo)
+                                                
+                                                self.muralIsActive.toggle()
+                                                
+                                            } else {
+                                                print("failure on fetching user data from icloud: \(String(describing: error))")
+                                                
+                                                self.login.toggle()
+                                                self.alertIsActive.toggle()
+                                            }
                                         }
                                     }
                                 }
@@ -109,12 +102,18 @@ struct LoginView: View {
                             .frame(width: 200, alignment: .center)
                         
                         Button(action: {
-                            loadInstituicoes()
+                            if (login) && (instID != nil) {
+                                instituicaoID = instID!
+                                self.muralIsActive.toggle()
+                                
+                            } else {
+                                loadInstituicoes()
+                            }
                             
                         }, label: {
                             HStack {
                                 Text("Ver Meu Mural")
-                                    
+                                
                                 Image(systemName: "forward.fill")
                             }
                             .padding()
@@ -125,24 +124,7 @@ struct LoginView: View {
             }
         }
         .fullScreenCover(isPresented: $cadastroIsActive) {
-            CadastroView1(instituicaoID: $instituicaoID)
-        }
-    }
-    
-    private func saveLocalInfos(record: CKRecord) {
-        UserDefaults.standard.set(record.recordID.recordName, forKey: "userID")
-        
-        let newInstituicao = Instituicao(context: viewContext)
-        newInstituicao.id = record.recordID.recordName as String
-        
-        instituicaoID = newInstituicao.id!
-        
-        viewContext.refresh(newInstituicao, mergeChanges: true)
-        
-        do {
-            try self.viewContext.save()
-        } catch {
-            print("não foi possível salvar")
+            CadastroView1(isLogged: $login, userAppleID: $userID)
         }
     }
     

@@ -11,6 +11,8 @@ import UIKit
 struct ImagePickerView: View {
     @State var showImagePicker: Bool = false
     @State var image: UIImage?
+    
+    //var fromView: String = " "
 
     var body: some View {
         VStack {
@@ -18,6 +20,7 @@ struct ImagePickerView: View {
                 Image(uiImage: image!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+
             }
             Button("Pick image") {
                 self.showImagePicker.toggle()
@@ -26,6 +29,17 @@ struct ImagePickerView: View {
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(sourceType: .photoLibrary) { image in
                 self.image = image
+                
+                
+//                let data = image.pngData()
+//
+//                let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat")
+//                do {
+//                    try data!.url
+//                } catch let e as NSError {
+//                    print("Error! \(e)");
+//                    return
+//                }
             }
         }
     }
