@@ -16,6 +16,8 @@ struct TabBarView: View {
     @State var instituicaoID: String = ""
     @State var tabSelected: Int?
     
+    @State var arrayInstituicoes: [InstituicaoResume] = []
+    
     @Binding var tabViewIsActive: Bool
     
     let login = UserDefaults.standard.bool(forKey: "isLogged")
@@ -25,7 +27,7 @@ struct TabBarView: View {
         //NavigationView {
             TabView {
                 NavigationView {
-                    Mapa(bank: BancoInstituicoes())
+                    Mapa(bank: BancoInstituicoes(), instituicoes: $arrayInstituicoes)
                 }
                 .tabItem {
                     Image(systemName: "map.fill")
@@ -34,7 +36,7 @@ struct TabBarView: View {
                 .tag(0)
                 .navigationViewStyle(StackNavigationViewStyle())
            
-                Favoritos()
+                Favoritos( instituicoes: $arrayInstituicoes)
                 .tabItem {
                     Image(systemName: "heart.fill")
                     Text("Favoritos")

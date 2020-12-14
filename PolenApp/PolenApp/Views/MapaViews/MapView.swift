@@ -14,7 +14,7 @@ import CloudKit
 struct MapView: UIViewRepresentable {
     @Environment(\.managedObjectContext) var viewContext
     
-    @State var instituicoes: [InstituicaoResume] = []
+    @Binding var instituicoes: [InstituicaoResume]
     @Binding var instituicao: CKRecord?
     @Binding var colaboreCards: [HistoriasResume]?
     @Binding var historiaCards: [HistoriasResume]?

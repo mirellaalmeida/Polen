@@ -70,12 +70,19 @@ class CKInstituicao {
         
         operation.recordFetchedBlock = { record in
             
-            let instituicao: InstituicaoResume = .init(
+            var instituicao: InstituicaoResume = .init(
                 id: (record.recordID),
                 name: (record["CD_nome"] as String?) ?? " ",
                 description: (record["CD_descricao"] as String?) ?? " ",
-                address: (record["CD_cidade"] as String?) ?? " "
+                address: (record["CD_cidade"] as String?) ?? " ",
+                favoritada: false
             )
+            let asset = record["CD_imagem_ckAsset"] as? CKAsset
+            
+            if asset != nil {
+                let cardImage = NSData(contentsOf: (asset?.fileURL)!)
+                instituicao.image = UIImage(data: cardImage! as Data)
+            }
             instituicoes.append(instituicao)
         }
         

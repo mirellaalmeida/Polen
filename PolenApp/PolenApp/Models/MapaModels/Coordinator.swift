@@ -56,8 +56,9 @@ final class Coordinator: NSObject, MKMapViewDelegate {
                     mapView.setRegion(region, animated: true)
                 }
                 if zoomInstituicao{
-                    let region = MKCoordinateRegion(center: selecionada, latitudinalMeters: 500, longitudinalMeters: 500)
+                    let region = MKCoordinateRegion(center: selecionada, latitudinalMeters: 1000, longitudinalMeters: 1000)
                     mapView.setRegion(region, animated: true)
+                    zoomInstituicao = false
 //                    annotationView.isSelected = true
                     
                 }
@@ -108,10 +109,8 @@ final class Coordinator: NSObject, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         texto = ((view.annotation?.title ?? "None")!)
     }
-    //
-    //        func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-    //
-    //        }
+//            func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+//            }
     
     
     @objc func buttonPinSelected(){
