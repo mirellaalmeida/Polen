@@ -14,8 +14,19 @@ struct OnboardingView1: View {
     var body: some View {
         ZStack(alignment: .topTrailing){
             VStack{
-                Image("titleOnboarding1")
-                    .padding(.top, 25)
+                ZStack{
+                    Image("titleBackground")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 150, height: 90, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    
+                    Text("Pólen é migrar")
+                        .fontWeight(.bold)
+                }
+                .padding(.top, 50)
+            
+                    
+               
                 
                 Spacer()
                 //.frame(height: 50)

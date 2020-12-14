@@ -22,8 +22,16 @@ struct OnboardingView3: View {
             //            }
             
             VStack{
-                Image("titleOnboarding3")
-                    .padding(.top, 25)
+                ZStack{
+                    Image("titleBackground")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 150, height: 90, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    
+                    Text("Pólen é florescer")
+                        .fontWeight(.bold)
+                }
+                .padding(.top, 50)
                 
                 Spacer()
                 
@@ -49,6 +57,7 @@ struct OnboardingView3: View {
                     ZStack {
                         Image("BotaoOnboarding")
                         Text("Conheça novas instituições")
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     }
                 })
                 .foregroundColor(.white)

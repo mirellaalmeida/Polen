@@ -21,8 +21,16 @@ struct OnboardingView2: View {
             //            }
             
             VStack {
-                Image("titleOnboarding2")
-                    .padding(.top, 25)
+                ZStack{
+                    Image("titleBackground")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 150, height: 90, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    
+                    Text("Pólen é semear")
+                        .fontWeight(.bold)
+                }
+                .padding(.top, 50)
                 
                 Spacer()
                 
