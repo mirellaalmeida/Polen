@@ -9,7 +9,8 @@ import SwiftUI
 // swiftlint:disable all
 struct CardViewFavoritos: View {
     
-    var imagemFavoritos: String
+//    var imagemFavoritos: String
+    var imagemFavoritos: UIImage?
     var tituloFavoritos: String
     var descricaoFavoritos: String
     
@@ -17,7 +18,7 @@ struct CardViewFavoritos: View {
         
         VStack{
             HStack {
-                Image(imagemFavoritos)
+                Image(uiImage: imagemFavoritos ?? UIImage())
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 120, height: 100, alignment: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
@@ -47,8 +48,8 @@ struct CardViewFavoritos: View {
     }
 }
 
-struct CardViewFavoritos_Previews: PreviewProvider {
-    static var previews: some View {
-        CardViewFavoritos(imagemFavoritos: "IconAdus", tituloFavoritos: "Instituto Adus", descricaoFavoritos: "Integração social de refugiados e estrangeiros vítimas de migrações forçadas.")
-    }
-}
+//struct CardViewFavoritos_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CardViewFavoritos(imagemFavoritos: "IconAdus", tituloFavoritos: "Instituto Adus", descricaoFavoritos: "Integração social de refugiados e estrangeiros vítimas de migrações forçadas.")
+//    }
+//}

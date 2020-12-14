@@ -9,10 +9,11 @@ import Foundation
 import CloudKit
 import UIKit
 
-struct InstituicaoResume: Identifiable, Equatable {
+struct InstituicaoResume: Identifiable, Equatable, Hashable {
     var id: CKRecord.ID
     var name: String
     var description: String
     var address: String
     var image: UIImage?
+    var favoritada: Bool
 }

@@ -33,6 +33,9 @@ struct Mapa: View {
     @State var colaboreCards: [HistoriasResume]?
     @State var historiaCards: [HistoriasResume]?
     
+    @Binding var instituicoes: [InstituicaoResume]
+
+    
     var searchInstituicao: some View {
         List {
             // Filtered list of names
@@ -56,7 +59,7 @@ struct Mapa: View {
     public var body: some View {
         ZStack{
             VStack{
-                LinkToMuralDaInstituicao(muralIsActive: $muralIsActive, instituicao: $instituicao, colaboreCards: $colaboreCards, historiaCards: $historiaCards)
+                LinkToMuralDaInstituicao(muralIsActive: $muralIsActive, instituicao: $instituicao, colaboreCards: $colaboreCards, historiaCards: $historiaCards, instituicoes: $instituicoes)
                 
                 SearchBarMap(bank: bank)
                 
@@ -65,7 +68,7 @@ struct Mapa: View {
                     searchInstituicao
                     
                 } else {
-                    MapView(instituicao: $instituicao,
+                    MapView(instituicoes: $instituicoes, instituicao: $instituicao,
                             colaboreCards: $colaboreCards,
                             historiaCards: $historiaCards,
                             bank: bank,
@@ -77,10 +80,10 @@ struct Mapa: View {
     }
 }
 
-struct Mapa_Previews: PreviewProvider {
-    static var previews: some View {
-        Mapa(bank: BancoInstituicoes()).colorScheme(.light)    }
-}
+//struct Mapa_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Mapa(bank: BancoInstituicoes(), instituicoes: .constant([])   }
+//}
 
 extension View {
     func resignKeyboardOnDragGesture() -> some View {

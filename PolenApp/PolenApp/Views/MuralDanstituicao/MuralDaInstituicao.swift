@@ -23,16 +23,20 @@ struct MuralDaInstituicaoView: View {
     
     @State private var isFavorite: Bool = false
     
+    @Binding var instituicoes: [InstituicaoResume]
     
-//    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
+    
+    //    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     init(instituicao: Binding<CKRecord?>,
          colaboreCards: Binding<[HistoriasResume]?>,
-         historiaCards:Binding<[HistoriasResume]?>) {
-
+         historiaCards:Binding<[HistoriasResume]?>,
+         instituicoes:Binding<[InstituicaoResume]>){
+        
         _instituicao = instituicao
         _colaboreCards = colaboreCards
         _historiaCards = historiaCards
+        _instituicoes = instituicoes
         
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "Banner"), for: .default)
         
@@ -50,16 +54,16 @@ struct MuralDaInstituicaoView: View {
             ColaboreView(cards: colaboreCards)
         }
     }
-
+    
     var historiasSubview: some View {
         VStack(alignment: .leading) {
             Text("Um pouco sobre nós")
                 .font(.headline)
                 .fontWeight(.bold)
                 .padding()
-
+            
             HistoriasView(cards: historiaCards, verMais: $verMais, verHistoria: $verHistoria)
-
+            
         }
     }
     
@@ -85,14 +89,24 @@ struct MuralDaInstituicaoView: View {
         .navigationBarItems(trailing:
                                 Button(action: {
                                     //adicionar aos favoritos
+                                    if let index = instituicoes.firstIndex(where: {$0.name == instituicao?["CD_nome"]}) {
+                                        
+                                        instituicoes[index].favoritada.toggle()
+                                    }
+                                    
                                     self.isFavorite.toggle()
+                                    
                                 }, label: {
-                                    if isFavorite {
-                                        Image(systemName: "heart.fill")
+                                    if let index = instituicoes.firstIndex(where: {$0.name == instituicao?["CD_nome"]}) {
+                                        
+                                        if instituicoes[index].favoritada {
+                                            Image(systemName: "heart.fill")
+                                        }
+                                        if !instituicoes[index].favoritada {
+                                            Image(systemName: "heart")
+                                        }
                                     }
-                                    if !isFavorite {
-                                        Image(systemName: "heart")
-                                    }
+                                    
                                 })
         )
         .sheet(isPresented: $verMais) {
@@ -110,5 +124,5 @@ struct MuralDaInstituicaoView: View {
 // }
 // }
 // #endif
- 
+
 

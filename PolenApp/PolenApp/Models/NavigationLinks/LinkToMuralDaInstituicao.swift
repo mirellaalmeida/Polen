@@ -14,10 +14,11 @@ struct LinkToMuralDaInstituicao: View {
     @Binding var instituicao: CKRecord?
     @Binding var colaboreCards: [HistoriasResume]?
     @Binding var historiaCards: [HistoriasResume]?
+    @Binding var instituicoes: [InstituicaoResume]
     
     var body: some View {
         NavigationLink(
-            destination: MuralDaInstituicaoView(instituicao: $instituicao, colaboreCards: $colaboreCards, historiaCards: $historiaCards),
+            destination: MuralDaInstituicaoView(instituicao: $instituicao, colaboreCards: $colaboreCards, historiaCards: $historiaCards, instituicoes: $instituicoes),
             isActive: $muralIsActive){
             EmptyView()
         }
