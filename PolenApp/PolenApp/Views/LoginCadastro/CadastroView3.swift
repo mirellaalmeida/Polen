@@ -85,8 +85,13 @@ struct CadastroView3: View {
             
         }, label: {
             Text("Salvar")
+                .foregroundColor(.white)
+                .padding(.horizontal, 50)
+
         })
-        .padding(.top, 50)
+        .padding()
+        .background(Color("Roxo"))
+        .cornerRadius(10)
     }
     
     
@@ -115,6 +120,11 @@ struct CadastroView3: View {
                 Spacer()
             }
         }
+        .background(
+            Image("backgroundTexture")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        )
     }
     
     func checkboxSelected(label: String, isChecked: Bool) {

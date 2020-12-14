@@ -221,8 +221,13 @@ struct CadastroView2: View {
             
         }, label: {
             Text("Próximo")
+                .foregroundColor(.white)
+                .padding(.horizontal, 50)
+
         })
-        .padding(.top, 50)
+        .padding()
+        .background(Color("Roxo"))
+        .cornerRadius(10)
     }
     
     var body: some View {
@@ -271,7 +276,13 @@ struct CadastroView2: View {
                 Spacer()
             }
         }
+        .background(
+            Image("backgroundTexture")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        )
     }
+
     
     func saveLocalInfos() {
         do {

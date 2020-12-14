@@ -84,8 +84,13 @@ struct CadastroView1: View {
             }
         }, label: {
             Text("Próximo")
+                .foregroundColor(.white)
+                .padding(.horizontal, 40)
         })
         .padding()
+        .background(Color("Roxo"))
+        .cornerRadius(10)
+        .padding(.top)
     }
     
     var body: some View {
@@ -107,7 +112,7 @@ struct CadastroView1: View {
                     .font(.largeTitle)
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.leading)
-                    .padding(.top)
+                    
                 
                 Text("Faça parte da nossa comunidade online!")
                     .font(.subheadline)
@@ -128,6 +133,11 @@ struct CadastroView1: View {
             .alert(isPresented: $alertIsActive, content: {
                 Alert(title: Text("Atenção"), message: Text("Todos os campos devem ser preenchidos"), dismissButton: .cancel(Text("Voltar")))
             })
+            .background(
+                Image("backgroundTexture")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            )
         }
        .navigationViewStyle(StackNavigationViewStyle())
     }
