@@ -21,6 +21,7 @@ struct CadastroView3: View {
     @State var meuMural = false
     @State var isChecked = false
     
+    @Binding var imageProfileData: Data?
     @Binding var name: String
     @Binding var description: String
     
@@ -126,12 +127,31 @@ struct CadastroView3: View {
             if let fetchedInfo = record {
                 fetchedInfo.setValue(name, forKey: "CD_nome")
                 fetchedInfo.setValue(description, forKey: "CD_descricao")
-
+                
+                do {
+                    let path = NSTemporaryDirectory() + "instituicao_picture_temp_\(UUID().uuidString).jpeg"
+                    let url = URL(fileURLWithPath: path)
+                    
+                    try imageProfileData?.write(to: url)
+                    
+                    fetchedInfo["CD_imagem_ckAsset"] = CKAsset(fileURL: url)
+                    
+                } catch {
+                    print(error)
+                }
+                
                 publicDatabase.save(fetchedInfo) { _, _ in
                     let instituicao = instituicoes.first(where: {$0.id == instituicaoID})
 
                     instituicao?.nome = name
                     instituicao?.descricao = description
+                    instituicao?.imagem = imageProfileData
+                    
+                    do {
+                        try self.viewContext.save()
+                    } catch {
+                        print("não foi possível salvar")
+                    }
                 }
                 
                 if cidade != "" {
@@ -139,6 +159,12 @@ struct CadastroView3: View {
                     
                     publicDatabase.save(fetchedInfo) { _, _ in
                         newInstituicao.cidade = cidade
+                        
+                        do {
+                            try self.viewContext.save()
+                        } catch {
+                            print("não foi possível salvar")
+                        }
                     }
                 }
                 
@@ -147,6 +173,12 @@ struct CadastroView3: View {
                     
                     publicDatabase.save(fetchedInfo) { _, _ in
                         newInstituicao.telefone = telefone
+                        
+                        do {
+                            try self.viewContext.save()
+                        } catch {
+                            print("não foi possível salvar")
+                        }
                     }
                 }
                 
@@ -155,6 +187,12 @@ struct CadastroView3: View {
                     
                     publicDatabase.save(fetchedInfo) { _, _ in
                         newInstituicao.email = email
+                        
+                        do {
+                            try self.viewContext.save()
+                        } catch {
+                            print("não foi possível salvar")
+                        }
                     }
                 }
                 
@@ -163,6 +201,12 @@ struct CadastroView3: View {
                     
                     publicDatabase.save(fetchedInfo) { _, _ in
                         newInstituicao.facebook = facebook
+                        
+                        do {
+                            try self.viewContext.save()
+                        } catch {
+                            print("não foi possível salvar")
+                        }
                     }
                 }
                 
@@ -171,6 +215,12 @@ struct CadastroView3: View {
                     
                     publicDatabase.save(fetchedInfo) { _, _ in
                         newInstituicao.instagram = instagram
+                        
+                        do {
+                            try self.viewContext.save()
+                        } catch {
+                            print("não foi possível salvar")
+                        }
                     }
                 }
                 
@@ -179,6 +229,12 @@ struct CadastroView3: View {
                     
                     publicDatabase.save(fetchedInfo) { _, _ in
                         newInstituicao.site = site
+                        
+                        do {
+                            try self.viewContext.save()
+                        } catch {
+                            print("não foi possível salvar")
+                        }
                     }
                 }
             }
@@ -247,7 +303,8 @@ struct CheckBoxField: View {
 
 struct CadastroView3_Previews: PreviewProvider {
     static var previews: some View {
-        CadastroView3(name: .constant(" "),
+        CadastroView3(imageProfileData: .constant(UIImage().jpegData(compressionQuality: 6)),
+                      name: .constant(" "),
                       description: .constant(" "),
                       cidade: .constant(" "),
                       telefone: .constant(" "),

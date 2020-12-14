@@ -26,9 +26,6 @@ public class Instituicao: NSManagedObject {
     public var wrappedID: String {
         id ?? " "
     }
-    public var wrappedImagem: String {
-        imagem ?? " "
-    }
     public var wrappedInstagram: String {
         instagram ?? " "
     }

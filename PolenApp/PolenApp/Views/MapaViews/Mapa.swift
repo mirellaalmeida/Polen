@@ -21,9 +21,10 @@ struct Mapa: View {
     var locationManager = LocationManager()
     @ObservedObject var bank: BancoInstituicoes
     
-    @State var checkpoints: [Checkpoint] = [
-        Checkpoint(title: "Recomeço Refugiados", subtitle: "Aulas de português para haitianos", coordinate: .init(latitude: -16.3624, longitude: -49.1534)),
-        Checkpoint(title: "Instituto Adus", subtitle: "Integração social de refugiados e vítimas de migrações forçadas", coordinate: .init(latitude: -22.0015, longitude: -53.5950))]
+//    @State var checkpoints: [Checkpoint] = [
+//        Checkpoint(title: "Recomeço Refugiados", subtitle: "Aulas de português para haitianos", coordinate: .init(latitude: -16.3624, longitude: -49.1534)),
+//        Checkpoint(title: "Instituto Adus", subtitle: "Integração social de refugiados e vítimas de migrações forçadas", coordinate: .init(latitude: -22.0015, longitude: -53.5950))]
+    @State var checkpoints: [Checkpoint] = []
     
     @State var muralIsActive = false
     
@@ -67,7 +68,7 @@ struct Mapa: View {
                     MapView(instituicao: $instituicao,
                             colaboreCards: $colaboreCards,
                             historiaCards: $historiaCards,
-                            checkpoints: $checkpoints,
+                            bank: bank,
                             muralIsActive: $muralIsActive)
                 }
             }

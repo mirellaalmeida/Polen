@@ -27,25 +27,36 @@ public class BancoInstituicoes: ObservableObject, Identifiable {
     
     /// This function adds all items in the array 'items'
     func addItems() {
-        for instituicoes in self.getInstitutions(){
-            let item = instituicoes
-            items!.append(item)
+        CKInstituicao.fetchAddresses { results in
+            switch results {
+            case .success(let newInstituicoes):
+                //2 - Transformar em coordenadas
+                for instituicao in newInstituicoes {
+                    self.getCoordinate(addressString: instituicao.address) { (coordinate, error) in
+                        //3 - adicionar ao banco
+                        if (error == nil) {
+                            let newInstituicao: Checkpoint = .init(
+                                title: instituicao.name,
+                                subtitle: instituicao.description,
+                                coordinate: coordinate
+                            )
+                            
+                            self.items?.append(newInstituicao)
+                            
+                        } else {
+                            print(error)
+                        }
+                    }
+                }
+ 
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 }
 
 extension BancoInstituicoes {
-    func getInstitutions() -> [Checkpoint] {
-        var instituicoes: [Checkpoint] = []
-        instituicoes.append(Checkpoint(title: "Recomeço Refugiados",
-                                       subtitle: "Aulas de português para haitianos",
-                                       coordinate: .init(latitude: -16.3624, longitude: -49.1534)))
-        instituicoes.append(Checkpoint(title: "Instituto Adus",
-                                       subtitle: "Integração social de refugiados e vítimas de migrações forçadas",
-                                       coordinate: .init(latitude: -22.0015, longitude: -53.5950)))
-        
-        return instituicoes
-    }
     
     private func getCoordinate(addressString: String,
                                completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void) {

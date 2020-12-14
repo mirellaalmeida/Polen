@@ -26,7 +26,7 @@ struct HistoriasMeuMuralView: View {
     
     var cardsInfos: some View {
         ForEach(instituicoes.first(where: {$0.id == instituicaoID})?.historiasArray ?? [], id: \.self){ historia in
-
+            
             HistoriaItem(instituicaoID: $instituicaoID, historia: historia, verMais: $verMais, verHistoria: $verHistoria, editHistoria: $editHistoria, isEditing: isEditing)
 
         }
@@ -34,6 +34,7 @@ struct HistoriasMeuMuralView: View {
         .border(Color.gray, width: 0.5)
         .cornerRadius(10)
         .shadow(color: .gray, radius: 3, x: 0, y: 1)
+        
     }
     
     var body: some View {
@@ -41,7 +42,7 @@ struct HistoriasMeuMuralView: View {
             LazyHStack(spacing: 15){
                 cardsInfos
             }
-            .padding([.leading, .trailing])
+            .padding([.leading, .trailing, .bottom])
         }
     }
 }
@@ -59,6 +60,13 @@ struct HistoriaItem: View {
     
     var body: some View {
         VStack{
+            Image(uiImage: UIImage(data: (historia.imagem ?? UIImage(named: "userIcon")?.pngData())!) ?? UIImage())
+                .resizable()
+                .cornerRadius(8.0)
+                .frame(width: 300, height: 200)
+                .shadow(color: .gray, radius: 0.5, x: 0, y: 0)
+                .padding()
+            
             Text(historia.wrappedTitulo)
                 .font(.system(size:16))
                 .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
@@ -82,6 +90,6 @@ struct HistoriaItem: View {
             }
             
         }
-        .frame(width: 340, height: 190)
+        .frame(width: 320, height: 400)
     }
 }

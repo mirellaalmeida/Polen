@@ -17,7 +17,7 @@ extension HistoriasCard {
     }
 
     @NSManaged public var descricao: String?
-    @NSManaged public var imagem: String?
+    @NSManaged public var imagem: Data?
     @NSManaged public var titulo: String?
     @NSManaged public var daInstituicao: Instituicao?
 

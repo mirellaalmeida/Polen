@@ -14,9 +14,6 @@ public class HistoriasCard: NSManagedObject {
     public var wrappedDescricao: String {
         descricao ?? " "
     }
-    public var wrappedImagem: String {
-        imagem ?? " "
-    }
     public var wrappedTitulo: String {
         titulo ?? " "
     }

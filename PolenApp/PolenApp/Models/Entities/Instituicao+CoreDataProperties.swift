@@ -21,7 +21,7 @@ extension Instituicao {
     @NSManaged public var descricao: String?
     @NSManaged public var facebook: String?
     @NSManaged public var id: String?
-    @NSManaged public var imagem: String?
+    @NSManaged public var imagem: Data?
     @NSManaged public var instagram: String?
     @NSManaged public var nome: String?
     @NSManaged public var site: String?

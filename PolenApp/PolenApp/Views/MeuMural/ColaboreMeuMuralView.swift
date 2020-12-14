@@ -89,6 +89,7 @@ struct ColaboreItem: View {
                 EditButtonView2(instituicaoID: $instituicaoID, isEditing: $isEditing, editCard: $editCard, colabore: colabore)
                 Spacer()
                     .frame(width: 30)
+                
                 buttonStickers
 
             }

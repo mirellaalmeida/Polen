@@ -17,6 +17,7 @@ struct AddHistoriaCard: View {
     @State var title: String = ""
     @State var description: String = ""
     @State private var descriptionHeight: CGFloat = 0
+    @State var cardImage: UIImage?
     
     private let publicDatabase = CKContainer.default().publicCloudDatabase
     private let userData = UserDefaults.standard
@@ -35,9 +36,33 @@ struct AddHistoriaCard: View {
                 newRecord["CD_descricao"] = description
                 newRecord["daInstituicao"] = reference as CKRecordValue
                 
+                
+                if let imageData = cardImage?.jpegData(compressionQuality: 6) {
+                    do {
+                        let path = NSTemporaryDirectory() + "historia_picture_temp_\(UUID().uuidString).jpeg"
+                        let url = URL(fileURLWithPath: path)
+                        
+                        try imageData.write(to: url)
+                        newRecord["CD_imagem_ckAsset"] = CKAsset(fileURL: url)
+                        
+                    } catch {
+                        print(error)
+                        
+                    }
+                }
+    
+//                let data = image.pngData()
+//
+//                let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat")
+//                do {
+//                    try data!.url
+//                } catch let e as NSError {
+//                    print("Error! \(e)");
+//                    return
+//                }
+                
                 var cardsList = fetchedInfo["historiasList"] as? [CKRecord.Reference]
                 
-
                 let cardReference = CKRecord.Reference(recordID: newRecord.recordID, action: .none)
                 
                 if cardsList == nil {
@@ -56,6 +81,7 @@ struct AddHistoriaCard: View {
                         newStory.titulo = title
                         newStory.descricao = description
                         newStory.daInstituicao = instituicoes.first(where: {$0.id == instituicaoID})
+                        newStory.imagem = cardImage?.pngData()
                         
                         do {
                             try self.viewContext.save()
@@ -96,7 +122,7 @@ struct AddHistoriaCard: View {
                 .multilineTextAlignment(.leading)
                 .padding()
             
-            //ImagePickerView()
+            ImagePickerView(image: $cardImage)
             
             AddCardInfos(title: $title, description: $description)
             

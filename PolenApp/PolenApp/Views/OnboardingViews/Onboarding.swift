@@ -15,7 +15,7 @@ struct Onboarding: View {
         //NavigationView{
         
         ZStack(alignment: .topTrailing){
-            ContainerViews(tabViewIsActive: $tabViewIsActive, page: ["1", "2", "3"]).edgesIgnoringSafeArea(.top)
+            ContainerViews(tabViewIsActive: $tabViewIsActive, page: ["1", "2", "3"]).edgesIgnoringSafeArea([.top, .bottom])
         }
         //}
     }

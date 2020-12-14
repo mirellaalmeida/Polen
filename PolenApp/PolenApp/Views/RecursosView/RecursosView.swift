@@ -14,7 +14,9 @@ struct RecursosView: View {
     var body: some View {
         ScrollView(.vertical) {
             ZStack{
-                Image("bannerFavoritosRecursos")
+                Image("bannerFavoritos")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                 Text("Recursos")
                     .font(.title)
                     .fontWeight(.bold)

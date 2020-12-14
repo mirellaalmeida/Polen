@@ -83,14 +83,13 @@ struct MeuMural: View {
     var body: some View {
         ScrollView(.vertical){
             VStack(alignment: .leading){
-                    Image("Banner3")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .edgesIgnoringSafeArea(.top)
-                        .frame(height:2)
+//                    Image("Banner3")
+//                        .resizable()
+//                        .aspectRatio(contentMode: .fill)
+//                        .edgesIgnoringSafeArea(.top)
+//                        .frame(height:2)
                     
                     BannerMeuMural(instituicaoID: $instituicaoID)
-                        .padding(.top, 20)
 
                 colaboreSubview
                 
@@ -107,7 +106,10 @@ struct MeuMural: View {
 //            }
             
         }
-        .navigationBarHidden(true)
+        //.navigationBarHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        //.edgesIgnoringSafeArea(.top)
+        .navigationBarBackButtonHidden(true)
     }
 }
 /*

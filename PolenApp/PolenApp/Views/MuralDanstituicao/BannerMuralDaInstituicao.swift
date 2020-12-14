@@ -18,29 +18,23 @@ struct BannerMuralDaInstituicao: View {
     var nome: String?
     var descricao: String?
     var cidade: String?
-    
+    var image: UIImage?
 //    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
     
     var background: some View {
         Image("Banner3")
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .edgesIgnoringSafeArea(.top)
+            //.edgesIgnoringSafeArea(.top)
     }
     
     var header: some View {
-        HStack (alignment: .center, spacing: 30){
-            if nome == "Instituto Adus" {
-                Image("Adus")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 120, height: 120)
-            } else {
-                Image("Recomeço")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 120, height: 120)
-            }
+        HStack(alignment: .center, spacing: 30){
+            Image(uiImage: (image ?? UIImage(named: "userIcon")) ?? UIImage())
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 120, height: 120)
+                .clipShape(Circle())
             
             VStack(alignment: .leading, spacing: 10) {
                 Text(nome ?? "None")
@@ -53,16 +47,6 @@ struct BannerMuralDaInstituicao: View {
                     .fontWeight(.regular)
                     .multilineTextAlignment(.leading)
                     .frame(width: 200, alignment: .leading)
-//                Text(instituicoes.first(where: {$0.id == instituicaoID})?.wrappedNome ?? " ")
-//                    .font(.title)
-//                    .fontWeight(.bold)
-//                    .multilineTextAlignment(.leading)
-//
-//                Text(instituicoes.first(where: {$0.id == instituicaoID})?.wrappedDescricao ?? " ")
-//                    .font(.system(size: 12, weight: .regular, design: .default))
-//                    .fontWeight(.regular)
-//                    .multilineTextAlignment(.leading)
-//                    .frame(width: 200, alignment: .leading)
             }
             
             Spacer()
@@ -81,10 +65,6 @@ struct BannerMuralDaInstituicao: View {
             Text(cidade ?? "None")
                 .font(.system(size: 14, weight: .medium, design: .default))
                 .frame(height: 2, alignment: .leading)
-            
-//            Text(instituicoes.first(where: {$0.id == instituicaoID})?.cidade ?? "None")
-//                .font(.system(size: 14, weight: .medium, design: .default))
-//                .frame(height: 2, alignment: .leading)
         }
         .padding([.leading, .top])
     }

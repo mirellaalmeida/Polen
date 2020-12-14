@@ -7,6 +7,7 @@
 
 import Foundation
 import CloudKit
+import UIKit
 
 class CKInstituicao {
     static let database = CKContainer.default().privateCloudDatabase
@@ -68,6 +69,7 @@ class CKInstituicao {
         let operation = CKQueryOperation(query: query)
         
         operation.recordFetchedBlock = { record in
+            
             let instituicao: InstituicaoResume = .init(
                 id: (record.recordID),
                 name: (record["CD_nome"] as String?) ?? " ",
@@ -102,12 +104,20 @@ class CKInstituicao {
         let operation = CKQueryOperation(query: query)
         
         operation.recordFetchedBlock = { record in
-            let historia: HistoriasResume = .init(
+            
+            var historia: HistoriasResume = .init(
                 id: record.recordID.recordName, 
                 name: (record["CD_titulo"] as String?)!,
                 description: (record["CD_descricao"] as String?)!
             )
-
+            
+            let asset = record["CD_imagem_ckAsset"] as? CKAsset
+            
+            if asset != nil {
+                let cardImage = NSData(contentsOf: (asset?.fileURL)!)
+                historia.image = UIImage(data: cardImage! as Data)
+            }
+            
             historias.append(historia)
         }
         

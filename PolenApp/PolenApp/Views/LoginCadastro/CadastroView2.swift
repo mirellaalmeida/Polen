@@ -17,6 +17,7 @@ struct CadastroView2: View {
     @State var view3IsActive = false
     @State var isEditing = false
     
+    @Binding var imageProfileData: Data?
     @Binding var name: String
     @Binding var description: String
     @Binding var isLogged: Bool
@@ -228,6 +229,7 @@ struct CadastroView2: View {
         
         NavigationLink(
             destination: CadastroView3(presentation: _presentation,
+                                       imageProfileData: $imageProfileData, 
                                        name: $name,
                                        description: $description,
                                        cidade: $cidade,
@@ -283,6 +285,6 @@ struct CadastroView2: View {
 
 struct CadastroView2_Previews: PreviewProvider {
     static var previews: some View {
-        CadastroView2(name: .constant(" "), description: .constant(""), isLogged: .constant(false), userAppleID: .constant(""))
+        CadastroView2(imageProfileData: .constant(UIImage().jpegData(compressionQuality: 6)), name: .constant(" "), description: .constant(""), isLogged: .constant(false), userAppleID: .constant(""))
     }
 }

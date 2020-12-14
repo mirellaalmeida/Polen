@@ -148,8 +148,14 @@ struct LoginView: View {
         newInstituicao.facebook = record["CD_facebook"]
         newInstituicao.site = record["CD_site"]
         newInstituicao.email = record["CD_email"]
+        let asset = record["CD_imagem_ckAsset"] as? CKAsset
         
-        viewContext.refresh(newInstituicao, mergeChanges: true)
+        if asset != nil {
+            let instituicaoImage = NSData(contentsOf: (asset?.fileURL)!)
+            newInstituicao.imagem = instituicaoImage! as Data
+        }
+        
+        //viewContext.refresh(newInstituicao, mergeChanges: true)
         
         do {
             try self.viewContext.save()
@@ -159,26 +165,32 @@ struct LoginView: View {
     }
     
     private func loadInstituicoes() {
-        for instituicao in instituicoes where instituicao.wrappedNome == " "  {
-            
-            instituicao.id = " "
-            
-            do {
-                try self.viewContext.save()
-            } catch {
-                print("não foi possível salvar")
-            }
-            
-        }
-        CKInstituicao.fetch { results in
-            switch results {
-            case .success(let newInstituicoes):
-                print(newInstituicoes.first!)
-                self.instituicaoID = newInstituicoes.first!
+        for instituicao in instituicoes {
+            if instituicao.wrappedNome == " "  {
                 
-                self.muralIsActive.toggle()
-            case .failure(let error):
-                print(error)
+                instituicao.id = " "
+                
+                do {
+                    try self.viewContext.save()
+                } catch {
+                    print("não foi possível salvar")
+                }
+            } else {
+                if instituicao.wrappedID != " " {
+                    instituicaoID = instituicao.wrappedID
+                }
+            }
+            if instituicaoID == "" {
+                CKInstituicao.fetch { results in
+                    switch results {
+                    case .success(let newInstituicoes):
+                        self.instituicaoID = newInstituicoes.first!
+                        
+                        self.muralIsActive.toggle()
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
             }
         }
     }

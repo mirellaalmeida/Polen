@@ -7,7 +7,7 @@
     </entity>
     <entity name="HistoriasCard" representedClassName="HistoriasCard" syncable="YES">
         <attribute name="descricao" optional="YES" attributeType="String"/>
-        <attribute name="imagem" optional="YES" attributeType="String"/>
+        <attribute name="imagem" optional="YES" attributeType="Binary"/>
         <attribute name="titulo" optional="YES" attributeType="String"/>
         <relationship name="daInstituicao" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Instituicao" inverseName="historiasList" inverseEntity="Instituicao"/>
     </entity>
@@ -17,7 +17,7 @@
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="facebook" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
-        <attribute name="imagem" optional="YES" attributeType="String"/>
+        <attribute name="imagem" optional="YES" attributeType="Binary"/>
         <attribute name="instagram" optional="YES" attributeType="String"/>
         <attribute name="nome" optional="YES" attributeType="String"/>
         <attribute name="site" optional="YES" attributeType="String"/>

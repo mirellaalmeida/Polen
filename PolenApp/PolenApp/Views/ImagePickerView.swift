@@ -7,12 +7,11 @@
 
 import SwiftUI
 import UIKit
+import CloudKit
 
 struct ImagePickerView: View {
     @State var showImagePicker: Bool = false
-    @State var image: UIImage?
-    
-    //var fromView: String = " "
+    @Binding var image: UIImage?
 
     var body: some View {
         VStack {
@@ -29,17 +28,6 @@ struct ImagePickerView: View {
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(sourceType: .photoLibrary) { image in
                 self.image = image
-                
-                
-//                let data = image.pngData()
-//
-//                let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat")
-//                do {
-//                    try data!.url
-//                } catch let e as NSError {
-//                    print("Error! \(e)");
-//                    return
-//                }
             }
         }
     }
@@ -47,7 +35,7 @@ struct ImagePickerView: View {
 
 struct ImagePickerView_Previews: PreviewProvider {
     static var previews: some View {
-        ImagePickerView()
+        ImagePickerView(image: .constant(UIImage()))
     }
 }
 

@@ -19,22 +19,23 @@ struct HistoriasView: View {
     var cardInfos: some View {
         ForEach(cards ?? [], id: \.self){ historia in
             VStack{
-                Image("Doação")
+                Image(uiImage: (historia.image ?? UIImage(named: "userIcon")) ?? UIImage())
                     .resizable()
                     .cornerRadius(8.0)
-                    .frame(width: 320, height: 200)
+                    .frame(width: 300, height: 200)
                     .shadow(color: .gray, radius: 0.5, x: 0, y: 0)
                     .padding()
                 
                 Text(historia.name)
-                    .font(.system(size:16, weight: .bold))       .multilineTextAlignment(.leading)
-                    .frame(width: 160, height: 5, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .font(.system(size:16))
+                    .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.leading)
                 
                 Text(historia.description)
                     .font(/*@START_MENU_TOKEN@*/.subheadline/*@END_MENU_TOKEN@*/)
-                    .font(.system(size: 12))
                     .multilineTextAlignment(.leading)
-                    .lineLimit(3)
+                    .lineLimit(2)
                     .padding()
                 
                 VerMaisButtonCloudkit(verMais: $verMais, verHistoria: $verHistoria, historia: historia)
@@ -42,14 +43,18 @@ struct HistoriasView: View {
             .frame(width: 320, height: 400)
             
         }
+        .background(Color.white)
+        .border(Color.gray, width: 0.5)
+        .cornerRadius(10)
+        .shadow(color: .gray, radius: 3, x: 0, y: 1)
     }
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false){
-            LazyHStack(spacing: 18){
+            LazyHStack(spacing: 15){
                 cardInfos
             }
-            .padding([.leading, .trailing])
+            .padding([.leading, .trailing, .bottom])
         }
     }
 }

@@ -29,16 +29,15 @@ struct MuralDaInstituicaoView: View {
     init(instituicao: Binding<CKRecord?>,
          colaboreCards: Binding<[HistoriasResume]?>,
          historiaCards:Binding<[HistoriasResume]?>) {
-        //_muralDaInstituicaoIsActive = muralDaInstituicaoIsActive
+
         _instituicao = instituicao
         _colaboreCards = colaboreCards
         _historiaCards = historiaCards
-        //Configurações para NavigationBar
+        
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "Banner"), for: .default)
-        //UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.9688708186, green: 0.8066166639, blue: 0.3180420101, alpha: 1)
+        
         UINavigationBar.appearance().shadowImage = UIImage()
         UIScrollView.appearance().bounces = false
-        //        UIScrollView.appearance().backgroundColor = #colorLiteral(red: 0.9688708186, green: 0.8066166639, blue: 0.3180420101, alpha: 1)
     }
     
     var colaboreSubview: some View {
@@ -68,7 +67,11 @@ struct MuralDaInstituicaoView: View {
         ScrollView(.vertical){
             VStack(alignment: .leading){
                 //BannerMeuMural(instituicaoID: $instituicaoID)
-                BannerMuralDaInstituicao(nome: instituicao?["CD_nome"], descricao: instituicao?["CD_descricao"], cidade: instituicao?["CD_cidade"])
+                if instituicao?["CD_imagem_ckAsset"] != nil {
+                    BannerMuralDaInstituicao(nome: instituicao?["CD_nome"], descricao: instituicao?["CD_descricao"], cidade: instituicao?["CD_cidade"], image: UIImage(data: NSData(contentsOf: ((instituicao?["CD_imagem_ckAsset"] as? CKAsset)?.fileURL)!)! as Data))
+                } else {
+                    BannerMuralDaInstituicao(nome: instituicao?["CD_nome"], descricao: instituicao?["CD_descricao"], cidade: instituicao?["CD_cidade"])
+                }
                 
                 colaboreSubview
                 

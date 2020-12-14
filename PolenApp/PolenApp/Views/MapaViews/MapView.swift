@@ -14,16 +14,12 @@ import CloudKit
 struct MapView: UIViewRepresentable {
     @Environment(\.managedObjectContext) var viewContext
     
-//    @FetchRequest(fetchRequest: Instituicao.getInstituicoesFetchRequest()) var instituicoes: FetchedResults<Instituicao>
-    
     @State var instituicoes: [InstituicaoResume] = []
     @Binding var instituicao: CKRecord?
     @Binding var colaboreCards: [HistoriasResume]?
     @Binding var historiaCards: [HistoriasResume]?
-    
-    @Binding var checkpoints: [Checkpoint]
+    @ObservedObject var bank: BancoInstituicoes
     @Binding var muralIsActive: Bool
-    //@Binding var instituicaoID: String
     
     func makeUIView(context: Context) -> MKMapView {
         let map = MKMapView()
@@ -55,6 +51,6 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
-        uiView.addAnnotations(checkpoints)
+        uiView.addAnnotations(bank.items!)
     }
 }

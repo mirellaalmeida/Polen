@@ -20,6 +20,9 @@ struct CadastroView1: View {
     @State var name: String = ""
     @State var description: String = ""
     
+    @State var imageProfile: UIImage?
+    @State var imageProfileData: Data?
+    
     
     @State private var descriptionHeight: CGFloat = 0
     
@@ -71,6 +74,10 @@ struct CadastroView1: View {
     var nextButton: some View {
         Button(action: {
             if !name.isEmpty && !description.isEmpty {
+                if imageProfile != nil {
+                    imageProfileData = imageProfile?.jpegData(compressionQuality: 6)
+                }
+                
                 self.view2IsActive.toggle()
             } else {
                 self.alertIsActive.toggle()
@@ -86,6 +93,7 @@ struct CadastroView1: View {
             VStack {
                 NavigationLink(
                     destination: CadastroView2(presentation: _presentation,
+                                               imageProfileData: $imageProfileData, 
                                                name: $name,
                                                description: $description,
                                                isLogged: $isLogged,
@@ -108,7 +116,7 @@ struct CadastroView1: View {
                     .multilineTextAlignment(.leading)
                     .padding(.bottom)
                 
-                ImagePickerView()
+                ImagePickerView(image: $imageProfile)
                     .padding()
                 
                 addNome
