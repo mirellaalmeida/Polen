@@ -66,14 +66,22 @@ struct CadastroView3: View {
             publicDatabase.save(record) { _, _ in
                 //Salva localmente
                 saveLocalInfos(record: record)
+                
+                do {
+                    try self.viewContext.save()
+                } catch {
+                    print("não foi possível salvar")
+                }
+                
+                UserDefaults.standard.set(true, forKey: "isLogged")
+                
+                self.isLogged.toggle()
+                
+                presentation.wrappedValue.dismiss()
             }
             
             
-            UserDefaults.standard.set(true, forKey: "isLogged")
             
-            self.isLogged.toggle()
-            
-            presentation.wrappedValue.dismiss()
             
         }, label: {
             Text("Salvar")
@@ -146,12 +154,12 @@ struct CadastroView3: View {
                     instituicao?.nome = name
                     instituicao?.descricao = description
                     instituicao?.imagem = imageProfileData
-                    
-                    do {
-                        try self.viewContext.save()
-                    } catch {
-                        print("não foi possível salvar")
-                    }
+//
+//                    do {
+//                        try self.viewContext.save()
+//                    } catch {
+//                        print("não foi possível salvar")
+//                    }
                 }
                 
                 if cidade != "" {
@@ -159,12 +167,12 @@ struct CadastroView3: View {
                     
                     publicDatabase.save(fetchedInfo) { _, _ in
                         newInstituicao.cidade = cidade
-                        
-                        do {
-                            try self.viewContext.save()
-                        } catch {
-                            print("não foi possível salvar")
-                        }
+//
+//                        do {
+//                            try self.viewContext.save()
+//                        } catch {
+//                            print("não foi possível salvar")
+//                        }
                     }
                 }
                 
@@ -174,11 +182,11 @@ struct CadastroView3: View {
                     publicDatabase.save(fetchedInfo) { _, _ in
                         newInstituicao.telefone = telefone
                         
-                        do {
-                            try self.viewContext.save()
-                        } catch {
-                            print("não foi possível salvar")
-                        }
+//                        do {
+//                            try self.viewContext.save()
+//                        } catch {
+//                            print("não foi possível salvar")
+//                        }
                     }
                 }
                 
@@ -188,11 +196,11 @@ struct CadastroView3: View {
                     publicDatabase.save(fetchedInfo) { _, _ in
                         newInstituicao.email = email
                         
-                        do {
-                            try self.viewContext.save()
-                        } catch {
-                            print("não foi possível salvar")
-                        }
+//                        do {
+//                            try self.viewContext.save()
+//                        } catch {
+//                            print("não foi possível salvar")
+//                        }
                     }
                 }
                 
@@ -202,11 +210,11 @@ struct CadastroView3: View {
                     publicDatabase.save(fetchedInfo) { _, _ in
                         newInstituicao.facebook = facebook
                         
-                        do {
-                            try self.viewContext.save()
-                        } catch {
-                            print("não foi possível salvar")
-                        }
+//                        do {
+//                            try self.viewContext.save()
+//                        } catch {
+//                            print("não foi possível salvar")
+//                        }
                     }
                 }
                 
@@ -216,11 +224,11 @@ struct CadastroView3: View {
                     publicDatabase.save(fetchedInfo) { _, _ in
                         newInstituicao.instagram = instagram
                         
-                        do {
-                            try self.viewContext.save()
-                        } catch {
-                            print("não foi possível salvar")
-                        }
+//                        do {
+//                            try self.viewContext.save()
+//                        } catch {
+//                            print("não foi possível salvar")
+//                        }
                     }
                 }
                 
@@ -229,22 +237,15 @@ struct CadastroView3: View {
                     
                     publicDatabase.save(fetchedInfo) { _, _ in
                         newInstituicao.site = site
-                        
-                        do {
-                            try self.viewContext.save()
-                        } catch {
-                            print("não foi possível salvar")
-                        }
+//
+//                        do {
+//                            try self.viewContext.save()
+//                        } catch {
+//                            print("não foi possível salvar")
+//                        }
                     }
                 }
             }
-        }
-
-        
-        do {
-            try self.viewContext.save()
-        } catch {
-            print("não foi possível salvar")
         }
     }
 }

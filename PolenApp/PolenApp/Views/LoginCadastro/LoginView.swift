@@ -24,7 +24,7 @@ struct LoginView: View {
     @State var muralIsActive = false
     
     @State var userID: String = ""
-
+    
     private let publicDatabase = CKContainer.default().publicCloudDatabase
     
     private let userData = UserDefaults.standard
@@ -33,7 +33,7 @@ struct LoginView: View {
     var body: some View {
         VStack {
             let instID = userData.object(forKey: "userID") as? String
-      
+            
             NavigationLink(destination: MeuMural(instituicaoID: $instituicaoID), isActive: $muralIsActive) {
                 EmptyView()
             }
@@ -56,32 +56,39 @@ struct LoginView: View {
                                 userID = userAppleID
                                 
                                 if appleIDCredential.email != nil {
+                                    for instituicao in instituicoes {
+                                        viewContext.delete(instituicao)
+                                    }
+                                    
+                                    do {
+                                        try self.viewContext.save()
+                                    } catch {
+                                        print("não foi possível salvar")
+                                    }
                                     
                                     self.cadastroIsActive.toggle()
                                     
                                 } else {
                                     //singIn
-//                                    if instID == nil {
-//                                        self.cadastroIsActive.toggle()
-//                                    } else {
-                                        publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: userAppleID)) { (record, error) in
-                                            if let fetchedInfo = record {
-                                                if instID == nil && record?["CD_nome"] == nil {
-                                                    self.cadastroIsActive.toggle()
-                                                } else {
-                                                    fetchRemoteInfos(record: fetchedInfo)
-                                                    
-                                                    self.muralIsActive.toggle()
-                                                }
-                                                
+                                    
+                                    publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: userAppleID)) { (record, error) in
+                                        if let fetchedInfo = record {
+                                            if instID == nil && record?["CD_nome"] == nil {
+                                                self.cadastroIsActive.toggle()
                                             } else {
-                                                print("failure on fetching user data from icloud: \(String(describing: error))")
+                                                fetchRemoteInfos(record: fetchedInfo)
                                                 
-                                                self.login.toggle()
-                                                self.alertIsActive.toggle()
+                                                self.muralIsActive.toggle()
                                             }
+                                            
+                                        } else {
+                                            print("failure on fetching user data from icloud: \(String(describing: error))")
+                                            
+                                            self.login.toggle()
+                                            self.alertIsActive.toggle()
                                         }
-                                    //}
+                                    }
+                                    
                                 }
                                 
                             default:
@@ -101,13 +108,15 @@ struct LoginView: View {
                 
             } else {
                 HStack {
-                   VStack {
+                    VStack {
                         Text("Aee!! Sua instituição já está no nosso banco de dados, veja como seu mural ficou lindão!")
                             .frame(width: 200, alignment: .center)
                         
                         Button(action: {
-                            if (login) && (instID != nil) {
-                                instituicaoID = instID!
+                            let id = userData.object(forKey: "userID") as? String
+                            
+                            if (login) && (id != nil) {
+                                instituicaoID = id!
                                 self.muralIsActive.toggle()
                                 
                             } else {
@@ -155,8 +164,6 @@ struct LoginView: View {
             newInstituicao.imagem = instituicaoImage! as Data
         }
         
-        //viewContext.refresh(newInstituicao, mergeChanges: true)
-        
         do {
             try self.viewContext.save()
         } catch {
@@ -165,32 +172,14 @@ struct LoginView: View {
     }
     
     private func loadInstituicoes() {
-        for instituicao in instituicoes {
-            if instituicao.wrappedNome == " "  {
+        CKInstituicao.fetch { results in
+            switch results {
+            case .success(let newInstituicoes):
+                self.instituicaoID = newInstituicoes.first ?? newInstituicoes.last ?? " "
                 
-                instituicao.id = " "
-                
-                do {
-                    try self.viewContext.save()
-                } catch {
-                    print("não foi possível salvar")
-                }
-            } else {
-                if instituicao.wrappedID != " " {
-                    instituicaoID = instituicao.wrappedID
-                }
-            }
-            if instituicaoID == "" {
-                CKInstituicao.fetch { results in
-                    switch results {
-                    case .success(let newInstituicoes):
-                        self.instituicaoID = newInstituicoes.first!
-                        
-                        self.muralIsActive.toggle()
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
+                self.muralIsActive.toggle()
+            case .failure(let error):
+                print(error)
             }
         }
     }
