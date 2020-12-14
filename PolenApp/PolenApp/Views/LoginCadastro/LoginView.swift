@@ -29,6 +29,33 @@ struct LoginView: View {
     
     private let userData = UserDefaults.standard
     
+    var header: some View{
+        VStack{
+            
+            HStack {
+                Spacer()
+                Image("butterfly")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            }
+            
+            Text("Login")
+                .font(.largeTitle)
+                .fontWeight(.semibold)
+                .multilineTextAlignment(.leading)
+                .padding(.bottom)
+            
+            
+            Text("Bem vinde de volta,faça o login para continuar, ou crie uma nova conta.")
+                .font(.subheadline)
+                //.fontWeight(.ultraLight)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.bottom)
+        }
+        
+    }
     
     var body: some View {
         VStack {
@@ -39,103 +66,142 @@ struct LoginView: View {
             }
             
             if (!login) && (instID == nil) {
-                SignInWithAppleButton(
-                    //Request User Infos
-                    onRequest: { request in
-                        request.requestedScopes = [.email]
-                    },
+                
+                VStack {
+                    header
+                        .padding()
+                        .padding(.top, 50)
+                        .padding(.bottom, 100)
                     
-                    //Lidando com dados do user
-                    onCompletion: { result in
-                        switch result {
-                        case .success(let authResults):
-                            switch authResults.credential {
-                            case let appleIDCredential as ASAuthorizationAppleIDCredential:
-                                
-                                let userAppleID = appleIDCredential.user
-                                userID = userAppleID
-                                
-                                if appleIDCredential.email != nil {
-                                    for instituicao in instituicoes {
-                                        viewContext.delete(instituicao)
-                                    }
+                    
+                    SignInWithAppleButton(
+                        //Request User Infos
+                        onRequest: { request in
+                            request.requestedScopes = [.email]
+                        },
+                        
+                        //Lidando com dados do user
+                        onCompletion: { result in
+                            switch result {
+                            case .success(let authResults):
+                                switch authResults.credential {
+                                case let appleIDCredential as ASAuthorizationAppleIDCredential:
                                     
-                                    do {
-                                        try self.viewContext.save()
-                                    } catch {
-                                        print("não foi possível salvar")
-                                    }
+                                    let userAppleID = appleIDCredential.user
+                                    userID = userAppleID
                                     
-                                    self.cadastroIsActive.toggle()
-                                    
-                                } else {
-                                    //singIn
-                                    
-                                    publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: userAppleID)) { (record, error) in
-                                        if let fetchedInfo = record {
-                                            if instID == nil && record?["CD_nome"] == nil {
-                                                self.cadastroIsActive.toggle()
-                                            } else {
-                                                fetchRemoteInfos(record: fetchedInfo)
-                                                
-                                                self.muralIsActive.toggle()
-                                            }
-                                            
-                                        } else {
-                                            print("failure on fetching user data from icloud: \(String(describing: error))")
-                                            
-                                            self.login.toggle()
-                                            self.alertIsActive.toggle()
+                                    if appleIDCredential.email != nil {
+                                        for instituicao in instituicoes {
+                                            viewContext.delete(instituicao)
                                         }
+                                        
+                                        do {
+                                            try self.viewContext.save()
+                                        } catch {
+                                            print("não foi possível salvar")
+                                        }
+                                        
+                                        self.cadastroIsActive.toggle()
+                                        
+                                    } else {
+                                        //singIn
+                                        
+                                        publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: userAppleID)) { (record, error) in
+                                            if let fetchedInfo = record {
+                                                if instID == nil && record?["CD_nome"] == nil {
+                                                    self.cadastroIsActive.toggle()
+                                                } else {
+                                                    fetchRemoteInfos(record: fetchedInfo)
+                                                    
+                                                    self.muralIsActive.toggle()
+                                                }
+                                                
+                                            } else {
+                                                print("failure on fetching user data from icloud: \(String(describing: error))")
+                                                
+                                                self.login.toggle()
+                                                self.alertIsActive.toggle()
+                                            }
+                                        }
+                                        
                                     }
                                     
+                                default:
+                                    print("failure on fetching user's credentials")
                                 }
                                 
-                            default:
-                                print("failure on fetching user's credentials")
+                            case .failure(let error):
+                                print("failure on fetching user's infos", error)
                             }
-                            
-                        case .failure(let error):
-                            print("failure on fetching user's infos", error)
                         }
+                    )
+                    .signInWithAppleButtonStyle(.black)
+                    .frame(width: 350, height: 50)
+                    .alert(isPresented: $alertIsActive) {
+                        Alert(title: Text("Usuário não encontrado!"), dismissButton: .cancel(Text("Ok")))
                     }
-                )
-                .signInWithAppleButtonStyle(.black)
-                .frame(width: 350, height: 50)
-                .alert(isPresented: $alertIsActive) {
-                    Alert(title: Text("Usuário não encontrado!"), dismissButton: .cancel(Text("Ok")))
+                    .padding(.bottom, 100)
+                    
                 }
                 
             } else {
-                HStack {
-                    VStack {
-                        Text("Aee!! Sua instituição já está no nosso banco de dados, veja como seu mural ficou lindão!")
-                            .frame(width: 200, alignment: .center)
-                        
-                        Button(action: {
-                            let id = userData.object(forKey: "userID") as? String
-                            
-                            if (login) && (id != nil) {
-                                instituicaoID = id!
-                                self.muralIsActive.toggle()
-                                
-                            } else {
-                                loadInstituicoes()
-                            }
-                            
-                        }, label: {
-                            HStack {
-                                Text("Ver Meu Mural")
-                                
-                                Image(systemName: "forward.fill")
-                            }
-                            .padding()
-                            
-                        })
-                    }
+                VStack{
+                    HStack {
+                        Spacer()
+                        Image("butterfly")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .center)
                 }
+                    
+                    Text("Seja bem vinde")
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.leading)
+                        .padding(.bottom)
+                    
+                    
+                    Text("Sua instituição agora faz parte da nossa rede!")
+                        .font(.subheadline)
+                        //.fontWeight(.ultraLight)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom, 60)
+                    
+                    Button(action: {
+                        let id = userData.object(forKey: "userID") as? String
+                        
+                        if (login) && (id != nil) {
+                            instituicaoID = id!
+                            self.muralIsActive.toggle()
+                            
+                        } else {
+                            loadInstituicoes()
+                        }
+                        
+                    }, label: {
+                        Text("Ver Meu Mural")
+                            .foregroundColor(.white)
+                            .padding()
+                        
+                    })
+                    
+                    .background(Color("Roxo"))
+                    .cornerRadius(10)
+                }
+                .background(
+                    Image("backgroundLogin")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                )
+                
             }
         }
+        .background(
+            Image("backgroundLogin")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        )
         .fullScreenCover(isPresented: $cadastroIsActive) {
             CadastroView1(isLogged: $login, userAppleID: $userID)
         }

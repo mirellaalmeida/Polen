@@ -20,8 +20,13 @@ struct ImagePickerView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
 
+            } else{
+                Image("ImagePlaceholder")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+
             }
-            Button("Pick image") {
+            Button("Escolher imagem") {
                 self.showImagePicker.toggle()
             }
         }
