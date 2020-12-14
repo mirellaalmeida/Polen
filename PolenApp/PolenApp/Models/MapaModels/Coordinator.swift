@@ -28,11 +28,11 @@ final class Coordinator: NSObject, MKMapViewDelegate {
     var control: MapView
     
     init(_ control: MapView,
-            instituicoes: Binding<[InstituicaoResume]>,
-            colaboreCards: Binding<[HistoriasResume]?>,
-            historiaCards:Binding<[HistoriasResume]?>,
-            muralIsActive: Binding<Bool>,
-            instituicao: Binding<CKRecord?>) {
+         instituicoes: Binding<[InstituicaoResume]>,
+         colaboreCards: Binding<[HistoriasResume]?>,
+         historiaCards:Binding<[HistoriasResume]?>,
+         muralIsActive: Binding<Bool>,
+         instituicao: Binding<CKRecord?>) {
         self.control = control
         _instituicoes = instituicoes
         _colaboreCards = colaboreCards
@@ -41,26 +41,29 @@ final class Coordinator: NSObject, MKMapViewDelegate {
         _instituicao = instituicao
     }
     
-//    init(_ control: MapView, instituicoes: Binding<[InstituicaoResume]>, muralIsActive: Binding<Bool>, instituicao: Binding<CKRecord?>) {
-//        self.control = control
-//        _instituicoes = instituicoes
-//        _muralIsActive = muralIsActive
-//        _instituicao = instituicao
-//    }
+    //    init(_ control: MapView, instituicoes: Binding<[InstituicaoResume]>, muralIsActive: Binding<Bool>, instituicao: Binding<CKRecord?>) {
+    //        self.control = control
+    //        _instituicoes = instituicoes
+    //        _muralIsActive = muralIsActive
+    //        _instituicao = instituicao
+    //    }
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
         if let annotationView = views.first{
             if let annotation = annotationView.annotation{
-                if annotation is MKUserLocation{
-                    let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-                    mapView.setRegion(region, animated: true)
-                }
-                if zoomInstituicao{
-                    let region = MKCoordinateRegion(center: selecionada, latitudinalMeters: 1000, longitudinalMeters: 1000)
-                    mapView.setRegion(region, animated: true)
-                    zoomInstituicao = false
-//                    annotationView.isSelected = true
-                    
+                if testeZoom{
+                    if annotation is MKUserLocation{
+                        let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+                        mapView.setRegion(region, animated: true)
+                    }
+                    if zoomInstituicao{
+                        let region = MKCoordinateRegion(center: selecionada, latitudinalMeters: 1000, longitudinalMeters: 1000)
+                        mapView.setRegion(region, animated: true)
+                        zoomInstituicao = false
+                        testeZoom = false
+                        //                    annotationView.isSelected = true
+                        
+                    }
                 }
             }
             
@@ -109,8 +112,8 @@ final class Coordinator: NSObject, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         texto = ((view.annotation?.title ?? "None")!)
     }
-//            func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-//            }
+    //            func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+    //            }
     
     
     @objc func buttonPinSelected(){
@@ -149,7 +152,7 @@ final class Coordinator: NSObject, MKMapViewDelegate {
                 }
             }
         }
-
-       // muralIsActive.toggle()
+        
+        // muralIsActive.toggle()
     }
 }

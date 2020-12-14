@@ -13,6 +13,8 @@ public var selecionada: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude
 
 public var zoomInstituicao: Bool = false
 
+public var testeZoom: Bool = true
+
 
 struct Mapa: View {
     @Environment(\.managedObjectContext) var viewContexts
@@ -47,6 +49,7 @@ struct Mapa: View {
                     self.bank.isSearching = false
                     selecionada = bank.items![index].coordinate
                     zoomInstituicao = true
+                    testeZoom = true
                     
                 }){
                     Text(bank.items![index].title!)
