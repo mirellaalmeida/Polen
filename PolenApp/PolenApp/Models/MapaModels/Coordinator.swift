@@ -58,7 +58,7 @@ final class Coordinator: NSObject, MKMapViewDelegate {
                 if zoomInstituicao{
                     let region = MKCoordinateRegion(center: selecionada, latitudinalMeters: 1000, longitudinalMeters: 1000)
                     mapView.setRegion(region, animated: true)
-                    zoomInstituicao = false
+                    //zoomInstituicao = false
 //                    annotationView.isSelected = true
                     
                 }

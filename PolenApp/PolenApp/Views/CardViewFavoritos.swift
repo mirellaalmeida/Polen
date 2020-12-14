@@ -22,6 +22,7 @@ struct CardViewFavoritos: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 120, height: 100, alignment: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/)
+                    .clipShape(Circle())
                 VStack(alignment: .leading, spacing: 5, content: {
                     Text(tituloFavoritos)
                         .font(.system(size:18))
