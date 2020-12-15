@@ -56,7 +56,7 @@ struct TabBarView: View {
                     }
                     
                     if (login) {
-                        MeuMural(instituicaoID: .constant(instituicoes.first(where: {$0.id == userID})?.wrappedID ?? ""))
+                        MeuMural(instituicaoID: .constant(instituicoes.first(where: {$0.id == userID && $0.wrappedNome != " "})?.wrappedID ?? ""))
                     }
                 }
                 .navigationViewStyle(StackNavigationViewStyle())
@@ -66,10 +66,6 @@ struct TabBarView: View {
                 }
                 .tag(3)
             }.accentColor(Color("Roxo"))
-    }
-
-    func checkLogin(){
-        
     }
 }
 

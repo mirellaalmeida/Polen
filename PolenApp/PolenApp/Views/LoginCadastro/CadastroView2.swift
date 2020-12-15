@@ -39,10 +39,10 @@ struct CadastroView2: View {
     
     var addAddress: some View {
         VStack(alignment:.leading) {
-            Text("Cidade:")
+            Text("Endereço:")
                 .padding([.top, .leading, .trailing])
         
-            TextField("Recife-PE", text: $cidade)
+            TextField("Avenida Conde da Boa Vista, 100, Boa Vista, Recife-PE", text: $cidade)
                 .foregroundColor(.black)
                 .background(Color(UIColor.secondarySystemBackground))
                 .padding([.bottom, .leading, .trailing])

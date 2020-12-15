@@ -19,12 +19,12 @@ struct BannerMeuMural: View {
     var background: some View {
         Image("Banner3")
             .resizable()
-            .aspectRatio(contentMode: .fit)
+            .aspectRatio(contentMode: .fill)
             //.padding([.leading, .trailing], 0)
     }
     
     var header: some View {
-        HStack (alignment: .center, spacing: 30){
+        HStack(alignment: .center, spacing: 30){
             Image(uiImage: UIImage(data: (instituicoes.first(where: {$0.id == instituicaoID})?.imagem ?? UIImage(named: "userIcon")?.pngData())!) ?? UIImage())
                 .resizable()
                 .aspectRatio(contentMode: .fit)

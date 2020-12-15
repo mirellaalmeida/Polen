@@ -112,13 +112,12 @@ struct MeuMural: View {
         .navigationBarBackButtonHidden(true)
     }
 }
-/*
+
  #if DEBUG
  struct MuralView_Previews: PreviewProvider {
  static var previews: some View {
- MeuMural(isActive: .constant(true))
- .previewDevice("iPhone 11")
+    MeuMural(instituicaoID: .constant(" "))
  }
  }
  #endif
- */
+ 

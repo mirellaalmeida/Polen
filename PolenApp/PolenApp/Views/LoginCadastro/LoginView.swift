@@ -105,7 +105,6 @@ struct LoginView: View {
                                         
                                     } else {
                                         //singIn
-                                        
                                         publicDatabase.fetch(withRecordID: CKRecord.ID(recordName: userAppleID)) { (record, error) in
                                             if let fetchedInfo = record {
                                                 if instID == nil && record?["CD_nome"] == nil {
